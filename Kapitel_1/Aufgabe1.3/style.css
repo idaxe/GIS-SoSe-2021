@@ -115,6 +115,15 @@ textarea{
     margin-bottom: 1em;
     height: 7em;
 }
+#Kontaktinformationen img{
+    border-radius: 100%;
+}
+#Blender img{
+    width: 700px;
+}
+video{
+    z-index: -1;
+}
 footer{
     position: fixed ;
     top: 95%;
