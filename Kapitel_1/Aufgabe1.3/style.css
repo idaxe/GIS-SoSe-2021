@@ -7,7 +7,7 @@ body{
     /*background-color: aqua;
     background-size: 5%;*/
     width: 800px;
-    margin: 25px, auto;
+    margin:5px auto auto 480px;
 }
 nav{
     position: relative;
@@ -69,9 +69,10 @@ strong a{
     color: blue ;
 }
 section{
+    display: block;
     background-color: black;
     border-radius: 10px;
-    margin: 130px auto auto 480px;
+    margin: 130px auto auto auto;
     width: 100%;
     padding-top: 3px;
     padding-bottom: 40px;
@@ -90,7 +91,7 @@ form{
     background-color: azure;
     width: 300px;
     margin-top: 70px;
-    margin-left: 700px;
+    margin-left: 240px;
     margin-right: auto;
     padding: 20px;
     border: 3px solid #00FF00;
