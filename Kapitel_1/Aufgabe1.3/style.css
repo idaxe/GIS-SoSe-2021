@@ -171,6 +171,9 @@ footer{
  footer :hover{
     box-shadow: 0px 0px 50px #00FF00;
  }
+ .gitprofile{
+     border-radius: 10px;
+     }
  .gitprofile img{
     width: 50px;
     border-radius: 20px;
