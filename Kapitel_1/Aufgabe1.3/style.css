@@ -4,8 +4,8 @@
 }
 body{
     background-image: url("Content/bgd.png");
-    background-color: aqua;
-    background-size: 5%;
+    /*background-color: aqua;
+    background-size: 5%;*/
     width: 800px;
     margin: 25px, auto;
 }
@@ -71,13 +71,10 @@ strong a{
 section{
     background-color: black;
     border-radius: 10px;
-    margin-top: 150px;
-    margin-left: 480px;
-    margin-right: auto;
-    margin-bottom: auto;
+    margin: 130px auto auto 480px;
     width: 100%;
     padding-top: 3px;
-    padding-bottom: 50px;
+    padding-bottom: 40px;
     box-shadow:0px 0px 10px #00FF00;
 }
 .leiste{
@@ -93,17 +90,17 @@ form{
     background-color: azure;
     width: 300px;
     margin-top: 70px;
-    margin-left: 750px;
+    margin-left: 700px;
     margin-right: auto;
     padding: 20px;
-    border: 3px solid green;
+    border: 3px solid #00FF00;
     border-radius: 15px;
     box-shadow: 0px 0px 10px black;
 }
 label{
     display: block;
     color: black;
-    text-shadow: 0px 0px 10px green;
+    text-shadow: 0px 0px 10px #00FF00;
     font-weight: bold;
     padding-top: 8px;
     padding-bottom: 5px;
@@ -118,8 +115,49 @@ textarea{
 #Kontaktinformationen img{
     border-radius: 100%;
 }
+#Blender{
+    width: 97%;
+    padding: 5px 5px 5px 0px;
+    border: 1px solid black;
+    margin: 5px 5px 5px 5px;
+}
 #Blender img{
+    width: 650px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-top: 20px;
+    margin-right: auto;
+    border: solid #00FF00 1px;
+}
+#Laserharp{
+    width: 97%;
+    padding: 5px 5px 5px 0px;
+    border: 1px solid black;
+    margin: 5px 5px 5px 13px;
+}
+#Laserharp img{
     width: 700px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-top: 20px;
+    margin-right: auto;
+    border: solid #00FF00 1px;
+}
+#Steckbrief{
+    color: rgb(255, 255, 255);
+    background-color: black;
+
+    width: 97%;
+
+    margin: 5px 5px 5px 5px;
+    border: 1px solid black;
+    padding: 5px 5px 5px 8px;
+}
+#Steckbrief img{
+    border: solid #00FF00 1px;
+}
+#Steckbrief video{
+    border: solid #00FF00 1px;
 }
 video{
     z-index: -1;
