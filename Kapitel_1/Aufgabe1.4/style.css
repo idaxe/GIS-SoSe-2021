@@ -34,6 +34,7 @@ nav a{
 }
 #links{
     float: right;
+    display: block;
 }
 #links li{
     font-size: 12pt;
@@ -191,13 +192,57 @@ footer{
 
  @media screen and (max-width: 600px){
     body{
-        background-image: none;
-        background-color: red;
+        /*background-image: none;
+        background-color: red;*/
+    }
+    section{
+        animation-name: colorchange2;
+        animation-duration: 4s;
+    }
+    h1, h2, h3{
+        animation-name: colorchange2;
+        animation-duration: 4s;
+        color: red;
+    }
+    #Steckbrief img{
+        border: solid red 1px;
+        animation-name: colorchange2;
+        animation-duration: 4s;
     }
 }
 @media screen and (max-width: 1024px) and (min-width: 601px) {
     body{
-        background-image: none;
-        background-color: aqua;
+        /*background-image: none;
+        background-color: aqua;*/
     }
+    section{
+        box-shadow:0px 0px 10px aqua;
+        animation-name: colorchange_a;
+        animation-duration: 4s;
+    }
+    h1, h2, h3{
+        animation-name: colorchange;
+        animation-duration: 4s;
+        color: aqua;
+    }
+    #Steckbrief img, #Laserharp img, #Blender img, #Steckbrief video{
+        border: solid aqua 1px;
+        animation-name: colorchange;
+        animation-duration: 4s;
+    }
+    .gitprofile img{
+        background: url(Content/ProfPic2.png) no-repeat;
+    }
+}
+@keyframes colorchange{
+    from {color: #00FF00;border-color: #00FF00;}
+    to {color: aqua;border-color: aqua;}
+}
+@keyframes colorchange_a{
+    from {box-shadow:0px 0px 10px #00FF00;}
+    to {box-shadow:0px 0px 10px aqua;}
+}
+@keyframes colorchange2 {
+    from {color: aqua;}
+  to {color: red;}
 }
