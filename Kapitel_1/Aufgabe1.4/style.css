@@ -223,7 +223,7 @@ footer{
     #links li{
         animation-name: colorchange_b;
         animation-duration: 4s;
-        background-color: aqua;
+        animation-fill-mode: both;
     }
     section{
         width: 570px;
