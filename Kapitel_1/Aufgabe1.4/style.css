@@ -59,6 +59,7 @@ nav a{
     padding-top: 3px;
     padding-bottom: 3px;
     border-radius: 5px;
+    transition: 0.3s ease-in-out 0.1s;
 }
 strong a{
     color: blue;
@@ -70,7 +71,7 @@ section{
     display: block;
     background-color: black;
     border-radius: 10px;
-    margin: 130px auto auto auto;
+    margin: 150px auto 30px auto;
     width: 800px;
     padding-top: 3px;
     padding-bottom: 40px;
@@ -102,7 +103,7 @@ section{
     padding-bottom: 10px;
 }
 form{
-    display: block;
+    display: grid;
     float:inline-start;
     background-color: azure;
     width: 300px;
@@ -140,9 +141,10 @@ textarea{
     margin: 5px 5px 5px 5px;
 }
 #Blender img{
+    display: grid;
     width: 650px;
     margin-bottom: 0px;
-    margin-left: 0px;
+    margin-left: 25px;
     margin-top: 20px;
     margin-right: auto;
     border: solid #00FF00 1px;
@@ -182,7 +184,7 @@ video{
 }
 footer{
     position: fixed ;
-    top: 95%;
+    top: 94%;
     left: 1%;
  }
  footer :hover{
@@ -218,6 +220,11 @@ footer{
         /*background-image: none;
         background-color: aqua;*/
     }
+    #links li{
+        animation-name: colorchange_b;
+        animation-duration: 4s;
+        background-color: aqua;
+    }
     section{
         width: 570px;
         box-shadow:0px 0px 10px aqua;
@@ -229,17 +236,28 @@ footer{
         animation-duration: 4s;
         color: aqua;
     }
+    #Blender, #Laserharp, #Steckbrief{
+        width: 95%;
+    }
     form{
-        width: 300px;
-        margin-right: auto;
+        width: 280px;
         padding: 20px;
         box-shadow: 0px 0px 10px aqua;
         animation-name: colorchange_a;
         animation-duration: 4s;
     }
+    label{
+        animation-name: colorchange_b;
+        animation-duration: 4s;
+        text-shadow: 0px 0px 10px aqua;
+    }
+    textarea{
+        width: 280px;
+        border: 1px solid darkblue;
+    }
     #Steckbrief img, #Laserharp img, #Blender img, #Steckbrief video{
         float:none;
-        display: block;
+        display: grid;
         margin: 5px auto auto auto;
         max-width: 500px;
         border: solid aqua 1px;
@@ -257,6 +275,10 @@ footer{
 @keyframes colorchange_a{
     from {box-shadow:0px 0px 10px #00FF00;}
     to {box-shadow:0px 0px 10px aqua;}
+}
+@keyframes colorchange_b{
+    form {text-shadow: 0px 0px 10px #00FF00; background-color: #00FF00;}
+    to {text-shadow: 0px 0px 10px aqua; background-color: aqua;}
 }
 @keyframes colorchange2 {
     from {color: aqua;}
