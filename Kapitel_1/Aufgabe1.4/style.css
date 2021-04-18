@@ -21,6 +21,15 @@ li{
 p{
     color: gainsboro;
 }
+h1 ~ p{
+    font-size: 18px;
+}
+ol + p{
+    color:lightyellow
+}
+p > strong{
+    color: red;
+}
 h1, h2, h3{
     color: #00FF00;
 }
