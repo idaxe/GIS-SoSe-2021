@@ -149,6 +149,9 @@ textarea{
     border: 1px solid black;
     margin: 5px 5px 5px 13px;
 }
+#Laserharp p:last-child{
+    color: lightyellow;
+}
 #Laserharp img{
     display: grid;
     width: 700px;
