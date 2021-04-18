@@ -201,8 +201,15 @@ footer{
         /*background-image: none;
         background-color: red;*/
     }
+    #links li{
+        animation-name: colorchange2_c;
+        animation-duration: 4s;
+        animation-fill-mode: both;
+    }
     section{
-        animation-name: colorchange2;
+        width: 550px;
+        box-shadow:0px 0px 10px red;
+        animation-name: colorchange2_a;
         animation-duration: 4s;
     }
     h1, h2, h3{
@@ -210,10 +217,36 @@ footer{
         animation-duration: 4s;
         color: red;
     }
-    #Steckbrief img{
+    #Blender, #Laserharp, #Steckbrief{
+        width: 92%;
+    }
+    form{
+        width: 280px;
+        padding: 20px;
+        box-shadow: 0px 0px 10px red;
+        animation-name: colorchange2_a;
+        animation-duration: 4s;
+    }
+    label{
+        animation-name: colorchange2_b;
+        animation-duration: 4s;
+        animation-fill-mode: both;
+    }
+    textarea{
+        width: 280px;
+        border: 1px solid darkred;
+    }
+    #Steckbrief img, #Laserharp img, #Blender img, #Steckbrief video{
+        float:none;
+        display: grid;
+        margin: 5px auto auto auto;
+        max-width: 480px;
         border: solid red 1px;
         animation-name: colorchange2;
         animation-duration: 4s;
+    }
+    footer :hover{
+        box-shadow: 0px 0px 50px red;
     }
 }
 @media screen and (max-width: 1024px) and (min-width: 601px) {
@@ -265,9 +298,6 @@ footer{
         animation-name: colorchange;
         animation-duration: 4s;
     }
-    .gitprofile img{
-        background: url(Content/ProfPic2.png) no-repeat;
-    }
     footer :hover{
         box-shadow: 0px 0px 50px aqua;
     }
@@ -289,6 +319,18 @@ footer{
     to {background-color: aqua;}
 }
 @keyframes colorchange2 {
-    from {color: aqua;}
-  to {color: red;}
+    from {color: aqua;border-color: aqua;}
+  to {color: red;border-color:red;}
+}
+@keyframes colorchange2_a{
+    from {box-shadow:0px 0px 10px aqua;}
+    to {box-shadow:0px 0px 10px red;}
+}
+@keyframes colorchange2_b{
+    form {text-shadow: 0px 0px 10px aqua;}
+    to {text-shadow: 0px 0px 10px red;}
+}
+@keyframes colorchange2_c{
+    form {background-color: aqua;}
+    to {background-color: red;}
 }
