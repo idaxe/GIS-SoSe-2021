@@ -189,6 +189,7 @@ footer{
         padding-left: 7px;
         padding-top: 7px;
         padding-bottom: 7px;
+        margin: 3px 3px 3px 3px;
         animation-name: colorchange2_c;
         animation-duration: 4s;
         animation-fill-mode: both;
