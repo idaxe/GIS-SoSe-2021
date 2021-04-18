@@ -101,7 +101,7 @@ form{
     box-shadow: 0px 0px 10px #00FF00;
 }
 label{
-    float: none;
+    float: inline-start;
     display: block;
     color: black;
     text-shadow: 0px 0px 10px #00FF00;
@@ -141,9 +141,10 @@ textarea{
     margin: 5px 5px 5px 13px;
 }
 #Laserharp img{
+    display: grid;
     width: 700px;
     margin-bottom: 0px;
-    margin-left: 0px;
+    margin-left: auto;
     margin-top: 20px;
     margin-right: auto;
     border: solid #00FF00 1px;
@@ -159,13 +160,14 @@ textarea{
     padding: 5px 5px 5px 8px;
 }
 #Steckbrief img{
+    display: grid;
+    margin: auto auto auto auto;
     border: solid #00FF00 1px;
 }
 #Steckbrief video{
+    display: grid;
+    margin: auto auto auto auto;
     border: solid #00FF00 1px;
-    z-index: -1;
-}
-video{
     z-index: -1;
 }
 footer{
