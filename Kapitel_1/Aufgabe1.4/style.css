@@ -29,7 +29,7 @@ a{
 }
 nav a{
     text-decoration: none;
-    color: #C0C0C0;
+    color: black;
     text-shadow: #2A6241 0px 0px 4px;
 }
 #links{
@@ -52,8 +52,8 @@ nav a{
 }
 #links li :hover{
     
-    background-color: #359958;
-    color: lightgreen; 
+    background-color: #8794cc;
+    color: lightgray; 
     padding-right: 10px;
     padding-left: 15px;
     padding-top: 3px;
@@ -110,6 +110,7 @@ form{
     margin-top: 70px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 25px;
     padding: 20px;
     border: 3px solid gray;
     border-radius: 15px;
@@ -221,12 +222,12 @@ footer{
         background-color: aqua;*/
     }
     #links li{
-        animation-name: colorchange_b;
+        animation-name: colorchange_c;
         animation-duration: 4s;
         animation-fill-mode: both;
     }
     section{
-        width: 570px;
+        width: 600px;
         box-shadow:0px 0px 10px aqua;
         animation-name: colorchange_a;
         animation-duration: 4s;
@@ -249,7 +250,7 @@ footer{
     label{
         animation-name: colorchange_b;
         animation-duration: 4s;
-        text-shadow: 0px 0px 10px aqua;
+        animation-fill-mode: both;
     }
     textarea{
         width: 280px;
@@ -267,6 +268,9 @@ footer{
     .gitprofile img{
         background: url(Content/ProfPic2.png) no-repeat;
     }
+    footer :hover{
+        box-shadow: 0px 0px 50px aqua;
+    }
 }
 @keyframes colorchange{
     from {color: #00FF00;border-color: #00FF00;}
@@ -277,8 +281,12 @@ footer{
     to {box-shadow:0px 0px 10px aqua;}
 }
 @keyframes colorchange_b{
-    form {text-shadow: 0px 0px 10px #00FF00; background-color: #00FF00;}
-    to {text-shadow: 0px 0px 10px aqua; background-color: aqua;}
+    form {text-shadow: 0px 0px 10px #00FF00;}
+    to {text-shadow: 0px 0px 10px aqua;}
+}
+@keyframes colorchange_c{
+    form {background-color: #00FF00;}
+    to {background-color: aqua;}
 }
 @keyframes colorchange2 {
     from {color: aqua;}
