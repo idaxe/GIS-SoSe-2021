@@ -261,7 +261,7 @@ footer{
         animation-fill-mode: both;
     }
     section{
-        width: 600px;
+        width: 570px;
         box-shadow:0px 0px 10px aqua;
         animation-name: colorchange_a;
         animation-duration: 4s;
