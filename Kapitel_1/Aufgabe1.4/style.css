@@ -183,6 +183,10 @@ footer{
 
  @media screen and (max-width: 600px){
     #links li{
+        padding-right: 7px;
+        padding-left: 7px;
+        padding-top: 7px;
+        padding-bottom: 7px;
         animation-name: colorchange2_c;
         animation-duration: 4s;
         animation-fill-mode: both;
@@ -232,10 +236,10 @@ footer{
 }
 @media screen and (max-width: 1024px) and (min-width: 601px) {
     #links li{
-        padding-right: 5px;
-        padding-left: 5px;
-        padding-top: 5px;
-        padding-bottom: 5px;
+        padding-right: 7px;
+        padding-left: 7px;
+        padding-top: 7px;
+        padding-bottom: 7px;
         animation-name: colorchange_c;
         animation-duration: 4s;
         animation-fill-mode: both;
