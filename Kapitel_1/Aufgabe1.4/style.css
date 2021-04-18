@@ -179,6 +179,7 @@ textarea{
 }
 #Steckbrief video{
     border: solid #00FF00 1px;
+    z-index: -1;
 }
 video{
     z-index: -1;
