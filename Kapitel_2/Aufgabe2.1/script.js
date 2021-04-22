@@ -51,7 +51,8 @@ function func2() {
 function func3() {
     x = "Test";
 }
-/*Mehrere Funktionen können auf die selben globalen variablen zugreifen, können aber nicht auf die lokalen variablen anderer Funktionen zugreifen
+/* Ausgegen wird in dieser Animation folgendes: "Hallo" "Bla" "Hallo" "Blubb" "Test". Annahme bestätigt.
+Mehrere Funktionen können auf die selben globalen variablen zugreifen, können aber nicht auf die lokalen variablen anderer Funktionen zugreifen
 */
 console.log("Aufgabe_5-----------------------------------------------------------------------------------");
 //Aufgabe_5_a
@@ -105,7 +106,7 @@ console.log(factorial(5));
 //Aufgabe_5_f
 function leapyears() {
     let years = 1900;
-    for (let i = 0; years + i <= 2020; i++) {
+    for (let i = 0; years + i <= 2021; i++) {
         zwischen = years + i;
         if (zwischen % 4 == 0 && zwischen % 100 != 0) {
             console.log(zwischen);
