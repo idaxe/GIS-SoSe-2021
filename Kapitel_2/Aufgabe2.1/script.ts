@@ -1,19 +1,41 @@
-//Aufgabe1
-function $(): void {
+console.log("Aufgabe_1-----------------------------------------------------------------------------------");
+//Aufgabe_1
+function a1(): void {
     let x: string = "Alles";
     console.log(x);
-    funcsa();
+    func();
     console.log("Logo!");
 }
+//let h_as: number = 0;
+a1();
 
-$();
-
-function funcsa(): void {
+function func(): void {
     console.log("Klar?");
 }
-//Aufgabe1a
-/* Zahlen am anfang der Funktion sind nicht zulässig
-*/
+/*Aufgabe_1a
+ Zahlen am anfang, sonderzeichen und leerzeichen bei Variablen und Funktionsnamen sind nicht zulässig
+ Aufgabe_1c
+ a1 wird aufgerufen und gibt zuerst "Alles" aus. Danach wird in a1 die funktion func aufgerufen und die konsole gibt "Klar?" aus.
+ zuletzt wird in a1 "Logo!" ausgegeben. Die komplette ausgabe in Reihenfole ist also "Alles Klar? Logo!" */
+
+console.log("Aufgabe_2-----------------------------------------------------------------------------------");
+//Aufgabe_2
+function a2(): void {
+    let i: number = 9;
+
+    do {
+        console.log(i);
+        i = i - 1;
+    } while ( i > 0);
+}
+
+a2();
+/*Der Code gibt folgendes in dieser Reihenfolge aus: 9 8 7 6 5 4 3 2 1 
+Die nummer i wird initialisiert mit 9.
+Es verändert sich innerhalb der do schleife die variable i und zieht pro schleifendurchlauf immer 1 von der aktuellen menge von i ab
+Sobald auf der konsole "1" ausgegeben wird, wird i zu 0 und die do schleife endet da die while bedingung mit i > 0 nicht mehr erfüllt wird.*/
+console.log("Aufgabe_4-----------------------------------------------------------------------------------");
+//Aufgabe_4
 let x: string = "Hallo";
 console.log(x);
 func1(x);
@@ -35,6 +57,9 @@ function func2(): void {
 function func3(): void {
     x = "Test";
 }
+/*Mehrere Funktionen können auf die selben globalen variablen zugreifen, können aber nicht auf die lokalen variablen anderer Funktionen zugreifen
+*/
+console.log("Aufgabe_5-----------------------------------------------------------------------------------");
 //Aufgabe_5_a
 function multiply(y: number, z: number): number {
     let answer: number = 0;
@@ -100,6 +125,7 @@ function leapyears(): void {
     }
 }
 leapyears();
+console.log("Aufgabe_6-----------------------------------------------------------------------------------");
 //Aufgabe_6_a
 let line: string = "";
 for (let i: number = 0; i < 7; i++) {
