@@ -134,7 +134,8 @@ for (let i: number = 0; i < 7; i++) {
     console.log(line);
 }
 //Aufgabe_6_b
-for (let i: number = 1; i < 100; i++) {
+console.log("Aufgabe6b Fizz or Buzz");
+for (let i: number = 1; i <= 100; i++) {
     if (i % 3 == 0) {
         console.log("Fizz");
     }
@@ -147,10 +148,11 @@ for (let i: number = 1; i < 100; i++) {
         }
     }
 }
-//Aufgabe_6_c   clevere folgt
-for (let i: number = 1; i < 100; i++) {
+//Aufgabe_6_c   
+console.log("Aufgabe6c FizzBuzz");
+for (let i: number = 1; i <= 100; i++) {
     if (i % 3 == 0 && i % 5 == 0) {
-        console.log("FizzBuzz"); //offentsichtlich
+        console.log("FizzBuzz");
     }
     else {
         if (i % 3 == 0) {
@@ -203,7 +205,7 @@ console.log(Chess());
 //Aufgabe_6_e
 zwischen = 0;
 brett = "";
-let n: number = 6;
+let n: number = 10;
 function Chess2(n: number): string {
     for (let i: number = 0; i < n; i++) {
         for (let k: number = 0; k < n; k++) {
