@@ -236,32 +236,3 @@ function Chess2(n: number): string {
     return brett;
 }
 console.log(Chess2(n));
-/*let brett: string = "";                   //Alternative Version von A_6_d ohne Funktion
-zwischen = 0;
-function Schach(): void {}
-for (let i: number = 0; i < 8; i++) {
-    for (let k: number = 0; k < 8; k++) {
-        if (zwischen == 0) {
-            brett = brett + " ";
-            zwischen = 1;
-        }
-        else {
-            if (zwischen == 1) {
-                brett = brett + "#";
-                zwischen = 0;
-            }
-        }
-    }
-    console.log(brett);
-    switch (brett) {
-        case " # # # #":
-            zwischen = 1;
-            break;
-        case "# # # # ":
-            zwischen = 0;
-            break;
-        default:
-            zwischen = 0;
-    }
-    brett = "";
-}*/
