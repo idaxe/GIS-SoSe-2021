@@ -52,7 +52,9 @@ function func3() {
     x = "Test";
 }
 /* Ausgegen wird in dieser Animation folgendes: "Hallo" "Bla" "Hallo" "Blubb" "Test". Annahme bestätigt.
-Mehrere Funktionen können auf die selben globalen variablen zugreifen, können aber nicht auf die lokalen variablen anderer Funktionen zugreifen
+Globale variablen können überall im code benutzt und geändert werden. lokale variablen können  nur in der funktion in welcher sie
+erstellt wurden verwendet und verarbeitet werden. Übergabeparameter werden benutzt um einer Funktion einen bestimmten Wert mitzugeben
+oder auszulesen.
 */
 console.log("Aufgabe_5-----------------------------------------------------------------------------------");
 //Aufgabe_5_a
