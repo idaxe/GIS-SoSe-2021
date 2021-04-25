@@ -102,10 +102,10 @@ console.log(max(17, 15));
 //Aufgabe_5_c
 let summe: number = 0;
 let zwischen: number = 1;
-do {
+while (zwischen <= 100) {
     summe = summe + zwischen;
     zwischen++;
-} while (zwischen <= 100);
+}
 console.log(summe);
 //Aufgabe_5_d
 for (let i: number = 0; i < 10; i++) {
