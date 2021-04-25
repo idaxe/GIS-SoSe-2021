@@ -4,18 +4,23 @@ function a1(): void {
     let x: string = "Alles";
     console.log(x);
     func();
+    func0();
     console.log("Logo!");
 }
 //let h_as: number = 0;
 a1();
 
-function func(): void {
+function func(): void {         //umbenannt wegen doppelter variablendeklaration
     console.log("Klar?");
 }
-/*Aufgabe_1a
+function func0(): void {    	//für 1_c
+    console.log("Jupp, bei dir?");
+}
+/*Aufgabe_1_a
  Zahlen am anfang, sonderzeichen und leerzeichen bei Variablen und Funktionsnamen sind nicht zulässig
- Aufgabe_1c
- a1 wird aufgerufen und gibt zuerst "Alles" aus. Danach wird in a1 die funktion func aufgerufen und die konsole gibt "Klar?" aus.
+ Aufgabe_1_b
+ a1 wird aufgerufen und gibt zuerst "Alles" aus der Variable x aus. 
+ Danach wird in a1 die funktion func aufgerufen und die konsole gibt "Klar?" aus.
  zuletzt wird in a1 "Logo!" ausgegeben. Die komplette ausgabe in Reihenfole ist also "Alles Klar? Logo!" */
 
 console.log("Aufgabe_2-----------------------------------------------------------------------------------");
@@ -31,8 +36,9 @@ function a2(): void {
 
 a2();
 /*Der Code gibt folgendes in dieser Reihenfolge aus: 9 8 7 6 5 4 3 2 1 
-Die nummer i wird initialisiert mit 9.
-Es verändert sich innerhalb der do schleife die variable i und zieht pro schleifendurchlauf immer 1 von der aktuellen menge von i ab
+a2() wird aufgerufen und die funktion initialisiert die variable i mit der nummer 9.
+Die do schleife geht los und gibt zuerst den aktuellen wert von i aus.
+Es verändert sich innerhalb der do schleife die variable i und zieht pro schleifendurchlauf immer 1 von der aktuellen menge von i ab.
 Sobald auf der konsole "1" ausgegeben wird, wird i zu 0 und die do schleife endet da die while bedingung mit i > 0 nicht mehr erfüllt wird.*/
 console.log("Aufgabe_4-----------------------------------------------------------------------------------");
 //Aufgabe_4
@@ -57,10 +63,21 @@ function func2(): void {
 function func3(): void {
     x = "Test";
 }
-/* Ausgegen wird in dieser Animation folgendes: "Hallo" "Bla" "Hallo" "Blubb" "Test". Annahme bestätigt.
-Globale variablen können überall im code benutzt und geändert werden. lokale variablen können  nur in der funktion in welcher sie 
-erstellt wurden verwendet und verarbeitet werden. Übergabeparameter werden benutzt um einer Funktion einen bestimmten Wert mitzugeben
-oder auszulesen. 
+/* Aufgabe_4_a
+ Ausgegen wird in dieser Animation folgendes: "Hallo" "Bla" "Hallo" "Blubb" "Test".
+zuerst wird x initialisiert ("Hallo") und wird danach auf der konsole ausgegeben. x wird in func1 übergeben, welches darin als y lokal bezeichnet wird.
+Dieses y wird mit "Bla" überschrieben und innerhalb der funktion dann auf der konsole ausgegeben. func1 endet und x wird erneut auf der konsole ausgegeben.
+Da x global jedoch nicht verändert wurde gibt es ein weiteres mal "Hallo" auf der Konsole aus. Daraufhin startet func2 welche eine lokale variable x erzeugt,
+welche eine höhere priorität hat als die globale variable x.
+Diese mit "Blubb" füllt und daraufhin in func2 auf der konsole ausgegeben. Danach wird func3 aufgerufen. In func3,
+wird die globale variable x überschrieben und mit "Test" gefüllt. Anschließend wird dies auf der letzten konsolenausgabe nach func3 angezeigt,
+welche x und somit "test" ausgibt.
+Annahme als richtig bestätigt.
+Aufgabe_4_b
+Globale variablen können überall im Code benutzt und geändert werden. lokale variablen können  nur in der funktion in welcher sie 
+erstellt wurden verwendet und verarbeitet werden, da sie außerhalb dieser lokalen funktion nicht existieren bzw. nicht verstanden werden können.
+Übergabeparameter werden benutzt um einer Funktion einen bestimmten Wert mitzugeben oder auszulesen. 
+Alles in allem können variablen nur kleine informationsstücke in sich speichern, während funktionen diese informationen komplex in sich verarbeiten können.
 */
 console.log("Aufgabe_5-----------------------------------------------------------------------------------");
 //Aufgabe_5_a
