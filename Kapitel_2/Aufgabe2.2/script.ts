@@ -75,23 +75,27 @@ function showInfo(studi: Student): void {
         this.semester = _semester;
     }
 
-    showInfo(studi: Student): void {
+    showInfo(): void {
         console.log("---");
-        console.log("Name des Studenten: " + studi.name);
-        console.log("Matrikelnummer des Studenten: " + studi.matrikelnummer);
-        console.log("Semester des Studierenden: " + studi.semester + ".Semester");
-        console.log("Geschlecht des Studierenden: " + studi.geschlecht);
+        console.log("Name des Studenten: " + this.name);
+        console.log("Matrikelnummer des Studenten: " + this.matrikelnummer);
+        console.log("Semester des Studierenden: " + this.semester + ".Semester");
+        console.log("Geschlecht des Studierenden: " + this.geschlecht);
     }
 }
-let s1: Student = {name: "Hugh Mongus", matrikelnummer: 356845, semester: 1, geschlecht: "Männlich"};
-let s2: Student = {name: "Henry Stickmin", matrikelnummer: 242690, semester: 3, geschlecht: "Männlich"};
-let s3: Student = {name: "Klaus Kleber", matrikelnummer: 190420, semester: 5, geschlecht: "Männlich"};
+let s1: Student = new Student(name: "Hugh Mongus", matrikelnummer: 356845, semester: 1, geschlecht: "Männlich");
+let s2: Student = new Student(name: "Henry Stickmin", matrikelnummer: 242690, semester: 3, geschlecht: "Männlich");
+let s3: Student = new Student(name: "Klaus Kleber", matrikelnummer: 190420, semester: 5, geschlecht: "Männlich");
 
 let studierende: Student[] = [s1, s2, s3];
 console.log(studierende);
-studierende.push({name: "Daniel Damm", matrikelnummer: 152628, semester: 6, geschlecht: "Männlich"});
+studierende.push(new Student(name: "Daniel Damm", matrikelnummer: 152628, semester: 6, geschlecht: "Männlich"));
 console.log(s3.name + " ist im " + s3.semester + " Semester.");
-console.log("Die Matrikelnummer von " + s1.name + " ist " + s1.matrikelnummer + ".");*/
+console.log("Die Matrikelnummer von " + s1.name + " ist " + s1.matrikelnummer + ".");
+
+for (let i: number = 0; i < studierende.length; i++) {
+    showInfo(studierende[i]);
+}*/
 }
 namespace Aufgabe2 {
 //Aufgabe2
