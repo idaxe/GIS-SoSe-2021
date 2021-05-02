@@ -233,6 +233,9 @@ context.strokeStyle = "blue";
 context.stroke();
 context.closePath();*/
 //b-e
+canvas = <HTMLCanvasElement> document.getElementById("SecondCanvas");
+console.log(canvas);
+context = canvas.getContext("2d");
 class Rectangles {
     xPosition: number;
     yPosition: number;
