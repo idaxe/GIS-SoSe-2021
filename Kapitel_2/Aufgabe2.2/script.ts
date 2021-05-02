@@ -49,7 +49,11 @@ studierende.push({name: "Daniel Damm", matrikelnummer: 152628, semester: 6, gesc
 console.log(s3.name + " ist im " + s3.semester + " Semester.");
 console.log("Die Matrikelnummer von " + s1.name + " ist " + s1.matrikelnummer + ".");
 
-showInfo(studierende[3]);   //diesen Wert mit 0,1,2,3 für die verschiedenen Studierenden ändern
+//showInfo(studierende[3]);   //diesen Wert mit 0,1,2,3 für die verschiedenen Studierenden ändern
+
+for (let i: number = 0; i < studierende.length; i++) {
+    showInfo(studierende[i]);
+}
 
 function showInfo(studi: Student): void {
     console.log("---");
@@ -58,6 +62,36 @@ function showInfo(studi: Student): void {
     console.log("Semester des Studierenden: " + studi.semester + ".Semester");
     console.log("Geschlecht des Studierenden: " + studi.geschlecht);
 }
+/*class Student {
+    name: string;
+    matrikelnummer: number;
+    semester: number;
+    geschlecht: string;
+
+    constructor (_name: string, _matrikelnummer: number, _semester: number, _geschlecht: string) {
+        this.name = _name;
+        this.matrikelnummer = _matrikelnummer;
+        this.geschlecht = _geschlecht;
+        this.semester = _semester;
+    }
+
+    showInfo(studi: Student): void {
+        console.log("---");
+        console.log("Name des Studenten: " + studi.name);
+        console.log("Matrikelnummer des Studenten: " + studi.matrikelnummer);
+        console.log("Semester des Studierenden: " + studi.semester + ".Semester");
+        console.log("Geschlecht des Studierenden: " + studi.geschlecht);
+    }
+}
+let s1: Student = {name: "Hugh Mongus", matrikelnummer: 356845, semester: 1, geschlecht: "Männlich"};
+let s2: Student = {name: "Henry Stickmin", matrikelnummer: 242690, semester: 3, geschlecht: "Männlich"};
+let s3: Student = {name: "Klaus Kleber", matrikelnummer: 190420, semester: 5, geschlecht: "Männlich"};
+
+let studierende: Student[] = [s1, s2, s3];
+console.log(studierende);
+studierende.push({name: "Daniel Damm", matrikelnummer: 152628, semester: 6, geschlecht: "Männlich"});
+console.log(s3.name + " ist im " + s3.semester + " Semester.");
+console.log("Die Matrikelnummer von " + s1.name + " ist " + s1.matrikelnummer + ".");*/
 }
 namespace Aufgabe2 {
 //Aufgabe2
