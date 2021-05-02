@@ -1,3 +1,4 @@
+namespace Aufgabe1 {
 //Aufgabe1a
 function min(n: number[]): number {
     let min: number = n[0];
@@ -57,7 +58,8 @@ function showInfo(studi: Student): void {
     console.log("Semester des Studierenden: " + studi.semester + ".Semester");
     console.log("Geschlecht des Studierenden: " + studi.geschlecht);
 }
-
+}
+namespace Aufgabe2 {
 //Aufgabe2
 //a
 function backwards(normal: number[]): number[] {
@@ -111,24 +113,75 @@ console.log(split(arr, 1, 2));
 console.log(split(arr, 2, 0));     // Bonus c)
 console.log(split(arr, -1, 2));    // Bonus c)
 console.log(split(arr, 0, 7));     // Bonus c)
-
+}
+namespace Aufgabe3 {
 //Aufgabe3
 let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById("FirstCanvas");
 console.log(canvas);
 let context: CanvasRenderingContext2D = canvas.getContext("2d");
-context.lineWidth = 10;
-context.strokeRect(75, 140, 150, 110);
-context.fillRect(130, 190, 40, 60);
-context.strokeRect(0, 400, 1500, 400);
+context.lineWidth = 1;
+context.fillStyle = "green"; //ground
+context.fillRect(0, 600, 1500, 400);
+context.fillStyle = "lightblue"; //sky
+context.fillRect(0, 0, 1500, 600);
+context.fillStyle = "brown"; //house base
+context.fillRect(875, 540, 150, 110);
+context.strokeRect(875, 540, 150, 110);
+context.fillStyle = "black";
+context.fillRect(930, 590, 40, 60);
+//house roof
 context.beginPath();
 context.lineWidth = 20;
-context.moveTo(100, 120);
-context.lineTo(450, 50);
+context.moveTo(830, 550);
+context.lineTo(1070, 550);
+context.lineTo(950, 450);
 context.closePath();
-context.strokeStyle = "#ff0000";
+context.fillStyle = "#ff0000";
+context.fill();
+context.beginPath();
+context.lineWidth = 1;
+context.moveTo(830, 550);
+context.lineTo(1070, 550);
+context.lineTo(950, 450);
+context.closePath();
+context.strokeStyle = "black";
 context.stroke();
+//tree
+context.fillStyle = "brown";
+context.fillRect(200, 440, 50, 250);
+context.fillStyle = "darkgreen";
+context.beginPath();
+context.arc(225, 440, 75, 0, 2 * Math.PI, false);
+context.fill();
+context.closePath();
 
-let xCor: number = canvas.width / 2 + 100;
+//sun
+context.beginPath();
+context.fillStyle = "yellow";
+context.moveTo(50, 0);
+context.arc(0, 0, 100, 0, 2 * Math.PI);
+context.fill();
+context.closePath();
+
+//clouds
+context.beginPath();
+context.fillStyle = "white";
+//context.moveTo(200, 300);
+/*context.bezierCurveTo(130, 150, 130, 150, 230, 150);
+context.bezierCurveTo(130, 150, 130, 150, 230, 250);
+context.bezierCurveTo(130, 150, 130, 150, 330, 150);*/
+context.arc(300, 200, 50, 0, 2 * Math.PI);
+context.arc(400, 180, 80, 0, 2 * Math.PI);
+context.arc(500, 200, 50, 0, 2 * Math.PI);
+context.fill();
+context.closePath();
+context.beginPath();
+context.arc(650, 300, 30, 0, 2 * Math.PI);
+context.arc(700, 290, 45, 0, 2 * Math.PI);
+context.arc(750, 300, 30, 0, 2 * Math.PI);
+context.fill();
+context.closePath();
+/*let xCor: number = canvas.width / 2 + 100;
 let yCor: number = canvas.height / 2;
 let radius: number = 75;
 let startAngle: number = 1.1 * Math.PI;
@@ -140,10 +193,52 @@ context.lineWidth = 13;
 context.lineCap = "round";
 context.strokeStyle = "blue";
 context.stroke();
-context.closePath();
-//b
-interface Rectangle {
-    length: number;
+context.closePath();*/
+//b-e
+class Rectangles {
+    xPosition: number;
+    yPosition: number;
     width: number;
+    length: number;
+    color: number;
+
+    constructor() {
+        this.xPosition = Math.floor(Math.random() * 1490);
+        this.yPosition = Math.floor(Math.random() * 990);
+        this.width =  Math.floor(Math.random() * 300);
+        this.length =  Math.floor(Math.random() * 300);
+        this.color = Math.floor(Math.random() * 6);
+    }
+
+    drawRect(): void {
+        //this.color = Math.floor(Math.random() * 6);
+        switch (this.color) {   //some color variation
+            case 0: {context.fillStyle = "purple";
+                     break; }
+            case 1: {context.fillStyle = "cyan";
+                     break; }
+            case 2: {context.fillStyle = "orange";
+                     break; }
+            case 3: {context.fillStyle = "gray";
+                     break; }
+            case 4: {context.fillStyle = "blue";
+                     break; }
+            case 5: {context.fillStyle = "pink";
+                     break; }
+            default: {context.fillStyle = "black";
+                      break; }
+        }
+        context.fillRect(this.xPosition, this.yPosition, this.width, this.length);
+    }
 }
-let rec1: Rectangle = {length: 50, width: 50};
+let rectangle1: Rectangles = new Rectangles();
+rectangle1.drawRect();
+let rectangle2: Rectangles = new Rectangles();
+let rectangle3: Rectangles = new Rectangles();
+let rectangle4: Rectangles = new Rectangles(); 
+let rectangle5: Rectangles = new Rectangles();
+let rectangleArray: Rectangles[] = [rectangle2, rectangle3, rectangle4, rectangle5];
+for (let i: number = 0; i < rectangleArray.length; i++) {
+    rectangleArray[i].drawRect();
+}
+}
