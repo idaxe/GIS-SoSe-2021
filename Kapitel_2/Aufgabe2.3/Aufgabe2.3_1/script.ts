@@ -23,6 +23,7 @@ namespace Aufgabe1 {
         console.log(i);
         let rect2: HTMLParagraphElement = document.createElement("div");
         rect2.style.backgroundColor = "green";
+        rect2.style.position = "absolute";
         let xPosition: number = Math.floor(Math.random() * 600);
         let yPosition: number = Math.floor(Math.random() * 600);
         let width: number = Math.floor(Math.random() * 200);

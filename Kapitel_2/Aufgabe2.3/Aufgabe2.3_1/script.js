@@ -24,6 +24,7 @@ var Aufgabe1;
         console.log(i);
         let rect2 = document.createElement("div");
         rect2.style.backgroundColor = "green";
+        rect2.style.position = "absolute";
         let xPosition = Math.floor(Math.random() * 600);
         let yPosition = Math.floor(Math.random() * 600);
         let width = Math.floor(Math.random() * 200);
