@@ -25,4 +25,6 @@ namespace Aufg2u3 {
     untereTeile.push(flaschenboden1);
     untereTeile.push(flaschenboden2);
     untereTeile.push(flaschenboden3);
+
+//    export let ausgewaehlt: Flaschenteil = { oben: undefined, mitte: undefined, unten: undefined }; 
 }

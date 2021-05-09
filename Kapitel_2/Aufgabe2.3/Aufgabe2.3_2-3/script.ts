@@ -1,4 +1,4 @@
-namespace Aufg2u3 {
+namespace Aufg2u3 {     //Aller ausgeklammerter code auf dieser Seite ist für eine alternative lösung wo die elemente der flasche alle auf einer einzelnen seite
 export interface Flaschenteil {
     oben: Bilder;
     mitte: Bilder;
@@ -10,7 +10,7 @@ export interface Bilder {
     gravour: string;       //Ist die Flasche graviert
     farbe: string;         //Welche farbe hat die Flasche
 }
-let current: number = 1;
+//let current: number = 1;
 let loaded: string[] = ["", "", ""];
 
 export let flaschelhaelse: Bilder[] = [];
@@ -23,11 +23,29 @@ nextbutton.addEventListener("click", movePageforeward);
 let pervbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("vorherigerTeil");
 pervbutton.addEventListener("click", movePagebackward);
 
+
+
 let htmlImgs: HTMLImageElement[] = [];
 window.addEventListener("load", windowLoaded);
 
 function movePageforeward (): void {
-    let flaeche: HTMLDivElement = <HTMLDivElement>document.getElementById("flaeche");
+    switch (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1)) {
+        case "index.html":
+            window.open("Hals.html" , "_self");
+            break;
+        case "Hals.html":
+            window.open("Rumpf.html", "_self");
+            break;
+        case "Rumpf.html":
+            window.open("Boden.html" , "_self");
+            break;
+        case "Boden.html":
+            window.open("end.html" , "_self");
+            break;
+        default:
+            console.log("bereits auf der Finalseite");
+    }
+    /*let flaeche: HTMLDivElement = <HTMLDivElement>document.getElementById("flaeche");
     switch (current) {
         case 1:
             document.getElementById("flaeche").innerHTML = "";
@@ -63,11 +81,27 @@ function movePageforeward (): void {
             break;
         default:
             console.log("Reached end");
-    }
+    }*/
 }
 
 function movePagebackward (): void {
-    let flaeche: HTMLDivElement = <HTMLDivElement>document.getElementById("flaeche");
+    switch (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1)) {
+        case "end.html":
+            window.open("Boden.html" , "_self");
+            break;
+        case "Boden.html":
+            window.open("Rumpf.html" , "_self");
+            break;
+        case "Rumpf.html":
+            window.open("Hals.html" , "_self");
+            break;
+        case "Hals.html":
+            window.open("index.html", "_self");
+            break;
+        default:
+            console.log("bereits auf der Startseite");
+    }
+    /*let flaeche: HTMLDivElement = <HTMLDivElement>document.getElementById("flaeche");
     switch (current) {
         case 2:
             document.getElementById("flaeche").innerHTML = "";
@@ -103,10 +137,71 @@ function movePagebackward (): void {
             break;
         default:
             console.log("Reached end");
+    }*/
+}
+if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "index.html") {
+    let halsbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("hals");
+    halsbutton.addEventListener("click", openhals);
+    
+    let rumpfbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("rumpf");
+    rumpfbutton.addEventListener("click", openrumpf);
+    
+    let bodenbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("boden");
+    bodenbutton.addEventListener("click", openboden);
+
+    function openhals(): void {
+        window.open("Hals.html", "_self");
+    }
+    function openrumpf(): void {
+        window.open("Rumpf.html", "_self");
+    }
+    function openboden(): void {
+        window.open("Boden.html", "_self");
     }
 }
 
-function windowLoaded (): void {
+function windowLoaded(): void {
+    console.log(ausgewaehlt);
+    if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "Hals.html") {
+    let flaeche: HTMLDivElement = <HTMLDivElement>document.getElementById("flaeche");
+    obereTeile.forEach (bilder => {
+        let img: HTMLImageElement = document.createElement("img");
+        img.src = bilder.quelle;
+        htmlImgs.push(img);
+        flaeche.appendChild(img);
+        img.addEventListener("click", function (): void {
+            selectImage(img, bilder);
+        });
+    });
+}
+    if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "Rumpf.html") {
+        let flaeche: HTMLDivElement = <HTMLDivElement>document.getElementById("flaeche");
+        mittlereTeile.forEach (bilder => {
+            let img: HTMLImageElement = document.createElement("img");
+            img.src = bilder.quelle;
+            htmlImgs.push(img);
+            flaeche.appendChild(img);
+            img.addEventListener("click", function (): void {
+                selectImage(img, bilder);
+            });
+        });
+    }
+
+    if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "Boden.html") {
+            let flaeche: HTMLDivElement = <HTMLDivElement>document.getElementById("flaeche");
+            untereTeile.forEach (bilder => {
+                let img: HTMLImageElement = document.createElement("img");
+                img.src = bilder.quelle;
+                htmlImgs.push(img);
+                flaeche.appendChild(img);
+                img.addEventListener("click", function (): void {
+                    selectImage(img, bilder);
+                });
+            });
+        }
+}
+
+/*function windowLoaded (): void {
     let flaeche: HTMLDivElement = <HTMLDivElement>document.getElementById("flaeche");
     obereTeile.forEach (bilder => {
                 let img: HTMLImageElement = document.createElement("img");
@@ -117,17 +212,23 @@ function windowLoaded (): void {
                     selectImage(img, bilder);
                 });
             });
-}
+}*/
 
 function selectImage(img: HTMLImageElement, bilder: Bilder): void {
     if (bilder.art == 0) {
         ausgewaehlt.oben = bilder;
+        let speicher1: Flaschenteil = {oben: undefined, mitte: undefined, unten: undefined};
+        speicher1.oben = bilder;
         loaded[0] = bilder.quelle;
     } else if (bilder.art == 1) {
         ausgewaehlt.mitte = bilder;
+        let speicher3: Flaschenteil = {oben: undefined, mitte: undefined, unten: undefined};
+        speicher3.oben = bilder;
         loaded[1] = bilder.quelle;
     } else if (bilder.art == 2) {
         ausgewaehlt.unten = bilder;
+        let speicher3: Flaschenteil = {oben: undefined, mitte: undefined, unten: undefined};
+        speicher3.oben = bilder;
         loaded[2] = bilder.quelle;
     }
     img.className += "selected";

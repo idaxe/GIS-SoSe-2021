@@ -25,5 +25,6 @@ var Aufg2u3;
     Aufg2u3.untereTeile.push(flaschenboden1);
     Aufg2u3.untereTeile.push(flaschenboden2);
     Aufg2u3.untereTeile.push(flaschenboden3);
+    //    export let ausgewaehlt: Flaschenteil = { oben: undefined, mitte: undefined, unten: undefined }; 
 })(Aufg2u3 || (Aufg2u3 = {}));
 //# sourceMappingURL=data.js.map
