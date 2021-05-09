@@ -5,9 +5,9 @@ var Aufg2u3;
     Aufg2u3.mittlereTeile = [];
     Aufg2u3.untereTeile = [];
     //erzeugung der Flaschenhaelse
-    let flaschenkopf1 = { quelle: "assets/top1_alt.png", art: 0, gravour: "exquisit", farbe: "silber" };
-    let flaschenkopf2 = { quelle: "assets/top2_alt.png", art: 0, gravour: "keine", farbe: "farblos" };
-    let flaschenkopf3 = { quelle: "assets/top3_alt.png", art: 0, gravour: "keine", farbe: "grün" };
+    let flaschenkopf1 = { quelle: "assets/top1_alt.jpg", art: 0, gravour: "exquisit", farbe: "silber" };
+    let flaschenkopf2 = { quelle: "assets/top2_alt.jpg", art: 0, gravour: "keine", farbe: "farblos" };
+    let flaschenkopf3 = { quelle: "assets/top3_alt.jpg", art: 0, gravour: "keine", farbe: "grün" };
     Aufg2u3.obereTeile.push(flaschenkopf1);
     Aufg2u3.obereTeile.push(flaschenkopf2);
     Aufg2u3.obereTeile.push(flaschenkopf3);

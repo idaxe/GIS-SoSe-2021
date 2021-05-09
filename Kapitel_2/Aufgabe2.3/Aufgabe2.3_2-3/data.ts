@@ -3,9 +3,9 @@ namespace Aufg2u3 {
     export let mittlereTeile: Bilder[] = [];
     export let untereTeile: Bilder[] = [];
     //erzeugung der Flaschenhaelse
-    let flaschenkopf1: Bilder = { quelle: "assets/top1_alt.png", art: 0, gravour: "exquisit", farbe: "silber"};
-    let flaschenkopf2: Bilder = { quelle: "assets/top2_alt.png", art: 0, gravour: "keine", farbe: "farblos"};
-    let flaschenkopf3: Bilder = { quelle: "assets/top3_alt.png", art: 0, gravour: "keine", farbe: "grün"};
+    let flaschenkopf1: Bilder = { quelle: "assets/top1_alt.jpg", art: 0, gravour: "exquisit", farbe: "silber"};
+    let flaschenkopf2: Bilder = { quelle: "assets/top2_alt.jpg", art: 0, gravour: "keine", farbe: "farblos"};
+    let flaschenkopf3: Bilder = { quelle: "assets/top3_alt.jpg", art: 0, gravour: "keine", farbe: "grün"};
     obereTeile.push(flaschenkopf1);
     obereTeile.push(flaschenkopf2);
     obereTeile.push(flaschenkopf3);
