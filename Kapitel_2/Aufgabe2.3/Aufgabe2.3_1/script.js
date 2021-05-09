@@ -13,13 +13,6 @@ var Aufgabe1;
     div1.appendChild(document.createTextNode("Ein neuer Paragraph an dieser Stelle."));
     //element.appendChild(div1);
     let rectStorage2 = [];
-    /*function createRect(): void {
-        let xPosition: number = 0;
-        let yPosition: number = 0;
-        let width: number = 50;
-        let length: number = 50;
-        context.fillRect(0,0,0,0);
-    }*/
     for (let i = 0; i < 4; i++) {
         console.log(i);
         let rect2 = document.createElement("div");
@@ -45,9 +38,6 @@ var Aufgabe1;
         rectStorage.forEach(element => {
             div1.removeChild(element);
         });
-        /*for (let i: number = 0; i < rectStorage.length; i++) {
-            rectStorage[i] = div1.removeChild(element);
-        }*/
         if (rectStorage2 != []) {
             rectStorage2.forEach(element => {
                 div1.removeChild(element);
