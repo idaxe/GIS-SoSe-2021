@@ -30,6 +30,9 @@ window.addEventListener("load", windowLoaded);
 
 function movePageforeward (): void {
     switch (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1)) {
+        case "":
+            window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Hals.html" , "_self");
+            break;
         case "index.html":
             window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Hals.html" , "_self");
             break;
