@@ -12,13 +12,6 @@ namespace Aufgabe1 {
     //element.appendChild(div1);
     let rectStorage2: HTMLDivElement[] = [];
 
-    /*function createRect(): void {
-        let xPosition: number = 0;
-        let yPosition: number = 0;
-        let width: number = 50;
-        let length: number = 50;
-        context.fillRect(0,0,0,0);
-    }*/
     for (let i: number = 0; i < 4; i++) {
         console.log(i);
         let rect2: HTMLParagraphElement = document.createElement("div");
@@ -36,7 +29,6 @@ namespace Aufgabe1 {
         rectStorage2.push(rect2);
     }
     
-
     let resetbttn: HTMLButtonElement = <HTMLButtonElement>document.getElementById("reset");
     resetbttn.addEventListener("click", reset);
 
@@ -49,9 +41,6 @@ namespace Aufgabe1 {
         rectStorage.forEach(element => {
             div1.removeChild(element);
         });
-        /*for (let i: number = 0; i < rectStorage.length; i++) {
-            rectStorage[i] = div1.removeChild(element);
-        }*/
         if ( rectStorage2 != []) {
         rectStorage2.forEach(element => {
             div1.removeChild(element);
