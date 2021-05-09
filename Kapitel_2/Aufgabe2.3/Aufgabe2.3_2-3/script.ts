@@ -31,16 +31,16 @@ window.addEventListener("load", windowLoaded);
 function movePageforeward (): void {
     switch (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1)) {
         case "index.html":
-            window.open("Hals.html" , "_self");
+            window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Hals.html" , "_self");
             break;
         case "Hals.html":
-            window.open("Rumpf.html", "_self");
+            window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Rumpf.html", "_self");
             break;
         case "Rumpf.html":
-            window.open("Boden.html" , "_self");
+            window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Boden.html" , "_self");
             break;
         case "Boden.html":
-            window.open("end.html" , "_self");
+            window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/end.html" , "_self");
             break;
         default:
             console.log("bereits auf der Finalseite");
@@ -87,16 +87,16 @@ function movePageforeward (): void {
 function movePagebackward (): void {
     switch (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1)) {
         case "end.html":
-            window.open("Boden.html" , "_self");
+            window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Boden.html" , "_self");
             break;
         case "Boden.html":
-            window.open("Rumpf.html" , "_self");
+            window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Rumpf.html" , "_self");
             break;
         case "Rumpf.html":
-            window.open("Hals.html" , "_self");
+            window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Hals.html" , "_self");
             break;
         case "Hals.html":
-            window.open("index.html", "_self");
+            window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/index.html", "_self");
             break;
         default:
             console.log("bereits auf der Startseite");
@@ -150,13 +150,13 @@ if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/")
     bodenbutton.addEventListener("click", openboden);
 
     function openhals(): void {
-        window.open("Hals.html", "_self");
+        window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Hals.html", "_self");
     }
     function openrumpf(): void {
-        window.open("Rumpf.html", "_self");
+        window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Rumpf.html", "_self");
     }
     function openboden(): void {
-        window.open("Boden.html", "_self");
+        window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Boden.html", "_self");
     }
 }
 
