@@ -15,7 +15,7 @@ var Aufg2u3;
     window.addEventListener("load", windowLoaded);
     function movePageforeward() {
         switch (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1)) {
-            case "":
+            case " ":
                 window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Hals.html", "_self");
                 break;
             case "index.html":
@@ -126,7 +126,7 @@ var Aufg2u3;
                 console.log("Reached end");
         }*/
     }
-    if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "index.html") {
+    if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "index.html" || window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "") {
         let halsbutton = document.getElementById("hals");
         halsbutton.addEventListener("click", openhals);
         let rumpfbutton = document.getElementById("rumpf");

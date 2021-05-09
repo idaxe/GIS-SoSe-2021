@@ -30,7 +30,7 @@ window.addEventListener("load", windowLoaded);
 
 function movePageforeward (): void {
     switch (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1)) {
-        case "":
+        case " ":
             window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Hals.html" , "_self");
             break;
         case "index.html":
@@ -142,7 +142,7 @@ function movePagebackward (): void {
             console.log("Reached end");
     }*/
 }
-if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "index.html") {
+if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "index.html" || window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "") {
     let halsbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("hals");
     halsbutton.addEventListener("click", openhals);
     
