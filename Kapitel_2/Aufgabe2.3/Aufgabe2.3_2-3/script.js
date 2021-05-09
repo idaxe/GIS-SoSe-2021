@@ -115,6 +115,7 @@ var Aufg2u3;
             }
         });
         console.log(loaded);
+        console.log(Aufg2u3.ausgewaehlt);
     }
 })(Aufg2u3 || (Aufg2u3 = {}));
 //# sourceMappingURL=script.js.map

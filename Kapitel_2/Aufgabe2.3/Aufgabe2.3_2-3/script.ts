@@ -7,8 +7,8 @@ export interface Flaschenteil {
 export interface Bilder {
     quelle: string;
     art: number;           //für oben/mitte/unten
-//    gravour: string;       //Ist die Flasche graviert
-//    farbe: string;         //Welche farbe hat die Flasche
+    gravour: string;       //Ist die Flasche graviert
+    farbe: string;         //Welche farbe hat die Flasche
 }
 let current: number = 1;
 let loaded: string[] = ["", "", ""];
@@ -137,5 +137,6 @@ function selectImage(img: HTMLImageElement, bilder: Bilder): void {
         }
     });
     console.log(loaded);
+    console.log(ausgewaehlt);
 }
 }
