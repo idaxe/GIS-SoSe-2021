@@ -33,43 +33,6 @@ var Aufg1u2;
             default:
                 console.log("bereits auf der Finalseite");
         }
-        /*let flaeche: HTMLDivElement = <HTMLDivElement>document.getElementById("flaeche");
-        switch (current) {
-            case 1:
-                document.getElementById("flaeche").innerHTML = "";
-                htmlImgs = [];
-    
-                mittlereTeile.forEach (bilder => {
-                let img: HTMLImageElement = document.createElement("img");
-                img.src = bilder.quelle;
-                
-                htmlImgs.push(img);
-                flaeche.appendChild(img);
-                img.addEventListener("click", function (): void {
-                    selectImage(img, bilder);
-                });
-            });
-                current ++;
-                break;
-            case 2:
-                document.getElementById("flaeche").innerHTML = "";
-                htmlImgs = [];
-    
-                untereTeile.forEach (bilder => {
-                let img: HTMLImageElement = document.createElement("img");
-                img.src = bilder.quelle;
-                
-                htmlImgs.push(img);
-                flaeche.appendChild(img);
-                img.addEventListener("click", function (): void {
-                    selectImage(img, bilder);
-                });
-            });
-                current ++;
-                break;
-            default:
-                console.log("Reached end");
-        }*/
     }
     function movePagebackward() {
         switch (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1)) {
@@ -88,43 +51,6 @@ var Aufg1u2;
             default:
                 console.log("bereits auf der Startseite");
         }
-        /*let flaeche: HTMLDivElement = <HTMLDivElement>document.getElementById("flaeche");
-        switch (current) {
-            case 2:
-                document.getElementById("flaeche").innerHTML = "";
-                htmlImgs = [];
-    
-                obereTeile.forEach (bilder => {
-                let img: HTMLImageElement = document.createElement("img");
-                img.src = bilder.quelle;
-                
-                htmlImgs.push(img);
-                flaeche.appendChild(img);
-                img.addEventListener("click", function (): void {
-                    selectImage(img, bilder);
-                });
-            });
-                current --;
-                break;
-            case 3:
-                document.getElementById("flaeche").innerHTML = "";
-                htmlImgs = [];
-    
-                mittlereTeile.forEach (bilder => {
-                let img: HTMLImageElement = document.createElement("img");
-                img.src = bilder.quelle;
-                
-                htmlImgs.push(img);
-                flaeche.appendChild(img);
-                img.addEventListener("click", function (): void {
-                    selectImage(img, bilder);
-                });
-            });
-                current --;
-                break;
-            default:
-                console.log("Reached end");
-        }*/
     }
     if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "index.html" || window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "") {
         let halsbutton = document.getElementById("hals");
@@ -182,18 +108,6 @@ var Aufg1u2;
             });
         }
     }
-    /*function windowLoaded (): void {
-        let flaeche: HTMLDivElement = <HTMLDivElement>document.getElementById("flaeche");
-        obereTeile.forEach (bilder => {
-                    let img: HTMLImageElement = document.createElement("img");
-                    img.src = bilder.quelle;
-                    htmlImgs.push(img);
-                    flaeche.appendChild(img);
-                    img.addEventListener("click", function (): void {
-                        selectImage(img, bilder);
-                    });
-                });
-    }*/
     function selectImage(img, bilder) {
         if (bilder.art == 0) {
             Aufg1u2.ausgewaehlt.oben = bilder;

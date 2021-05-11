@@ -1,4 +1,4 @@
-namespace Aufg1u2 {     //Aller ausgeklammerter code auf dieser Seite ist für eine alternative lösung wo die elemente der flasche alle auf einer einzelnen seite
+namespace Aufg1u2 {     
 export interface Flaschenteil {
     oben: Bilder;
     mitte: Bilder;
@@ -48,43 +48,6 @@ function movePageforeward (): void {
         default:
             console.log("bereits auf der Finalseite");
     }
-    /*let flaeche: HTMLDivElement = <HTMLDivElement>document.getElementById("flaeche");
-    switch (current) {
-        case 1:
-            document.getElementById("flaeche").innerHTML = "";
-            htmlImgs = [];
-
-            mittlereTeile.forEach (bilder => {
-            let img: HTMLImageElement = document.createElement("img");
-            img.src = bilder.quelle;
-            
-            htmlImgs.push(img);
-            flaeche.appendChild(img);
-            img.addEventListener("click", function (): void {
-                selectImage(img, bilder);
-            });
-        });
-            current ++;
-            break;
-        case 2:
-            document.getElementById("flaeche").innerHTML = "";
-            htmlImgs = [];
-
-            untereTeile.forEach (bilder => {
-            let img: HTMLImageElement = document.createElement("img");
-            img.src = bilder.quelle;
-            
-            htmlImgs.push(img);
-            flaeche.appendChild(img);
-            img.addEventListener("click", function (): void {
-                selectImage(img, bilder);
-            });
-        });
-            current ++;
-            break;
-        default:
-            console.log("Reached end");
-    }*/
 }
 
 function movePagebackward (): void {
@@ -104,43 +67,6 @@ function movePagebackward (): void {
         default:
             console.log("bereits auf der Startseite");
     }
-    /*let flaeche: HTMLDivElement = <HTMLDivElement>document.getElementById("flaeche");
-    switch (current) {
-        case 2:
-            document.getElementById("flaeche").innerHTML = "";
-            htmlImgs = [];
-
-            obereTeile.forEach (bilder => {
-            let img: HTMLImageElement = document.createElement("img");
-            img.src = bilder.quelle;
-            
-            htmlImgs.push(img);
-            flaeche.appendChild(img);
-            img.addEventListener("click", function (): void {
-                selectImage(img, bilder);
-            });
-        });
-            current --;
-            break;
-        case 3:
-            document.getElementById("flaeche").innerHTML = "";
-            htmlImgs = [];
-
-            mittlereTeile.forEach (bilder => {
-            let img: HTMLImageElement = document.createElement("img");
-            img.src = bilder.quelle;
-            
-            htmlImgs.push(img);
-            flaeche.appendChild(img);
-            img.addEventListener("click", function (): void {
-                selectImage(img, bilder);
-            });
-        });
-            current --;
-            break;
-        default:
-            console.log("Reached end");
-    }*/
 }
 if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "index.html" || window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "") {
     let halsbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("hals");
@@ -203,19 +129,6 @@ function windowLoaded(): void {
             });
         }
 }
-
-/*function windowLoaded (): void {
-    let flaeche: HTMLDivElement = <HTMLDivElement>document.getElementById("flaeche");
-    obereTeile.forEach (bilder => {
-                let img: HTMLImageElement = document.createElement("img");
-                img.src = bilder.quelle;
-                htmlImgs.push(img);
-                flaeche.appendChild(img);
-                img.addEventListener("click", function (): void {
-                    selectImage(img, bilder);
-                });
-            });
-}*/
 
 function selectImage(img: HTMLImageElement, bilder: Bilder): void {
     if (bilder.art == 0) {
