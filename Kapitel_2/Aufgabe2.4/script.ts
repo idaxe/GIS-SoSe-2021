@@ -1,4 +1,4 @@
-namespace Aufg1u2 {     
+namespace A2_4 {     
 export interface Flaschenteil {
     oben: Bilder;
     mitte: Bilder;
@@ -19,10 +19,16 @@ export interface Bildsp {
 let loaded: string[] = ["", "", ""];
 
 export let current: Bildsp = getJSONcontent();
+
+function getJSONcontent(): Bildsp {
+    let content: Bildsp = JSON.parse(createJSON2);
+    console.log(content);
+    return content;
+}
+
 export let flaschenhaelse: Bilder[] = current.oben;
 export let flaschenwaende: Bilder[] = current.mitte;
 export let flaschenboeden: Bilder[] = current.unten;
-
 export let ausgewaehlt: Flaschenteil = { oben: undefined, mitte: undefined, unten: undefined };
 let nextbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("naechsterTeil");
 nextbutton.addEventListener("click", movePageforeward);
@@ -135,35 +141,22 @@ function windowLoaded(): void {
                 });
             });
         }
-}
-
-//console.log(getJSONcontent());
-
-export function getJSONcontent(): Bildsp {
-    let zwischen: string = createJSON2;
-    let content: Bildsp = JSON.parse(zwischen);
-    return content;
-}
-
-/*export function getSelectedFromJSON(jsonStr: string): Flaschenteil {
-    console.log(jsonStr);
-    if (jsonStr != null) {
-        let json: Flaschenteil = JSON.parse(jsonStr);
-        Object.keys(json).forEach(key => {
-            if (key == "oben") {
-                let pic: Bilder = json[key];
-                ausgewaehlt.oben = pic;
-            } else if (key == "mitte") {
-                let pic: Bilder = json[key];
-                ausgewaehlt.mitte = pic;
-            } else if (key == "unten") {
-                let pic: Bilder = json[key];
-                ausgewaehlt.unten = pic;
-            }
-        });
+    if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "end.html") {
+    let flaeche: HTMLDivElement = <HTMLDivElement>document.getElementById("flaeche_end");
+    let imgtop: HTMLImageElement = document.createElement("img");
+    let imgmid: HTMLImageElement = document.createElement("img");
+    let imgbot: HTMLImageElement = document.createElement("img");
+    let teil1: Bilder = JSON.parse(sessionStorage.getItem("bild1"));
+    let teil2: Bilder = JSON.parse(sessionStorage.getItem("bild2"));
+    let teil3: Bilder = JSON.parse(sessionStorage.getItem("bild3"));
+    imgtop.src = teil1.quelle;
+    imgmid.src = teil2.quelle;
+    imgbot.src = teil3.quelle;
+    flaeche.appendChild(imgtop);
+    flaeche.appendChild(imgmid);
+    flaeche.appendChild(imgbot);
     }
-    return ausgewaehlt;
-}*/
+}
 
 function selectImage(img: HTMLImageElement, bilder: Bilder): void {
     if (bilder.art == 0) {
@@ -171,17 +164,20 @@ function selectImage(img: HTMLImageElement, bilder: Bilder): void {
         let speicher1: Flaschenteil = {oben: undefined, mitte: undefined, unten: undefined};
         speicher1.oben = bilder;
         loaded[0] = bilder.quelle;
-        //sessionStorage.setItem(bilder);
+        //let save: string = 
+        sessionStorage.setItem("bild1" , JSON.stringify(bilder));
     } else if (bilder.art == 1) {
         ausgewaehlt.mitte = bilder;
         let speicher3: Flaschenteil = {oben: undefined, mitte: undefined, unten: undefined};
         speicher3.oben = bilder;
         loaded[1] = bilder.quelle;
+        sessionStorage.setItem("bild2" , JSON.stringify(bilder));
     } else if (bilder.art == 2) {
         ausgewaehlt.unten = bilder;
         let speicher3: Flaschenteil = {oben: undefined, mitte: undefined, unten: undefined};
         speicher3.oben = bilder;
         loaded[2] = bilder.quelle;
+        sessionStorage.setItem("bild3" , JSON.stringify(bilder));
     }
     img.className += "selected";
     htmlImgs.forEach(pic => {

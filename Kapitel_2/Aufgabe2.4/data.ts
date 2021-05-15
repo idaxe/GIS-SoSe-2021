@@ -1,5 +1,5 @@
-namespace Aufg1u2 {
-
+namespace A2_4 {
+/*
     //erzeugung der Flaschenhaelse
     let flaschenkopf1: Bilder = { quelle: "assets/top1_alt.jpg", art: 0, gravour: "exquisit", farbe: "silber"};
     let flaschenkopf2: Bilder = { quelle: "assets/top2_alt.jpg", art: 0, gravour: "keine", farbe: "farblos"};
@@ -27,32 +27,18 @@ namespace Aufg1u2 {
 //    export let ausgewaehlt: Flaschenteil = { oben: undefined, mitte: undefined, unten: undefined }; 
     //console.log(createJSON());
 
-    createJSON3(createJSON());
+ //   createJSON3(createJSON());
 
-    function createJSON(): string {
+    export    function createJSON(): string {
         let zwischen: Bildsp = { oben: flaschenhaelse, mitte: flaschenwaende, unten: flaschenboeden};
         let zwischen2: string = JSON.stringify(zwischen);
         return zwischen2;
     }
 
-    function createJSON3(jsonStr: string): void {
-        flaschenhaelse = [];
-        flaschenwaende = [];
-        flaschenboeden = [];
-        let json: Bildsp = JSON.parse(jsonStr);
-        Object.keys(json).forEach(key => {
-            if (key == "oben") {
-                flaschenhaelse = json[key];
-            } else if (key == "mitte") {
-                flaschenwaende = json[key];
-            } else if (key == "unten") {
-                flaschenboeden = json[key];
-            }
-        });
-    } 
+*/
 
     export let createJSON2: string = 
-        `        {
+        `{
             "oben": [
                 {
                 "quelle": "assets/top1_alt.jpg",
