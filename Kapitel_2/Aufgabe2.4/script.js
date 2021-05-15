@@ -3,9 +3,10 @@ var Aufg1u2;
 (function (Aufg1u2) {
     //let current: number = 1;
     let loaded = ["", "", ""];
-    Aufg1u2.flaschelhaelse = [];
-    Aufg1u2.flaschenwaende = [];
-    Aufg1u2.flaschenboeden = [];
+    Aufg1u2.current = getJSONcontent();
+    Aufg1u2.flaschenhaelse = Aufg1u2.current.oben;
+    Aufg1u2.flaschenwaende = Aufg1u2.current.mitte;
+    Aufg1u2.flaschenboeden = Aufg1u2.current.unten;
     Aufg1u2.ausgewaehlt = { oben: undefined, mitte: undefined, unten: undefined };
     let nextbutton = document.getElementById("naechsterTeil");
     nextbutton.addEventListener("click", movePageforeward);
@@ -16,19 +17,19 @@ var Aufg1u2;
     function movePageforeward() {
         switch (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1)) {
             case " ":
-                window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Hals.html", "_self");
+                window.open("Hals.html", "_self");
                 break;
             case "index.html":
-                window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Hals.html", "_self");
+                window.open("Hals.html", "_self");
                 break;
             case "Hals.html":
-                window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Rumpf.html", "_self");
+                window.open("Rumpf.html", "_self");
                 break;
             case "Rumpf.html":
-                window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Boden.html", "_self");
+                window.open("Boden.html", "_self");
                 break;
             case "Boden.html":
-                window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/end.html", "_self");
+                window.open("end.html", "_self");
                 break;
             default:
                 console.log("bereits auf der Finalseite");
@@ -37,16 +38,16 @@ var Aufg1u2;
     function movePagebackward() {
         switch (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1)) {
             case "end.html":
-                window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Boden.html", "_self");
+                window.open("Boden.html", "_self");
                 break;
             case "Boden.html":
-                window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Rumpf.html", "_self");
+                window.open("Rumpf.html", "_self");
                 break;
             case "Rumpf.html":
-                window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Hals.html", "_self");
+                window.open("Hals.html", "_self");
                 break;
             case "Hals.html":
-                window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/index.html", "_self");
+                window.open("index.html", "_self");
                 break;
             default:
                 console.log("bereits auf der Startseite");
@@ -60,20 +61,20 @@ var Aufg1u2;
         let bodenbutton = document.getElementById("boden");
         bodenbutton.addEventListener("click", openboden);
         function openhals() {
-            window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Hals.html", "_self");
+            window.open("Hals.html", "_self");
         }
         function openrumpf() {
-            window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Rumpf.html", "_self");
+            window.open("Rumpf.html", "_self");
         }
         function openboden() {
-            window.open("https://idaxe.github.io/GIS-SoSe-2021/Kapitel_2/Aufgabe2.3/Aufgabe2.3_2-3/Boden.html", "_self");
+            window.open("Boden.html", "_self");
         }
     }
     function windowLoaded() {
         console.log(Aufg1u2.ausgewaehlt);
         if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "Hals.html") {
             let flaeche = document.getElementById("flaeche");
-            Aufg1u2.obereTeile.forEach(bilder => {
+            Aufg1u2.flaschenhaelse.forEach(bilder => {
                 let img = document.createElement("img");
                 img.src = bilder.quelle;
                 htmlImgs.push(img);
@@ -85,7 +86,7 @@ var Aufg1u2;
         }
         if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "Rumpf.html") {
             let flaeche = document.getElementById("flaeche");
-            Aufg1u2.mittlereTeile.forEach(bilder => {
+            Aufg1u2.flaschenwaende.forEach(bilder => {
                 let img = document.createElement("img");
                 img.src = bilder.quelle;
                 htmlImgs.push(img);
@@ -97,7 +98,7 @@ var Aufg1u2;
         }
         if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "Boden.html") {
             let flaeche = document.getElementById("flaeche");
-            Aufg1u2.untereTeile.forEach(bilder => {
+            Aufg1u2.flaschenboeden.forEach(bilder => {
                 let img = document.createElement("img");
                 img.src = bilder.quelle;
                 htmlImgs.push(img);
@@ -108,12 +109,39 @@ var Aufg1u2;
             });
         }
     }
+    //console.log(getJSONcontent());
+    function getJSONcontent() {
+        let zwischen = Aufg1u2.createJSON2;
+        let content = JSON.parse(zwischen);
+        return content;
+    }
+    Aufg1u2.getJSONcontent = getJSONcontent;
+    /*export function getSelectedFromJSON(jsonStr: string): Flaschenteil {
+        console.log(jsonStr);
+        if (jsonStr != null) {
+            let json: Flaschenteil = JSON.parse(jsonStr);
+            Object.keys(json).forEach(key => {
+                if (key == "oben") {
+                    let pic: Bilder = json[key];
+                    ausgewaehlt.oben = pic;
+                } else if (key == "mitte") {
+                    let pic: Bilder = json[key];
+                    ausgewaehlt.mitte = pic;
+                } else if (key == "unten") {
+                    let pic: Bilder = json[key];
+                    ausgewaehlt.unten = pic;
+                }
+            });
+        }
+        return ausgewaehlt;
+    }*/
     function selectImage(img, bilder) {
         if (bilder.art == 0) {
             Aufg1u2.ausgewaehlt.oben = bilder;
             let speicher1 = { oben: undefined, mitte: undefined, unten: undefined };
             speicher1.oben = bilder;
             loaded[0] = bilder.quelle;
+            //sessionStorage.setItem(bilder);
         }
         else if (bilder.art == 1) {
             Aufg1u2.ausgewaehlt.mitte = bilder;
