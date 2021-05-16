@@ -17,6 +17,13 @@ var A2_4;
     nextbutton.addEventListener("click", movePageforeward);
     let pervbutton = document.getElementById("vorherigerTeil");
     pervbutton.addEventListener("click", movePagebackward);
+    if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) != "index.html") {
+        let backbutton = document.getElementById("back");
+        backbutton.addEventListener("click", openmain);
+    }
+    function openmain() {
+        window.open("index.html", "_self");
+    }
     let htmlImgs = [];
     window.addEventListener("load", windowLoaded);
     function movePageforeward() {
@@ -65,10 +72,6 @@ var A2_4;
         rumpfbutton.addEventListener("click", openrumpf);
         let bodenbutton = document.getElementById("boden");
         bodenbutton.addEventListener("click", openboden);
-        if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) != "index.html") {
-            let backbutton = document.getElementById("back");
-            backbutton.addEventListener("click", openmain);
-        }
         function openhals() {
             window.open("Hals.html", "_self");
         }
@@ -77,9 +80,6 @@ var A2_4;
         }
         function openboden() {
             window.open("Boden.html", "_self");
-        }
-        function openmain() {
-            window.open("index.html", "_self");
         }
         showPreview();
     }

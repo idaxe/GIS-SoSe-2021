@@ -36,7 +36,14 @@ nextbutton.addEventListener("click", movePageforeward);
 let pervbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("vorherigerTeil");
 pervbutton.addEventListener("click", movePagebackward);
 
+if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) != "index.html") {
+    let backbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("back");
+    backbutton.addEventListener("click", openmain);
+}
 
+function openmain(): void {
+    window.open("index.html", "_self");
+}
 
 let htmlImgs: HTMLImageElement[] = [];
 window.addEventListener("load", windowLoaded);
@@ -91,11 +98,6 @@ if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/")
     let bodenbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("boden");
     bodenbutton.addEventListener("click", openboden);
 
-    if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) != "index.html") {
-        let backbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("back");
-        backbutton.addEventListener("click", openmain);
-    }
-    
     function openhals(): void {
         window.open("Hals.html", "_self");
     }
@@ -104,9 +106,6 @@ if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/")
     }
     function openboden(): void {
         window.open("Boden.html", "_self");
-    }
-    function openmain(): void {
-        window.open("index.html", "_self");
     }
     showPreview();
 }
