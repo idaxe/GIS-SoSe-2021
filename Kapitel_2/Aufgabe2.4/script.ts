@@ -91,9 +91,11 @@ if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/")
     let bodenbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("boden");
     bodenbutton.addEventListener("click", openboden);
 
-    let backbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("back");
-    backbutton.addEventListener("click", openmain);
-
+    if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) != "index.html") {
+        let backbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("back");
+        backbutton.addEventListener("click", openmain);
+    }
+    
     function openhals(): void {
         window.open("Hals.html", "_self");
     }
@@ -153,18 +155,24 @@ function windowLoaded(): void {
         }
     if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "end.html") {
     let flaeche: HTMLDivElement = <HTMLDivElement>document.getElementById("flaeche_end");
-    let imgtop: HTMLImageElement = document.createElement("img");
-    let imgmid: HTMLImageElement = document.createElement("img");
-    let imgbot: HTMLImageElement = document.createElement("img");
-    let teil1: Bilder = JSON.parse(sessionStorage.getItem("bild1"));
-    let teil2: Bilder = JSON.parse(sessionStorage.getItem("bild2"));
-    let teil3: Bilder = JSON.parse(sessionStorage.getItem("bild3"));
-    imgtop.src = teil1.quelle;
-    imgmid.src = teil2.quelle;
-    imgbot.src = teil3.quelle;
-    flaeche.appendChild(imgtop);
-    flaeche.appendChild(imgmid);
-    flaeche.appendChild(imgbot);
+    if (sessionStorage.getItem("bild1") != null) {
+        let imgtop: HTMLImageElement = document.createElement("img");
+        let teil1: Bilder = JSON.parse(sessionStorage.getItem("bild1"));
+        imgtop.src = teil1.quelle;
+        flaeche.appendChild(imgtop);
+    }
+    if (sessionStorage.getItem("bild2") != null) {
+        let imgmid: HTMLImageElement = document.createElement("img");
+        let teil2: Bilder = JSON.parse(sessionStorage.getItem("bild2"));
+        imgmid.src = teil2.quelle;
+        flaeche.appendChild(imgmid);
+    }
+    if (sessionStorage.getItem("bild3") != null) {
+        let imgbot: HTMLImageElement = document.createElement("img");
+        let teil3: Bilder = JSON.parse(sessionStorage.getItem("bild3"));
+        imgbot.src = teil3.quelle;
+        flaeche.appendChild(imgbot);
+    }
     }
 }
 

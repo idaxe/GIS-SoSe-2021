@@ -65,8 +65,10 @@ var A2_4;
         rumpfbutton.addEventListener("click", openrumpf);
         let bodenbutton = document.getElementById("boden");
         bodenbutton.addEventListener("click", openboden);
-        let backbutton = document.getElementById("back");
-        backbutton.addEventListener("click", openmain);
+        if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) != "index.html") {
+            let backbutton = document.getElementById("back");
+            backbutton.addEventListener("click", openmain);
+        }
         function openhals() {
             window.open("Hals.html", "_self");
         }
@@ -124,18 +126,24 @@ var A2_4;
         }
         if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "end.html") {
             let flaeche = document.getElementById("flaeche_end");
-            let imgtop = document.createElement("img");
-            let imgmid = document.createElement("img");
-            let imgbot = document.createElement("img");
-            let teil1 = JSON.parse(sessionStorage.getItem("bild1"));
-            let teil2 = JSON.parse(sessionStorage.getItem("bild2"));
-            let teil3 = JSON.parse(sessionStorage.getItem("bild3"));
-            imgtop.src = teil1.quelle;
-            imgmid.src = teil2.quelle;
-            imgbot.src = teil3.quelle;
-            flaeche.appendChild(imgtop);
-            flaeche.appendChild(imgmid);
-            flaeche.appendChild(imgbot);
+            if (sessionStorage.getItem("bild1") != null) {
+                let imgtop = document.createElement("img");
+                let teil1 = JSON.parse(sessionStorage.getItem("bild1"));
+                imgtop.src = teil1.quelle;
+                flaeche.appendChild(imgtop);
+            }
+            if (sessionStorage.getItem("bild2") != null) {
+                let imgmid = document.createElement("img");
+                let teil2 = JSON.parse(sessionStorage.getItem("bild2"));
+                imgmid.src = teil2.quelle;
+                flaeche.appendChild(imgmid);
+            }
+            if (sessionStorage.getItem("bild3") != null) {
+                let imgbot = document.createElement("img");
+                let teil3 = JSON.parse(sessionStorage.getItem("bild3"));
+                imgbot.src = teil3.quelle;
+                flaeche.appendChild(imgbot);
+            }
         }
     }
     function selectImage(img, bilder) {
