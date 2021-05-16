@@ -29,9 +29,10 @@ button {
 }
 
 #preview{
-    position:relative;
+    position:fixed;
     float:inline-start;
-    margin: 10% ;
+    top: 10%;
+    right: 1%;
 }
 #preview img{
     display: flex;
