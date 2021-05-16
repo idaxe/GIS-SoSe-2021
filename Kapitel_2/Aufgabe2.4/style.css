@@ -24,8 +24,8 @@ button {
 #flaeche_end img{
     display: flex;
     margin: 0 auto;
-    max-height: 18%;
-    max-width: 18%;
+    height: 9%;
+    width: 9%;
 }
 
 #preview{
