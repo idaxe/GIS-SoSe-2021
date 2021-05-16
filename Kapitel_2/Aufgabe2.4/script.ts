@@ -91,6 +91,9 @@ if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/")
     let bodenbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("boden");
     bodenbutton.addEventListener("click", openboden);
 
+    let backbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("back");
+    backbutton.addEventListener("click", openmain);
+
     function openhals(): void {
         window.open("Hals.html", "_self");
     }
@@ -100,6 +103,10 @@ if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/")
     function openboden(): void {
         window.open("Boden.html", "_self");
     }
+    function openmain(): void {
+        window.open("index.html", "_self");
+    }
+    showPreview();
 }
 
 function windowLoaded(): void {
@@ -115,6 +122,7 @@ function windowLoaded(): void {
             selectImage(img, bilder);
         });
     });
+    showPreview();
 }
     if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "Rumpf.html") {
         let flaeche: HTMLDivElement = <HTMLDivElement>document.getElementById("flaeche");
@@ -127,6 +135,7 @@ function windowLoaded(): void {
                 selectImage(img, bilder);
             });
         });
+        showPreview();
     }
 
     if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "Boden.html") {
@@ -140,6 +149,7 @@ function windowLoaded(): void {
                     selectImage(img, bilder);
                 });
             });
+            showPreview();
         }
     if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "end.html") {
     let flaeche: HTMLDivElement = <HTMLDivElement>document.getElementById("flaeche_end");
@@ -187,5 +197,27 @@ function selectImage(img: HTMLImageElement, bilder: Bilder): void {
     });
     console.log(loaded);
     console.log(ausgewaehlt);
+}
+
+function showPreview(): void {
+    let prev: HTMLDivElement = <HTMLDivElement>document.getElementById("preview");
+    if (sessionStorage.getItem("bild1") != null) {
+        let imgtop: HTMLImageElement = document.createElement("img");
+        let teil1: Bilder = JSON.parse(sessionStorage.getItem("bild1"));
+        imgtop.src = teil1.quelle;
+        prev.appendChild(imgtop);
+    }
+    if (sessionStorage.getItem("bild2") != null) {
+        let imgmid: HTMLImageElement = document.createElement("img");
+        let teil2: Bilder = JSON.parse(sessionStorage.getItem("bild2"));
+        imgmid.src = teil2.quelle;
+        prev.appendChild(imgmid);
+    }
+    if (sessionStorage.getItem("bild3") != null) {
+        let imgbot: HTMLImageElement = document.createElement("img");
+        let teil3: Bilder = JSON.parse(sessionStorage.getItem("bild3"));
+        imgbot.src = teil3.quelle;
+        prev.appendChild(imgbot);
+    }
 }
 }

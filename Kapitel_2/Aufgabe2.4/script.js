@@ -65,6 +65,8 @@ var A2_4;
         rumpfbutton.addEventListener("click", openrumpf);
         let bodenbutton = document.getElementById("boden");
         bodenbutton.addEventListener("click", openboden);
+        let backbutton = document.getElementById("back");
+        backbutton.addEventListener("click", openmain);
         function openhals() {
             window.open("Hals.html", "_self");
         }
@@ -74,6 +76,10 @@ var A2_4;
         function openboden() {
             window.open("Boden.html", "_self");
         }
+        function openmain() {
+            window.open("index.html", "_self");
+        }
+        showPreview();
     }
     function windowLoaded() {
         console.log(A2_4.ausgewaehlt);
@@ -88,6 +94,7 @@ var A2_4;
                     selectImage(img, bilder);
                 });
             });
+            showPreview();
         }
         if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "Rumpf.html") {
             let flaeche = document.getElementById("flaeche");
@@ -100,6 +107,7 @@ var A2_4;
                     selectImage(img, bilder);
                 });
             });
+            showPreview();
         }
         if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "Boden.html") {
             let flaeche = document.getElementById("flaeche");
@@ -112,6 +120,7 @@ var A2_4;
                     selectImage(img, bilder);
                 });
             });
+            showPreview();
         }
         if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "end.html") {
             let flaeche = document.getElementById("flaeche_end");
@@ -160,6 +169,27 @@ var A2_4;
         });
         console.log(loaded);
         console.log(A2_4.ausgewaehlt);
+    }
+    function showPreview() {
+        let prev = document.getElementById("preview");
+        if (sessionStorage.getItem("bild1") != null) {
+            let imgtop = document.createElement("img");
+            let teil1 = JSON.parse(sessionStorage.getItem("bild1"));
+            imgtop.src = teil1.quelle;
+            prev.appendChild(imgtop);
+        }
+        if (sessionStorage.getItem("bild2") != null) {
+            let imgmid = document.createElement("img");
+            let teil2 = JSON.parse(sessionStorage.getItem("bild2"));
+            imgmid.src = teil2.quelle;
+            prev.appendChild(imgmid);
+        }
+        if (sessionStorage.getItem("bild3") != null) {
+            let imgbot = document.createElement("img");
+            let teil3 = JSON.parse(sessionStorage.getItem("bild3"));
+            imgbot.src = teil3.quelle;
+            prev.appendChild(imgbot);
+        }
     }
 })(A2_4 || (A2_4 = {}));
 //# sourceMappingURL=script.js.map

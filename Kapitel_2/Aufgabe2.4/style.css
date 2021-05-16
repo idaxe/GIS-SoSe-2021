@@ -16,7 +16,30 @@ button {
     margin: 5% 5% 5% 5%;
 }
 
+#flaeche{
+    margin: 0 auto;
+    max-width: 80%;
+}
+
 #flaeche_end img{
     display: flex;
     margin: 0 auto;
+    max-height: 18%;
+    max-width: 18%;
+}
+
+#preview{
+    position:relative;
+    float:inline-start;
+    margin: 10% ;
+}
+#preview img{
+    display: flex;
+    margin: 0 auto;
+    width: 10%;
+    height: 10%;
+}
+
+h2{
+    color: blue;
 }
