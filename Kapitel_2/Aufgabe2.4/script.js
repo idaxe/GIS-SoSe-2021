@@ -21,6 +21,13 @@ var A2_4;
         let backbutton = document.getElementById("back");
         backbutton.addEventListener("click", openmain);
     }
+    if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) != "end.html") {
+        let endbutton = document.getElementById("result");
+        endbutton.addEventListener("click", openresult);
+    }
+    function openresult() {
+        window.open("end.html", "_self");
+    }
     function openmain() {
         window.open("index.html", "_self");
     }

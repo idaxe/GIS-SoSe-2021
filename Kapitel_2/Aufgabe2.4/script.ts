@@ -41,6 +41,15 @@ if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/")
     backbutton.addEventListener("click", openmain);
 }
 
+if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) != "end.html") {
+    let endbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("result");
+    endbutton.addEventListener("click", openresult);
+}
+
+function openresult(): void {
+    window.open("end.html", "_self");
+}
+
 function openmain(): void {
     window.open("index.html", "_self");
 }
