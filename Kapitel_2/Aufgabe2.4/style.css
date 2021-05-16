@@ -31,8 +31,8 @@ button {
 #preview{
     position:fixed;
     float:inline-start;
-    top: 70%;
-    right: 1%;
+    top: 55%;
+    right: 0%;
 }
 #preview img{
     display: flex;
