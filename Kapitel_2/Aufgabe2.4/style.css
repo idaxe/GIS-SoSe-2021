@@ -31,14 +31,14 @@ button {
 #preview{
     position:fixed;
     float:inline-start;
-    top: 10%;
+    top: 70%;
     right: 1%;
 }
 #preview img{
     display: flex;
     margin: 0 auto;
-    width: 10%;
-    height: 10%;
+    width: 20%;
+    height: 20%;
 }
 
 h2{
