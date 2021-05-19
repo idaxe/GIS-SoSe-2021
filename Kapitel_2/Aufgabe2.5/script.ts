@@ -23,13 +23,19 @@ export let current: Bildspeicher = getJSONcontent();
 function getJSONcontent(): Bildspeicher {
     let getcontent: Promise<Response> = fetch("data.json");
     getcontent.then(success, faliure);
+    let contentwandel: string = JSON.stringify(getcontent);
+    let content: Bildspeicher = JSON.parse(contentwandel);
     console.log(content);
     return content;
 }
 
-function success(): void {}
+function success(): void {
+    console.log("Erfolg");
+}
 
-function faliure(): void {}
+function faliure(): void {
+    console.log("Fehlschlag");
+}
 
 export let flaschenhaelse: Bilder[] = current.oben;
 export let flaschenwaende: Bilder[] = current.mitte;

@@ -7,11 +7,17 @@ var A2_5;
     function getJSONcontent() {
         let getcontent = fetch("data.json");
         getcontent.then(success, faliure);
+        let contentwandel = JSON.stringify(getcontent);
+        let content = JSON.parse(contentwandel);
         console.log(content);
         return content;
     }
-    function success() { }
-    function faliure() { }
+    function success() {
+        console.log("Erfolg");
+    }
+    function faliure() {
+        console.log("Fehlschlag");
+    }
     A2_5.flaschenhaelse = A2_5.current.oben;
     A2_5.flaschenwaende = A2_5.current.mitte;
     A2_5.flaschenboeden = A2_5.current.unten;
