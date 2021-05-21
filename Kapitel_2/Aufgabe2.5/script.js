@@ -1,26 +1,20 @@
 "use strict";
 var A2_5;
 (function (A2_5) {
-    //let current: number = 1;
     let loaded = ["", "", ""];
-    A2_5.current = getJSONcontent();
-    function getJSONcontent() {
-        let getcontent = fetch("data.json");
-        getcontent.then(success, faliure);
-        let contentwandel = JSON.stringify(getcontent);
-        let content = JSON.parse(contentwandel);
+    /*let currenttest: Bildspeicher = loadJSONcontent("data.json").then((oben) => { console.log(oben); });      //ein versuch die json daten aus dem promise zu extrahieren
+    async function loadJSONcontent(_url: RequestInfo): Promise<Bildspeicher> {
+        let getcontent: Response = await fetch(_url);
+        console.log("Response", getcontent);
+        let contentwandel: string = JSON.stringify(await getcontent.json());
+        let content: Bildspeicher = JSON.parse(contentwandel);
+        console.log("test");
+        console.log(_url);
+        console.log(getcontent);
+        console.log(contentwandel);
         console.log(content);
         return content;
-    }
-    function success() {
-        console.log("Erfolg");
-    }
-    function faliure() {
-        console.log("Fehlschlag");
-    }
-    A2_5.flaschenhaelse = A2_5.current.oben;
-    A2_5.flaschenwaende = A2_5.current.mitte;
-    A2_5.flaschenboeden = A2_5.current.unten;
+    }*/
     A2_5.ausgewaehlt = { oben: undefined, mitte: undefined, unten: undefined };
     let nextbutton = document.getElementById("naechsterTeil");
     nextbutton.addEventListener("click", movePageforeward);
@@ -41,7 +35,9 @@ var A2_5;
         window.open("index.html", "_self");
     }
     let htmlImgs = [];
-    window.addEventListener("load", windowLoaded);
+    //window.addEventListener("load", windowLoaded("data.json"));
+    windowLoaded("data.json");
+    //code für das voranschreiten der seiten
     function movePageforeward() {
         switch (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1)) {
             case " ":
@@ -63,6 +59,7 @@ var A2_5;
                 console.log("bereits auf der Finalseite");
         }
     }
+    //code für das zurückgehen der seiten
     function movePagebackward() {
         switch (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1)) {
             case "end.html":
@@ -81,6 +78,7 @@ var A2_5;
                 console.log("bereits auf der Startseite");
         }
     }
+    //einzelaufrufe der seiten für die index seite
     if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "index.html" || window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "") {
         let halsbutton = document.getElementById("hals");
         halsbutton.addEventListener("click", openhals);
@@ -99,11 +97,19 @@ var A2_5;
         }
         showPreview();
     }
-    function windowLoaded() {
+    //laden des seiteninhalts
+    async function windowLoaded(_url) {
         console.log(A2_5.ausgewaehlt);
+        let getcontent = await fetch(_url);
+        console.log("Response", getcontent);
+        let contentwandel = JSON.stringify(await getcontent.json());
+        let current = JSON.parse(contentwandel);
+        let flaschenhaelse = current.oben;
+        let flaschenwaende = current.mitte;
+        let flaschenboeden = current.unten;
         if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "Hals.html") {
             let flaeche = document.getElementById("flaeche");
-            A2_5.flaschenhaelse.forEach(bilder => {
+            flaschenhaelse.forEach(bilder => {
                 let img = document.createElement("img");
                 img.src = bilder.quelle;
                 htmlImgs.push(img);
@@ -116,7 +122,7 @@ var A2_5;
         }
         if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "Rumpf.html") {
             let flaeche = document.getElementById("flaeche");
-            A2_5.flaschenwaende.forEach(bilder => {
+            flaschenwaende.forEach(bilder => {
                 let img = document.createElement("img");
                 img.src = bilder.quelle;
                 htmlImgs.push(img);
@@ -129,7 +135,7 @@ var A2_5;
         }
         if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "Boden.html") {
             let flaeche = document.getElementById("flaeche");
-            A2_5.flaschenboeden.forEach(bilder => {
+            flaschenboeden.forEach(bilder => {
                 let img = document.createElement("img");
                 img.src = bilder.quelle;
                 htmlImgs.push(img);
@@ -162,13 +168,13 @@ var A2_5;
             }
         }
     }
+    //auswahl und speicherung der bilderteile
     function selectImage(img, bilder) {
         if (bilder.art == 0) {
             A2_5.ausgewaehlt.oben = bilder;
             let speicher1 = { oben: undefined, mitte: undefined, unten: undefined };
             speicher1.oben = bilder;
             loaded[0] = bilder.quelle;
-            //let save: string = 
             sessionStorage.setItem("bild1", JSON.stringify(bilder));
         }
         else if (bilder.art == 1) {
@@ -194,6 +200,7 @@ var A2_5;
         console.log(loaded);
         console.log(A2_5.ausgewaehlt);
     }
+    //anzeigen des bereits ausgewählten inhalts
     function showPreview() {
         let prev = document.getElementById("preview");
         if (sessionStorage.getItem("bild1") != null) {

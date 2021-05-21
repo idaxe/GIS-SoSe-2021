@@ -15,31 +15,23 @@ export interface Bildspeicher {
     mitte: Bilder[];
     unten: Bilder[];
 }
-//let current: number = 1;
+
 let loaded: string[] = ["", "", ""];
 
-export let current: Bildspeicher = getJSONcontent();
-
-function getJSONcontent(): Bildspeicher {
-    let getcontent: Promise<Response> = fetch("data.json");
-    getcontent.then(success, faliure);
-    let contentwandel: string = JSON.stringify(getcontent);
+/*let currenttest: Bildspeicher = loadJSONcontent("data.json").then((oben) => { console.log(oben); });      //ein versuch die json daten aus dem promise zu extrahieren
+async function loadJSONcontent(_url: RequestInfo): Promise<Bildspeicher> {
+    let getcontent: Response = await fetch(_url);
+    console.log("Response", getcontent);
+    let contentwandel: string = JSON.stringify(await getcontent.json());
     let content: Bildspeicher = JSON.parse(contentwandel);
+    console.log("test");
+    console.log(_url);
+    console.log(getcontent);
+    console.log(contentwandel);
     console.log(content);
     return content;
-}
+}*/
 
-function success(): void {
-    console.log("Erfolg");
-}
-
-function faliure(): void {
-    console.log("Fehlschlag");
-}
-
-export let flaschenhaelse: Bilder[] = current.oben;
-export let flaschenwaende: Bilder[] = current.mitte;
-export let flaschenboeden: Bilder[] = current.unten;
 export let ausgewaehlt: Flaschenteil = { oben: undefined, mitte: undefined, unten: undefined };
 let nextbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("naechsterTeil");
 nextbutton.addEventListener("click", movePageforeward);
@@ -66,9 +58,11 @@ function openmain(): void {
 }
 
 let htmlImgs: HTMLImageElement[] = [];
-window.addEventListener("load", windowLoaded);
+//window.addEventListener("load", windowLoaded("data.json"));
+windowLoaded("data.json");
 
-function movePageforeward (): void {
+//code für das voranschreiten der seiten
+function movePageforeward (): void {    
     switch (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1)) {
         case " ":
             window.open("Hals.html" , "_self");
@@ -90,6 +84,7 @@ function movePageforeward (): void {
     }
 }
 
+//code für das zurückgehen der seiten
 function movePagebackward (): void {
     switch (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1)) {
         case "end.html":
@@ -108,6 +103,8 @@ function movePagebackward (): void {
             console.log("bereits auf der Startseite");
     }
 }
+
+//einzelaufrufe der seiten für die index seite
 if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "index.html" || window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "") {
     let halsbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("hals");
     halsbutton.addEventListener("click", openhals);
@@ -130,8 +127,19 @@ if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/")
     showPreview();
 }
 
-function windowLoaded(): void {
+//laden des seiteninhalts
+async function windowLoaded(_url: RequestInfo): Promise<void> {
     console.log(ausgewaehlt);
+
+    let getcontent: Response = await fetch(_url);
+    console.log("Response", getcontent);
+    let contentwandel: string = JSON.stringify(await getcontent.json());
+    let current: Bildspeicher = JSON.parse(contentwandel);
+
+    let flaschenhaelse: Bilder[] = current.oben;
+    let flaschenwaende: Bilder[] = current.mitte;
+    let flaschenboeden: Bilder[] = current.unten;
+
     if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "Hals.html") {
     let flaeche: HTMLDivElement = <HTMLDivElement>document.getElementById("flaeche");
     flaschenhaelse.forEach (bilder => {
@@ -195,13 +203,13 @@ function windowLoaded(): void {
     }
 }
 
+//auswahl und speicherung der bilderteile
 function selectImage(img: HTMLImageElement, bilder: Bilder): void {
     if (bilder.art == 0) {
         ausgewaehlt.oben = bilder;
         let speicher1: Flaschenteil = {oben: undefined, mitte: undefined, unten: undefined};
         speicher1.oben = bilder;
         loaded[0] = bilder.quelle;
-        //let save: string = 
         sessionStorage.setItem("bild1" , JSON.stringify(bilder));
     } else if (bilder.art == 1) {
         ausgewaehlt.mitte = bilder;
@@ -226,6 +234,7 @@ function selectImage(img: HTMLImageElement, bilder: Bilder): void {
     console.log(ausgewaehlt);
 }
 
+//anzeigen des bereits ausgewählten inhalts
 function showPreview(): void {
     let prev: HTMLDivElement = <HTMLDivElement>document.getElementById("preview");
     if (sessionStorage.getItem("bild1") != null) {
