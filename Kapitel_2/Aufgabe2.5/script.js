@@ -166,35 +166,36 @@ var A2_5;
                 imgbot.src = teil3.quelle;
                 flaeche.appendChild(imgbot);
             }
+            sendResult("https://gis-communication.herokuapp.com");
         }
     }
     //auswahl und speicherung der bilderteile
-    function selectImage(img, bilder) {
-        if (bilder.art == 0) {
-            A2_5.ausgewaehlt.oben = bilder;
+    function selectImage(_img, _bilder) {
+        if (_bilder.art == 0) {
+            A2_5.ausgewaehlt.oben = _bilder;
             let speicher1 = { oben: undefined, mitte: undefined, unten: undefined };
-            speicher1.oben = bilder;
-            loaded[0] = bilder.quelle;
-            sessionStorage.setItem("bild1", JSON.stringify(bilder));
+            speicher1.oben = _bilder;
+            loaded[0] = _bilder.quelle;
+            sessionStorage.setItem("bild1", JSON.stringify(_bilder));
         }
-        else if (bilder.art == 1) {
-            A2_5.ausgewaehlt.mitte = bilder;
+        else if (_bilder.art == 1) {
+            A2_5.ausgewaehlt.mitte = _bilder;
             let speicher3 = { oben: undefined, mitte: undefined, unten: undefined };
-            speicher3.oben = bilder;
-            loaded[1] = bilder.quelle;
-            sessionStorage.setItem("bild2", JSON.stringify(bilder));
+            speicher3.oben = _bilder;
+            loaded[1] = _bilder.quelle;
+            sessionStorage.setItem("bild2", JSON.stringify(_bilder));
         }
-        else if (bilder.art == 2) {
-            A2_5.ausgewaehlt.unten = bilder;
+        else if (_bilder.art == 2) {
+            A2_5.ausgewaehlt.unten = _bilder;
             let speicher3 = { oben: undefined, mitte: undefined, unten: undefined };
-            speicher3.oben = bilder;
-            loaded[2] = bilder.quelle;
-            sessionStorage.setItem("bild3", JSON.stringify(bilder));
+            speicher3.oben = _bilder;
+            loaded[2] = _bilder.quelle;
+            sessionStorage.setItem("bild3", JSON.stringify(_bilder));
         }
-        img.className += "selected";
-        htmlImgs.forEach(pic => {
-            if (pic != img) {
-                pic.classList.remove("selected");
+        _img.className += "selected";
+        htmlImgs.forEach(_pic => {
+            if (_pic != _img) {
+                _pic.classList.remove("selected");
             }
         });
         console.log(loaded);
@@ -220,6 +221,21 @@ var A2_5;
             let teil3 = JSON.parse(sessionStorage.getItem("bild3"));
             imgbot.src = teil3.quelle;
             prev.appendChild(imgbot);
+        }
+    }
+    async function sendResult(_url) {
+        let query = new URLSearchParams(sessionStorage);
+        _url = _url + "?" + query.toString();
+        let dataReply = await fetch(_url);
+        let dataResult = await dataReply.text();
+        let dataReturn = document.getElementById("response");
+        if (dataResult.match("message")) {
+            dataReturn.style.color = "green";
+            dataReturn.innerText = "Daten erhalten.";
+        }
+        else {
+            dataReturn.style.color = "red";
+            dataReturn.innerText = "Fehler: Fehlende Daten!";
         }
     }
 })(A2_5 || (A2_5 = {}));
