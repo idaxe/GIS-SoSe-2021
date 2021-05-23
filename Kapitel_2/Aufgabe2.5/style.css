@@ -9,7 +9,7 @@ img {
 body {
     text-align: center;
     font-family: sans-serif;
-    background-color: white;
+    background-color: lightgray;
 }
 
 button {
@@ -19,20 +19,32 @@ button {
 #flaeche{
     margin: 0 auto;
     max-width: 80%;
+    min-height: 300px;
+    background-color: white;
+    border: solid black 3px;
+    border-radius: 20px;
+}
+
+#flaeche_end{
+    margin: 0 auto;
+    height: 50%;
+    width: 50%;
+    background-color: white;
+    border: solid black 3px;
+    border-radius: 20px;
 }
 
 #flaeche_end img{
     display: flex;
     margin: 0 auto;
-    height: 9%;
-    width: 9%;
 }
 
 #preview{
     position:fixed;
     float:inline-start;
-    top: 55%;
-    right: 0%;
+    top: 25%;
+    right: 5%;
+
 }
 #preview img{
     display: flex;
