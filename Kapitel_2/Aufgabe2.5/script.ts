@@ -232,7 +232,7 @@ function selectImage(_img: HTMLImageElement, _bilder: Bilder): void {
             _pic.style.border = "none";
         }
         else {
-            _pic.style.border = "2px solid black";
+            _pic.style.border = "2px solid blue";
         }
     });
     console.log(loaded);
