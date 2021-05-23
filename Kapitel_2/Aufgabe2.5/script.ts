@@ -229,6 +229,10 @@ function selectImage(_img: HTMLImageElement, _bilder: Bilder): void {
     htmlImgs.forEach(_pic => {
         if (_pic != _img) {
             _pic.classList.remove("selected");
+            _pic.style.border = "none";
+        }
+        else {
+            _pic.style.border = "2px solid black";
         }
     });
     console.log(loaded);
