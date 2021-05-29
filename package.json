@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "@types/node": "^15.6.1"
+  },
+  "name": "gis-sose-2021",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node Kapitel_3/Aufgabe3.1/beispielServer.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idaxe/GIS-SoSe-2021.git"
+  },
+  "author": "Denny Lang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/idaxe/GIS-SoSe-2021/issues"
+  },
+  "homepage": "https://github.com/idaxe/GIS-SoSe-2021#readme"
+}
