@@ -4,22 +4,22 @@
         <meta charset="UTF-8">
         <meta name = "viewport" content="width=device-width, initial-scale=1.0">
         <title>Formular</title>
-        <script defer src="beispielServer.js"></script>
+        <script defer src="script.js"></script>
     </head>
 
     <body>
         <h1>Aufgabe 3-1</h1>
-        <form action="https://dennytestapp.herokuapp.com" method="GET">
+        <form>
             <p>Sign up for Lindows</p>
             <label for="username">Benutzername</label><br>
             <input type="text" id="username" name="username"><br>
             <label for="password">Passwort</label><br>
-            <input type="password" id="password" name="password" minlength="420"><br>
+            <input type="password" id="password" name="password" minlength="8"><br>
             <br>
             <input type="checkbox" id="uselesscheckbox" name="uselesscheckbox">
             <label for="uselesscheckbox">Sinnlose Ankreuzung. WARNUNG SINNLOS!!!</label><br>
             <br>
-            <button type="submit">Abschicken</button>
+            <button type="submit" id="senden">Abschicken</button>
         </form>
     </body>
 
