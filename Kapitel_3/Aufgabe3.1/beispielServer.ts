@@ -1,4 +1,4 @@
-import * as Http from "http";
+import * as Http from "http";a
 
 export namespace P_3_1Server {
     console.log("Starting server"); //Konsolenausgabe
