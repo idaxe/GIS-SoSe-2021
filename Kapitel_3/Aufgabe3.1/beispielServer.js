@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.P_3_1Server = void 0;
 const Http = require("http");
-a;
 var P_3_1Server;
 (function (P_3_1Server) {
     console.log("Starting server"); //Konsolenausgabe
