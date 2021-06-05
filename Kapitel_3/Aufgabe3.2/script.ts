@@ -45,6 +45,6 @@ namespace K3_A2 {
         let response: Response = await fetch(url + "/json?" + query.toString());
         let jsonObject: JSON = await response.json();
         console.log("Serverantwort:");
-        console.log("Serverantwort" + jsonObject);
+        console.log(jsonObject);
     }
 }

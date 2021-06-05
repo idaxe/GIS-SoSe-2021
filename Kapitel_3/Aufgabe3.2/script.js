@@ -42,7 +42,7 @@ var K3_A2;
         let response = await fetch(url + "/json?" + query.toString());
         let jsonObject = await response.json();
         console.log("Serverantwort:");
-        console.log("Serverantwort" + jsonObject);
+        console.log(jsonObject);
     }
 })(K3_A2 || (K3_A2 = {}));
 //# sourceMappingURL=script.js.map
