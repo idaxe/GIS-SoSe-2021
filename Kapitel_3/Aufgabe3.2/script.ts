@@ -16,7 +16,7 @@ namespace K3_A2 {
                 console.log("name:" + entry[0]);
                 console.log("value:" + entry[1]);
             } 
-        let url: string = "http://localhost:8100/";
+        let url: string = "https://dennytestapp.herokuapp.com";
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         url = url + "?" + query.toString();
         console.log(url);
@@ -30,7 +30,7 @@ namespace K3_A2 {
     async function absendenHtml(): Promise<void> {
         console.log("Html Variante");
         let formData: FormData = new FormData(document.forms[0]);
-        let url: string = "http://localhost:8100";
+        let url: string = "https://dennytestapp.herokuapp.com";
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         let response: Response = await fetch(url + "/html?" + query.toString());
         let text: string = await response.text();
@@ -40,7 +40,7 @@ namespace K3_A2 {
     async function absendenJson(): Promise<void> {
         console.log("Json Variante");
         let formData: FormData = new FormData(document.forms[0]);
-        let url: string = "http://localhost:8100";
+        let url: string = "https://dennytestapp.herokuapp.com";
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         let response: Response = await fetch(url + "/json?" + query.toString());
         let jsonObject: JSON = await response.json();

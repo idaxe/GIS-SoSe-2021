@@ -14,7 +14,7 @@ var K3_A2;
             console.log("name:" + entry[0]);
             console.log("value:" + entry[1]);
         }
-        let url = "http://localhost:8100/";
+        let url = "https://dennytestapp.herokuapp.com";
         let query = new URLSearchParams(formData);
         url = url + "?" + query.toString();
         console.log(url);
@@ -27,7 +27,7 @@ var K3_A2;
     async function absendenHtml() {
         console.log("Html Variante");
         let formData = new FormData(document.forms[0]);
-        let url = "http://localhost:8100";
+        let url = "https://dennytestapp.herokuapp.com";
         let query = new URLSearchParams(formData);
         let response = await fetch(url + "/html?" + query.toString());
         let text = await response.text();
@@ -37,7 +37,7 @@ var K3_A2;
     async function absendenJson() {
         console.log("Json Variante");
         let formData = new FormData(document.forms[0]);
-        let url = "http://localhost:8100";
+        let url = "https://dennytestapp.herokuapp.com";
         let query = new URLSearchParams(formData);
         let response = await fetch(url + "/json?" + query.toString());
         let jsonObject = await response.json();
