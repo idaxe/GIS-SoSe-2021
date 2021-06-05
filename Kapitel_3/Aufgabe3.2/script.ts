@@ -9,6 +9,12 @@ namespace K3_A2 {
     let jsonSendbttn: HTMLButtonElement = <HTMLButtonElement>document.getElementById("jsonSend");
     jsonSendbttn.addEventListener("click", absendenJson);
 
+    interface Data {
+        username: string;
+        password: string;
+        uselessCheckbox: boolean;
+    }
+
     async function absenden(): Promise<void> {
         let formData: FormData = new FormData(document.forms[0]);
         for (let entry of formData) {
@@ -43,7 +49,7 @@ namespace K3_A2 {
         let url: string = "https://dennytestapp.herokuapp.com";
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         let response: Response = await fetch(url + "/json?" + query.toString());
-        let jsonObject: JSON = await response.json();
+        let jsonObject: Data = await response.json();
         console.log("Serverantwort:");
         console.log(jsonObject);
     }
