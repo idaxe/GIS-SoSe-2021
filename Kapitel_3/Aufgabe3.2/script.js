@@ -41,6 +41,7 @@ var K3_A2;
         let query = new URLSearchParams(formData);
         let response = await fetch(url + "/json?" + query.toString());
         let jsonObject = await response.json();
+        console.log("Serverantwort:");
         console.log("Serverantwort" + jsonObject);
     }
 })(K3_A2 || (K3_A2 = {}));
