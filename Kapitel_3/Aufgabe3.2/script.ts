@@ -44,6 +44,6 @@ namespace K3_A2 {
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         let response: Response = await fetch(url + "/json?" + query.toString());
         let jsonObject: JSON = await response.json();
-        console.log(jsonObject);
+        console.log("Serverantwort" + jsonObject);
     }
 }
