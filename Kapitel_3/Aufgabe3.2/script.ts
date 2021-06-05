@@ -1,8 +1,5 @@
 namespace K3_A2 {
 
-    let formDatenButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("senden");
-    formDatenButton.addEventListener("click", absenden);
-
     let htmlSendbttn: HTMLButtonElement = <HTMLButtonElement>document.getElementById("htmlSend");
     htmlSendbttn.addEventListener("click", absendenHtml);
 
@@ -13,24 +10,6 @@ namespace K3_A2 {
         username: string;
         password: string;
         uselessCheckbox: boolean;
-    }
-
-    async function absenden(): Promise<void> {
-        let formData: FormData = new FormData(document.forms[0]);
-        for (let entry of formData) {
-                console.log(entry);
-                console.log("name:" + entry[0]);
-                console.log("value:" + entry[1]);
-            } 
-        let url: string = "https://dennytestapp.herokuapp.com";
-        let query: URLSearchParams = new URLSearchParams(<any>formData);
-        url = url + "?" + query.toString();
-        console.log(url);
-        let response: Response = await fetch(url);
-        let text: string = await response.text();
-        console.log("Antwort des Servers:" + text);
-        let anzeige: HTMLDivElement = <HTMLDivElement>document.getElementById("response");
-        anzeige.innerText = text;
     }
 
     async function absendenHtml(): Promise<void> {
@@ -50,7 +29,7 @@ namespace K3_A2 {
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         let response: Response = await fetch(url + "/json?" + query.toString());
         let jsonObject: Data = await response.json();
-        console.log("Serverantwort:");
+        console.log("Serverantwort: ");
         console.log(jsonObject);
     }
 }
