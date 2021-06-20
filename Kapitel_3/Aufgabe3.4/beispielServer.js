@@ -39,9 +39,6 @@ var P_3_4Server;
         if (_request.url) {
             let url = Url.parse(_request.url, true);
             if (url.pathname == "/getdata") {
-                /*for (let key in url.query) {
-                    _response.write(key + ":" + url.query[key] + "<br/>");
-                }*/
                 let registeredUsers = await getUsers();
                 let jsonString = JSON.stringify(registeredUsers);
                 _response.write(jsonString);

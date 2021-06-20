@@ -37,7 +37,6 @@ export namespace P_3_4Server {
         console.log("Listening");   //Konsolenausgabe
     }
 
-
     async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void>{
         console.log("I hear voices!");   //Konsolenausgabe
 
@@ -46,10 +45,6 @@ export namespace P_3_4Server {
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
             if (url.pathname == "/getdata") {
-
-                /*for (let key in url.query) {
-                    _response.write(key + ":" + url.query[key] + "<br/>");
-                }*/
                 let registeredUsers: User[] = await getUsers();
                 let jsonString: string = JSON.stringify(registeredUsers);
                 _response.write(jsonString);
@@ -62,8 +57,6 @@ export namespace P_3_4Server {
                 storeUser(url.query);
             }
         }
-
-
 
         //_response.write(_request.url);  //gibt die URL aus
         console.log(_request.url);
