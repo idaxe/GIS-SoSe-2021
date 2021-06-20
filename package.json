@@ -7,7 +7,7 @@
     "@types/node": "^15.9.0"
   },
   "scripts": {
-    "start": "node Kapitel_3/Aufgabe3.2/beispielServer.js"
+    "start": "node Kapitel_3/Aufgabe3.4/beispielServer.js"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/idaxe/GIS-SoSe-2021/issues"
   },
-  "homepage": "https://github.com/idaxe/GIS-SoSe-2021#readme"
+  "homepage": "https://github.com/idaxe/GIS-SoSe-2021#readme",
+  "dependencies": {
+    "@types/mongodb": "^3.6.18",
+    "mongodb": "^3.6.9"
+  }
 }
