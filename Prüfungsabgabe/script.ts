@@ -20,9 +20,9 @@ namespace pAbgabe {
         }*/
         console.log("test");
         console.log(text);
-        //let anzeige: HTMLDivElement = <HTMLDivElement>document.getElementById("response");
+        let anzeige: HTMLDivElement = <HTMLDivElement>document.getElementById("errorMessage");
         //console.log(text);
-        //anzeige.innerHTML = "Daten abgesendet!";
+        anzeige.innerHTML = "Daten abgesendet!";
         //document.getElementById("email").innerHTML = "";
 
         if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "Login.html") {
