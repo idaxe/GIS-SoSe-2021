@@ -6,6 +6,7 @@ export namespace pAbgabe {
 
     let port: number = Number(process.env.PORT);
     let nutzerCollection: Mongo.Collection;
+    let userCollection: Mongo.Collection;
     //let rezepteCollection: Mongo.Collection;
     let databaseURL: string = "mongodb+srv://idaxe:now_its_reyn_time@denny-lang-gis.mfnfb.mongodb.net/GIS_Prüfungsabgabe?retryWrites=true&w=majority";
     interface Nutzer {
@@ -19,6 +20,10 @@ export namespace pAbgabe {
         nutzer: string;
         passwort: string;
     }*/
+
+    interface User {
+        [type: string]: string | string[];
+    }
 
     startServer(port);
     connectToDatabase(databaseURL);
@@ -43,17 +48,18 @@ export namespace pAbgabe {
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-            let registered: Promise<boolean>;
+            //let registered: Promise<boolean>;
             if (url.pathname == "/loginUser") {
-                registered = checkUser(url.query);
+                console.log("test");
+                /*registered = checkUser(url.query);
                 if (await registered == true || await registered == false) {
                     _response.write(registered);
                 } else {
                     _response.write("Error!");
-                }
-                //let registeredUsers: User[] = await getUsers();
-                //let jsonString: string = JSON.stringify(registeredUsers);
-                //_response.write(jsonString);
+                }*/
+                let registeredUsers: User[] = await getUsers();
+                let jsonString: string = JSON.stringify(registeredUsers);
+                _response.write(jsonString);
             }
             else if (url.pathname == "/registerUser") {
                 checkUser(url.query);
@@ -81,5 +87,11 @@ export namespace pAbgabe {
     function storeUser(): boolean {
         nutzerCollection.find();
         return false;
+    }
+
+    async function getUsers(): Promise<User[]> {
+        let databaseUsers: User[];
+        databaseUsers = await userCollection.find().toArray();
+        return databaseUsers;
     }
 }

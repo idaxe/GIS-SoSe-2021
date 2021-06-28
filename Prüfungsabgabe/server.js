@@ -8,15 +8,12 @@ var pAbgabe;
 (function (pAbgabe) {
     let port = Number(process.env.PORT);
     let nutzerCollection;
+    let userCollection;
     //let rezepteCollection: Mongo.Collection;
     let databaseURL = "mongodb+srv://idaxe:now_its_reyn_time@denny-lang-gis.mfnfb.mongodb.net/GIS_Prüfungsabgabe?retryWrites=true&w=majority";
     if (!port) {
         port = 8100;
     }
-    /*interface Benutzer {
-        nutzer: string;
-        passwort: string;
-    }*/
     startServer(port);
     connectToDatabase(databaseURL);
     function startServer(_port) {
@@ -37,18 +34,18 @@ var pAbgabe;
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let url = Url.parse(_request.url, true);
-            let registered;
+            //let registered: Promise<boolean>;
             if (url.pathname == "/loginUser") {
-                registered = checkUser(url.query);
+                console.log("test");
+                /*registered = checkUser(url.query);
                 if (await registered == true || await registered == false) {
                     _response.write(registered);
-                }
-                else {
+                } else {
                     _response.write("Error!");
-                }
-                //let registeredUsers: User[] = await getUsers();
-                //let jsonString: string = JSON.stringify(registeredUsers);
-                //_response.write(jsonString);
+                }*/
+                let registeredUsers = await getUsers();
+                let jsonString = JSON.stringify(registeredUsers);
+                _response.write(jsonString);
             }
             else if (url.pathname == "/registerUser") {
                 checkUser(url.query);
@@ -74,6 +71,11 @@ var pAbgabe;
     function storeUser() {
         nutzerCollection.find();
         return false;
+    }
+    async function getUsers() {
+        let databaseUsers;
+        databaseUsers = await userCollection.find().toArray();
+        return databaseUsers;
     }
 })(pAbgabe = exports.pAbgabe || (exports.pAbgabe = {}));
 //# sourceMappingURL=server.js.map
