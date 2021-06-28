@@ -12,12 +12,14 @@ namespace pAbgabe {
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         let response: Response = await fetch(url + "/loginUser?" + query.toString());
         let text: string = await response.text();
-        let registered: boolean = await response.ok;
+        /*let registered: boolean = await response.ok;
         if (registered == true) {
             window.open("index.html", "_self");
         } else {
-            console.log(text);
-        }
+            console.log("error");
+        }*/
+        console.log("test");
+        console.log(text);
         //let anzeige: HTMLDivElement = <HTMLDivElement>document.getElementById("response");
         //console.log(text);
         //anzeige.innerHTML = "Daten abgesendet!";

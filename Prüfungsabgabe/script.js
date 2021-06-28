@@ -12,13 +12,14 @@ var pAbgabe;
         let query = new URLSearchParams(formData);
         let response = await fetch(url + "/loginUser?" + query.toString());
         let text = await response.text();
-        let registered = await response.ok;
+        /*let registered: boolean = await response.ok;
         if (registered == true) {
             window.open("index.html", "_self");
-        }
-        else {
-            console.log(text);
-        }
+        } else {
+            console.log("error");
+        }*/
+        console.log("test");
+        console.log(text);
         //let anzeige: HTMLDivElement = <HTMLDivElement>document.getElementById("response");
         //console.log(text);
         //anzeige.innerHTML = "Daten abgesendet!";
