@@ -6,7 +6,7 @@ var pAbgabe;
     let registerbttn = document.getElementById("register");
     registerbttn.addEventListener("click", userRegister);
     async function userLogin() {
-        //console.log("Daten senden");
+        console.log("Daten testen");
         let formData = new FormData(document.forms[0]);
         let url = "https://dennytestapp.herokuapp.com"; //http://localhost:8100 "https://dennytestapp.herokuapp.com"
         let query = new URLSearchParams(formData);

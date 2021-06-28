@@ -6,7 +6,7 @@ namespace pAbgabe {
     registerbttn.addEventListener("click", userRegister);
 
     async function userLogin(): Promise<void> {
-        //console.log("Daten senden");
+        console.log("Daten testen");
         let formData: FormData = new FormData(document.forms[0]);
         let url: string = "https://dennytestapp.herokuapp.com"; //http://localhost:8100 "https://dennytestapp.herokuapp.com"
         let query: URLSearchParams = new URLSearchParams(<any>formData);
