@@ -2,7 +2,7 @@
   "name": "gis-sose-2021",
   "description": "",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "Login.js",
   "devDependencies": {
     "@types/node": "^15.9.0"
   },
