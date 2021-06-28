@@ -2,12 +2,12 @@
   "name": "gis-sose-2021",
   "description": "",
   "version": "1.0.0",
-  "main": "Login.js",
+  "main": "index.js",
   "devDependencies": {
     "@types/node": "^15.9.0"
   },
   "scripts": {
-    "start": "node Kapitel_3/Aufgabe3.4/beispielServer.js"
+    "start": "node Prüfungsabgabe/server.js"
   },
   "repository": {
     "type": "git",
