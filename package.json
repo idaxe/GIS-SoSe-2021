@@ -7,7 +7,7 @@
     "@types/node": "^15.9.0"
   },
   "scripts": {
-    "start": "node Kapitel_3/Aufgabe3.4/beispielServer.js"
+    "start": "node Kapitel_3/Prüfungsabgabe/server.js"
   },
   "repository": {
     "type": "git",
