@@ -8,7 +8,7 @@ export namespace pAbgabe {
     let nutzerCollection: Mongo.Collection;
     let userCollection: Mongo.Collection;
     //let rezepteCollection: Mongo.Collection;
-    let databaseURL: string = "mongodb+srv://idaxe:now_its_reyn_time@denny-lang-gis.mfnfb.mongodb.net/GIS_Prüfungsabgabe?retryWrites=true&w=majority";
+    let databaseURL: string = "mongodb+srv://idaxe:now_its_reyn_time@denny-lang-gis.mfnfb.mongodb.net/GIS_3-4_Lindows_Registration?retryWrites=true&w=majority";
     interface Nutzer {
         [type: string]: string | string[];
     }
@@ -38,7 +38,7 @@ export namespace pAbgabe {
         let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        nutzerCollection = mongoClient.db("GIS_Prüfungsabgabe").collection("Nutzer");
+        nutzerCollection = mongoClient.db("GIS_3-4_Lindows_Registration").collection("R_Users");
         //rezepteCollection = mongoClient.db("GIS_Prüfungsabgabe").collection("Rezepte");
     }
 

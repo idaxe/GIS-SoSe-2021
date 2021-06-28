@@ -10,7 +10,7 @@ var pAbgabe;
     let nutzerCollection;
     let userCollection;
     //let rezepteCollection: Mongo.Collection;
-    let databaseURL = "mongodb+srv://idaxe:now_its_reyn_time@denny-lang-gis.mfnfb.mongodb.net/GIS_Prüfungsabgabe?retryWrites=true&w=majority";
+    let databaseURL = "mongodb+srv://idaxe:now_its_reyn_time@denny-lang-gis.mfnfb.mongodb.net/GIS_3-4_Lindows_Registration?retryWrites=true&w=majority";
     if (!port) {
         port = 8100;
     }
@@ -25,7 +25,7 @@ var pAbgabe;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        nutzerCollection = mongoClient.db("GIS_Prüfungsabgabe").collection("Nutzer");
+        nutzerCollection = mongoClient.db("GIS_3-4_Lindows_Registration").collection("R_Users");
         //rezepteCollection = mongoClient.db("GIS_Prüfungsabgabe").collection("Rezepte");
     }
     async function handleRequest(_request, _response) {
