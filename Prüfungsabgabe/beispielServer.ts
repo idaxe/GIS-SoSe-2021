@@ -12,7 +12,7 @@ export namespace pAbgabe {
     let port: number = Number(process.env.PORT);    //Holt den Port
     if (!port)
         port = 8100;    //wenn kein Port vorhanden dann wird Port = 8100
-    let databaseURL: string = "mongodb+srv://idaxe:now_its_reyn_time@denny-lang-gis.mfnfb.mongodb.net/GIS_3-4_Lindows_Registration?retryWrites=true&w=majority"; //mongodb://localhost:27017
+    let databaseURL: string = "mongodb+srv://idaxe:now_its_reyn_time@denny-lang-gis.mfnfb.mongodb.net/GIS_Prüfungsabgabe?retryWrites=true&w=majority"; //mongodb://localhost:27017
 
     startServer(port);
     connectToDatabase(databaseURL);
@@ -29,7 +29,7 @@ export namespace pAbgabe {
         let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        userCollection = mongoClient.db("GIS_3-4_Lindows_Registration").collection("R_Users");
+        userCollection = mongoClient.db("GIS_Prüfungsabgabe").collection("Nutzer");
         console.log("Database Connection:" + userCollection != undefined);
     }
 
