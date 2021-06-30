@@ -38,12 +38,12 @@ var P_3_4Server;
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let url = Url.parse(_request.url, true);
-            if (url.pathname == "/getdata") {
+            if (url.pathname == "/loginUser") {
                 let registeredUsers = await getUsers();
                 let jsonString = JSON.stringify(registeredUsers);
                 _response.write(jsonString);
             }
-            else if (url.pathname == "/savedata") {
+            else if (url.pathname == "/registerUser") {
                 let jsonString = JSON.stringify(url.query);
                 _response.write(jsonString);
                 console.log(url.query);

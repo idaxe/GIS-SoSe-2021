@@ -44,12 +44,12 @@ export namespace P_3_4Server {
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-            if (url.pathname == "/getdata") {
+            if (url.pathname == "/loginUser") {
                 let registeredUsers: User[] = await getUsers();
                 let jsonString: string = JSON.stringify(registeredUsers);
                 _response.write(jsonString);
             }
-            else if (url.pathname == "/savedata") {
+            else if (url.pathname == "/registerUser") {
                 let jsonString: string = JSON.stringify(url.query);
                 _response.write(jsonString);
                 console.log(url.query);
