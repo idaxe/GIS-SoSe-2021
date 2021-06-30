@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.P_3_4Server = void 0;
+exports.pAbgabe = void 0;
 const Http = require("http");
 const Url = require("url");
 const Mongo = require("mongodb");
 //import { type } from "os";
-var P_3_4Server;
-(function (P_3_4Server) {
+var pAbgabe;
+(function (pAbgabe) {
     console.log("Starting server"); //Konsolenausgabe
     let userCollection;
     let port = Number(process.env.PORT); //Holt den Port
@@ -62,5 +62,5 @@ var P_3_4Server;
         databaseUsers = await userCollection.find().toArray();
         return databaseUsers;
     }
-})(P_3_4Server = exports.P_3_4Server || (exports.P_3_4Server = {}));
+})(pAbgabe = exports.pAbgabe || (exports.pAbgabe = {}));
 //# sourceMappingURL=beispielServer.js.map

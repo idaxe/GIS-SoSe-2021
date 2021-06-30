@@ -3,7 +3,7 @@ import * as Url from "url";
 import * as Mongo from "mongodb";
 //import { type } from "os";
 
-export namespace P_3_4Server {
+export namespace pAbgabe {
     interface User {
         [type: string]: string | string[];
     }
