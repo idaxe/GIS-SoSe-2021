@@ -47,7 +47,8 @@ export namespace pAbgabe {
             if (url.pathname == "/loginUser") {
                 let registeredUsers: User[] = await getUsers();
                 let jsonString: string = JSON.stringify(registeredUsers);
-                _response.write(jsonString);
+                console.log(jsonString);
+                _response.write("jsonString");
             }
             else if (url.pathname == "/registerUser") {
                 let jsonString: string = JSON.stringify(url.query);

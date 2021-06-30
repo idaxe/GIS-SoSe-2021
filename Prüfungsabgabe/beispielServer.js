@@ -41,7 +41,8 @@ var pAbgabe;
             if (url.pathname == "/loginUser") {
                 let registeredUsers = await getUsers();
                 let jsonString = JSON.stringify(registeredUsers);
-                _response.write(jsonString);
+                console.log(jsonString);
+                _response.write("jsonString");
             }
             else if (url.pathname == "/registerUser") {
                 let jsonString = JSON.stringify(url.query);
