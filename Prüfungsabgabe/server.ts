@@ -62,9 +62,9 @@ export namespace pAbgabe {
                 } else {
                     _response.write("Error!");
                 }*/
-                let registeredUsers: User[] = await getUsers();
-                let jsonString: string = JSON.stringify(registeredUsers);
-                _response.write(jsonString);
+                //let registeredUsers: User[] = await getUsers();
+                //let jsonString: string = JSON.stringify(registeredUsers);
+                _response.write("testing");
             }
             else if (url.pathname == "/registerUser") {
                 checkUser(url.query);
@@ -97,9 +97,9 @@ export namespace pAbgabe {
         userCollection.insert(_user);
     }
 
-    async function getUsers(): Promise<User[]> {
+    /*async function getUsers(): Promise<User[]> {
         let databaseUsers: User[];
         databaseUsers = await userCollection.find().toArray();
         return databaseUsers;
-    }
+    }*/
 }

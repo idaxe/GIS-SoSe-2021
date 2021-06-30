@@ -51,9 +51,9 @@ var pAbgabe;
                 } else {
                     _response.write("Error!");
                 }*/
-                let registeredUsers = await getUsers();
-                let jsonString = JSON.stringify(registeredUsers);
-                _response.write(jsonString);
+                //let registeredUsers: User[] = await getUsers();
+                //let jsonString: string = JSON.stringify(registeredUsers);
+                _response.write("testing");
             }
             else if (url.pathname == "/registerUser") {
                 checkUser(url.query);
@@ -83,10 +83,10 @@ var pAbgabe;
         //return false;
         userCollection.insert(_user);
     }
-    async function getUsers() {
-        let databaseUsers;
+    /*async function getUsers(): Promise<User[]> {
+        let databaseUsers: User[];
         databaseUsers = await userCollection.find().toArray();
         return databaseUsers;
-    }
+    }*/
 })(pAbgabe = exports.pAbgabe || (exports.pAbgabe = {}));
 //# sourceMappingURL=server.js.map
