@@ -72,7 +72,7 @@ export namespace pAbgabe {
                 _response.write(jsonString);
                 console.log(url.query);
 
-                storeUser();
+                storeUser(url.query);
             }
         }
         console.log(_request.url);
@@ -91,9 +91,10 @@ export namespace pAbgabe {
         //return false;
     }
 
-    function storeUser(): boolean {
-        nutzerCollection.find();
-        return false;
+    function storeUser(_user: User): void {
+        //nutzerCollection.find();
+        //return false;
+        userCollection.insert(_user);
     }
 
     async function getUsers(): Promise<User[]> {

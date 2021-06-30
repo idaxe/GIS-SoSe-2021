@@ -60,7 +60,7 @@ var pAbgabe;
                 let jsonString = JSON.stringify(url.query);
                 _response.write(jsonString);
                 console.log(url.query);
-                storeUser();
+                storeUser(url.query);
             }
         }
         console.log(_request.url);
@@ -78,9 +78,10 @@ var pAbgabe;
         }
         //return false;
     }
-    function storeUser() {
-        nutzerCollection.find();
-        return false;
+    function storeUser(_user) {
+        //nutzerCollection.find();
+        //return false;
+        userCollection.insert(_user);
     }
     async function getUsers() {
         let databaseUsers;
