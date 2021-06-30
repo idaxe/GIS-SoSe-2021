@@ -29,6 +29,7 @@ export namespace pAbgabe {
     function startServer(_port: number): void {
         let server: Http.Server = Http.createServer();
         server.addListener("request", handleRequest);
+        server.addListener("listening", handleListen);
         server.listen(_port);
     }
 
@@ -38,6 +39,10 @@ export namespace pAbgabe {
         await mongoClient.connect();
         nutzerCollection = mongoClient.db("GIS_3-4_Lindows_Registration").collection("R_Users");
         //rezepteCollection = mongoClient.db("GIS_Prüfungsabgabe").collection("Rezepte");
+    }
+
+    function handleListen(): void {
+        console.log("Listening");
     }
 
     async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
