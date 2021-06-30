@@ -6,14 +6,16 @@ const Url = require("url");
 const Mongo = require("mongodb");
 var pAbgabe;
 (function (pAbgabe) {
-    let port = Number(process.env.PORT);
     let nutzerCollection;
     let userCollection;
-    //let rezepteCollection: Mongo.Collection;
-    let databaseURL = "mongodb+srv://idaxe:now_its_reyn_time@denny-lang-gis.mfnfb.mongodb.net/GIS_3-4_Lindows_Registration?retryWrites=true&w=majority";
-    if (!port) {
+    let port = Number(process.env.PORT);
+    if (!port)
         port = 8100;
-    }
+    let databaseURL = "mongodb+srv://idaxe:now_its_reyn_time@denny-lang-gis.mfnfb.mongodb.net/GIS_3-4_Lindows_Registration?retryWrites=true&w=majority";
+    /*interface Benutzer {
+        nutzer: string;
+        passwort: string;
+    }*/
     startServer(port);
     connectToDatabase(databaseURL);
     function startServer(_port) {

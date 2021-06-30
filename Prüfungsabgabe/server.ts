@@ -4,26 +4,24 @@ import * as Mongo from "mongodb";
 
 export namespace pAbgabe {
 
-    let port: number = Number(process.env.PORT);
+    
     let nutzerCollection: Mongo.Collection;
     let userCollection: Mongo.Collection;
     //let rezepteCollection: Mongo.Collection;
-    let databaseURL: string = "mongodb+srv://idaxe:now_its_reyn_time@denny-lang-gis.mfnfb.mongodb.net/GIS_3-4_Lindows_Registration?retryWrites=true&w=majority";
     interface Nutzer {
         [type: string]: string | string[];
     }
-    if (!port) {
-        port = 8100;
+    interface User {
+        [type: string]: string | string[];
     }
-
+    let port: number = Number(process.env.PORT);
+    if (!port) 
+        port = 8100;
+    let databaseURL: string = "mongodb+srv://idaxe:now_its_reyn_time@denny-lang-gis.mfnfb.mongodb.net/GIS_3-4_Lindows_Registration?retryWrites=true&w=majority";
     /*interface Benutzer {
         nutzer: string;
         passwort: string;
     }*/
-
-    interface User {
-        [type: string]: string | string[];
-    }
 
     startServer(port);
     connectToDatabase(databaseURL);
