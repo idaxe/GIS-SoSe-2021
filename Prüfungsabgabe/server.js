@@ -20,6 +20,7 @@ var pAbgabe;
     connectToDatabase(databaseURL);
     function startServer(_port) {
         let server = Http.createServer();
+        console.log("Starting on Port:" + _port);
         server.addListener("request", handleRequest);
         server.addListener("listening", handleListen);
         server.listen(_port);
@@ -30,6 +31,7 @@ var pAbgabe;
         await mongoClient.connect();
         nutzerCollection = mongoClient.db("GIS_3-4_Lindows_Registration").collection("R_Users");
         //rezepteCollection = mongoClient.db("GIS_Prüfungsabgabe").collection("Rezepte");
+        console.log("Database Connection:" + userCollection != undefined);
     }
     function handleListen() {
         console.log("Listening");
@@ -61,6 +63,8 @@ var pAbgabe;
                 storeUser();
             }
         }
+        console.log(_request.url);
+        _response.end();
     }
     async function checkUser(_nutzer) {
         //let exists: boolean;

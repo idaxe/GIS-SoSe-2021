@@ -26,8 +26,9 @@ export namespace pAbgabe {
     startServer(port);
     connectToDatabase(databaseURL);
 
-    function startServer(_port: number): void {
+    function startServer(_port: number | string): void {
         let server: Http.Server = Http.createServer();
+        console.log("Starting on Port:" + _port);
         server.addListener("request", handleRequest);
         server.addListener("listening", handleListen);
         server.listen(_port);
@@ -39,6 +40,7 @@ export namespace pAbgabe {
         await mongoClient.connect();
         nutzerCollection = mongoClient.db("GIS_3-4_Lindows_Registration").collection("R_Users");
         //rezepteCollection = mongoClient.db("GIS_Prüfungsabgabe").collection("Rezepte");
+        console.log("Database Connection:" + userCollection != undefined);
     }
 
     function handleListen(): void {
@@ -73,6 +75,8 @@ export namespace pAbgabe {
                 storeUser();
             }
         }
+        console.log(_request.url);
+        _response.end();
     }
 
     async function checkUser(_nutzer: Nutzer): Promise<boolean> {
