@@ -48,11 +48,11 @@ export namespace pAbgabe {
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
             if (url.pathname == "/loginUser") { ////user checken
-                let registeredUsers: Nutzer[] = await getUsers();
+                //let registeredUsers: Nutzer[] = await getUsers();
                 let exists: boolean = await checkUser(url.query);
                 console.log(await checkUser(url.query));
                 if (exists == true) {
-                    let jsonString: string = JSON.stringify(registeredUsers);
+                    let jsonString: string = JSON.stringify(url.query);
                     console.log(jsonString);
                     _response.write(jsonString);
                 } else {
@@ -61,11 +61,17 @@ export namespace pAbgabe {
                 
             }
             else if (url.pathname == "/registerUser") { //user speichern
-                let jsonString: string = JSON.stringify(url.query);
-                _response.write(jsonString);
-                console.log(url.query);
-
-                storeUser(url.query);
+                //let registeredUsers: Nutzer[] = await getUsers();
+                let exists: boolean = await checkUser(url.query);
+                if (exists == false) {
+                    let jsonString: string = JSON.stringify(url.query);
+                    _response.write(jsonString);
+                    console.log(url.query);
+    
+                    storeUser(url.query);
+                } else {
+                    _response.write("Nutzer existiert bereits!");
+                }
             }
         }
 
@@ -78,11 +84,11 @@ export namespace pAbgabe {
         nutzerCollection.insert(_nutzer);
     }
 
-    async function getUsers(): Promise<Nutzer[]> {
+    /*async function getUsers(): Promise<Nutzer[]> {
         let databaseUsers: Nutzer[];
         databaseUsers = await nutzerCollection.find().toArray();
         return databaseUsers;
-    }
+    }*/
 
     async function checkUser(_nutzer: Nutzer): Promise<boolean> {
         //let exists: boolean;

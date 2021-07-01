@@ -20,6 +20,10 @@ var pAbgabe;
         }*/
         console.log("test");
         console.log(text);
+        sessionStorage.clear();
+        if (text != "Nutzer existiert nicht!") {
+            sessionStorage.setItem("nutzer", JSON.stringify(text));
+        }
         let anzeige = document.getElementById("errorMessage");
         //console.log(text);
         anzeige.innerHTML = "Daten abgesendet!";
