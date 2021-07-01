@@ -54,7 +54,7 @@ export namespace pAbgabe {
                 console.log(await checkUser(url.query));
                 let jsonString: string = JSON.stringify(registeredUsers);
                 console.log(jsonString);
-                _response.write("jsonString");
+                _response.write(jsonString);
             }
             else if (url.pathname == "/registerUser") {
                 let jsonString: string = JSON.stringify(url.query);
