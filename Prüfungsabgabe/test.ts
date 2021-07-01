@@ -49,10 +49,16 @@ export namespace pAbgabe {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
             if (url.pathname == "/loginUser") { ////user checken
                 let registeredUsers: Nutzer[] = await getUsers();
+                let exists: boolean = await checkUser(url.query);
                 console.log(await checkUser(url.query));
-                let jsonString: string = JSON.stringify(registeredUsers);
-                console.log(jsonString);
-                _response.write(jsonString);
+                if (exists == true) {
+                    let jsonString: string = JSON.stringify(registeredUsers);
+                    console.log(jsonString);
+                    _response.write(jsonString);
+                } else {
+                    _response.write("Nutzer existiert nicht!");
+                }
+                
             }
             else if (url.pathname == "/registerUser") { //user speichern
                 let jsonString: string = JSON.stringify(url.query);

@@ -41,10 +41,16 @@ var pAbgabe;
             let url = Url.parse(_request.url, true);
             if (url.pathname == "/loginUser") { ////user checken
                 let registeredUsers = await getUsers();
+                let exists = await checkUser(url.query);
                 console.log(await checkUser(url.query));
-                let jsonString = JSON.stringify(registeredUsers);
-                console.log(jsonString);
-                _response.write(jsonString);
+                if (exists == true) {
+                    let jsonString = JSON.stringify(registeredUsers);
+                    console.log(jsonString);
+                    _response.write(jsonString);
+                }
+                else {
+                    _response.write("Nutzer existiert nicht!");
+                }
             }
             else if (url.pathname == "/registerUser") { //user speichern
                 let jsonString = JSON.stringify(url.query);
