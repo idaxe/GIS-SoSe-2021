@@ -10,7 +10,7 @@ export namespace pAbgabe {
     interface Nutzer {
         [type: string]: string | string[];
     }
-    console.log("Starting server"); //Konsolenausgabe
+    console.log("Starting server");
     let nutzerCollection: Mongo.Collection;
     let port: number = Number(process.env.PORT);    //Holt den Port
     if (!port)
@@ -47,16 +47,14 @@ export namespace pAbgabe {
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-            if (url.pathname == "/loginUser") {
-
-
+            if (url.pathname == "/loginUser") { ////user checken
                 let registeredUsers: Nutzer[] = await getUsers();
                 console.log(await checkUser(url.query));
                 let jsonString: string = JSON.stringify(registeredUsers);
                 console.log(jsonString);
                 _response.write(jsonString);
             }
-            else if (url.pathname == "/registerUser") {
+            else if (url.pathname == "/registerUser") { //user speichern
                 let jsonString: string = JSON.stringify(url.query);
                 _response.write(jsonString);
                 console.log(url.query);

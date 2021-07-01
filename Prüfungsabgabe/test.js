@@ -7,7 +7,7 @@ const Mongo = require("mongodb");
 //import { type } from "os";
 var pAbgabe;
 (function (pAbgabe) {
-    console.log("Starting server"); //Konsolenausgabe
+    console.log("Starting server");
     let nutzerCollection;
     let port = Number(process.env.PORT); //Holt den Port
     if (!port)
@@ -39,14 +39,14 @@ var pAbgabe;
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let url = Url.parse(_request.url, true);
-            if (url.pathname == "/loginUser") {
+            if (url.pathname == "/loginUser") { ////user checken
                 let registeredUsers = await getUsers();
                 console.log(await checkUser(url.query));
                 let jsonString = JSON.stringify(registeredUsers);
                 console.log(jsonString);
                 _response.write(jsonString);
             }
-            else if (url.pathname == "/registerUser") {
+            else if (url.pathname == "/registerUser") { //user speichern
                 let jsonString = JSON.stringify(url.query);
                 _response.write(jsonString);
                 console.log(url.query);
