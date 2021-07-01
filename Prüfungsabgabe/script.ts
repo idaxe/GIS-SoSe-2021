@@ -37,7 +37,7 @@ namespace pAbgabe {
         let formData: FormData = new FormData(document.forms[0]);
         let url: string = "https://dennytestapp.herokuapp.com"; //http://localhost:8100
         let query: URLSearchParams = new URLSearchParams(<any>formData);
-        let response: Response = await fetch(url + "/loginUser?" + query.toString());
+        let response: Response = await fetch(url + "/registerUser?" + query.toString());
         console.log(response);
 
         if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "Login.html") {

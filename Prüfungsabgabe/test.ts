@@ -16,7 +16,7 @@ export namespace pAbgabe {
     if (!port)
         port = 8100;    //wenn kein Port vorhanden dann wird Port = 8100
     let databaseURL: string = "mongodb+srv://idaxe:now_its_reyn_time@denny-lang-gis.mfnfb.mongodb.net/GIS_Prüfungsabgabe?retryWrites=true&w=majority"; //mongodb://localhost:27017
-
+                             //mongodb+srv://idaxe:now_its_reyn_time@denny-lang-gis.mfnfb.mongodb.net/GIS_Prüfungsabgabe?retryWrites=true&w=majority
     startServer(port);
     connectToDatabase(databaseURL);
 
