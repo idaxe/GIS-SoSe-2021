@@ -40,7 +40,7 @@ var pAbgabe;
             let url = Url.parse(_request.url, true);
             if (url.pathname == "/loginUser") {
                 let registeredUsers = await getUsers();
-                await checkUser(url.query);
+                console.log(await checkUser(url.query));
                 let jsonString = JSON.stringify(registeredUsers);
                 console.log(jsonString);
                 _response.write("jsonString");

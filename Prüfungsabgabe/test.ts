@@ -51,7 +51,7 @@ export namespace pAbgabe {
 
 
                 let registeredUsers: User[] = await getUsers();
-                await checkUser(url.query);
+                console.log(await checkUser(url.query));
                 let jsonString: string = JSON.stringify(registeredUsers);
                 console.log(jsonString);
                 _response.write("jsonString");
