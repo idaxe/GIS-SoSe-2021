@@ -4,9 +4,9 @@ import * as Mongo from "mongodb";
 //import { type } from "os";
 
 export namespace pAbgabe {
-    interface User {
+    /*interface User {
         [type: string]: string | string[];
-    }
+    }*/
     interface Nutzer {
         [type: string]: string | string[];
     }
@@ -50,7 +50,7 @@ export namespace pAbgabe {
             if (url.pathname == "/loginUser") {
 
 
-                let registeredUsers: User[] = await getUsers();
+                let registeredUsers: Nutzer[] = await getUsers();
                 console.log(await checkUser(url.query));
                 let jsonString: string = JSON.stringify(registeredUsers);
                 console.log(jsonString);
@@ -70,12 +70,12 @@ export namespace pAbgabe {
         _response.end();    //beendet die Antwort
     }
 
-    function storeUser(_user: User): void {
-        nutzerCollection.insert(_user);
+    function storeUser(_nutzer: Nutzer): void {
+        nutzerCollection.insert(_nutzer);
     }
 
-    async function getUsers(): Promise<User[]> {
-        let databaseUsers: User[];
+    async function getUsers(): Promise<Nutzer[]> {
+        let databaseUsers: Nutzer[];
         databaseUsers = await nutzerCollection.find().toArray();
         return databaseUsers;
     }

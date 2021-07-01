@@ -56,8 +56,8 @@ var pAbgabe;
         console.log(_request.url);
         _response.end(); //beendet die Antwort
     }
-    function storeUser(_user) {
-        nutzerCollection.insert(_user);
+    function storeUser(_nutzer) {
+        nutzerCollection.insert(_nutzer);
     }
     async function getUsers() {
         let databaseUsers;
