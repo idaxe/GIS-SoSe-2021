@@ -7,8 +7,11 @@ export namespace pAbgabe {
     interface User {
         [type: string]: string | string[];
     }
+    interface Nutzer {
+        [type: string]: string | string[];
+    }
     console.log("Starting server"); //Konsolenausgabe
-    let userCollection: Mongo.Collection;
+    let nutzerCollection: Mongo.Collection;
     let port: number = Number(process.env.PORT);    //Holt den Port
     if (!port)
         port = 8100;    //wenn kein Port vorhanden dann wird Port = 8100
@@ -29,8 +32,8 @@ export namespace pAbgabe {
         let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        userCollection = mongoClient.db("GIS_Prüfungsabgabe").collection("Nutzer");
-        console.log("Database Connection:" + userCollection != undefined);
+        nutzerCollection = mongoClient.db("GIS_Prüfungsabgabe").collection("Nutzer");
+        console.log("Database Connection:" + nutzerCollection != undefined);
     }
 
     function handleListen(): void {
@@ -45,7 +48,10 @@ export namespace pAbgabe {
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
             if (url.pathname == "/loginUser") {
+
+
                 let registeredUsers: User[] = await getUsers();
+                await checkUser(url.query);
                 let jsonString: string = JSON.stringify(registeredUsers);
                 console.log(jsonString);
                 _response.write("jsonString");
@@ -65,12 +71,24 @@ export namespace pAbgabe {
     }
 
     function storeUser(_user: User): void {
-        userCollection.insert(_user);
+        nutzerCollection.insert(_user);
     }
 
     async function getUsers(): Promise<User[]> {
         let databaseUsers: User[];
-        databaseUsers = await userCollection.find().toArray();
+        databaseUsers = await nutzerCollection.find().toArray();
         return databaseUsers;
+    }
+
+    async function checkUser(_nutzer: Nutzer): Promise<boolean> {
+        //let exists: boolean;
+        //let test: Benutzer = nutzerCollection.findOne(_nutzer);
+        let exist: Nutzer = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
+        if (exist != undefined) {
+            return true;
+        } else { 
+            return false;
+        }
+        //return false;
     }
 }

@@ -4,64 +4,89 @@ exports.pAbgabe = void 0;
 const Http = require("http");
 const Url = require("url");
 const Mongo = require("mongodb");
-//import { type } from "os";
 var pAbgabe;
 (function (pAbgabe) {
-    console.log("Starting server"); //Konsolenausgabe
+    let nutzerCollection;
     let userCollection;
-    let port = Number(process.env.PORT); //Holt den Port
+    let port = Number(process.env.PORT);
     if (!port)
-        port = 8100; //wenn kein Port vorhanden dann wird Port = 8100
-    let databaseURL = "mongodb+srv://idaxe:now_its_reyn_time@denny-lang-gis.mfnfb.mongodb.net/GIS_Prüfungsabgabe?retryWrites=true&w=majority"; //mongodb://localhost:27017
+        port = 8100;
+    let databaseURL = "mongodb+srv://idaxe:now_its_reyn_time@denny-lang-gis.mfnfb.mongodb.net/GIS_3-4_Lindows_Registration?retryWrites=true&w=majority";
+    /*interface Benutzer {
+        nutzer: string;
+        passwort: string;
+    }*/
     startServer(port);
     connectToDatabase(databaseURL);
     function startServer(_port) {
-        let server = Http.createServer(); //erstellt (http) Server
+        let server = Http.createServer();
         console.log("Starting on Port:" + _port);
-        server.addListener("request", handleRequest); //Fügt Listener hinzu
-        server.addListener("listening", handleListen); //Fügt Listener hinzu
-        server.listen(_port); //erstellt einen listener für diesen spezifischen Port  
+        server.addListener("request", handleRequest);
+        server.addListener("listening", handleListen);
+        server.listen(_port);
     }
     async function connectToDatabase(_url) {
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        userCollection = mongoClient.db("GIS_Prüfungsabgabe").collection("Nutzer");
+        nutzerCollection = mongoClient.db("GIS_3-4_Lindows_Registration").collection("R_Users");
+        //rezepteCollection = mongoClient.db("GIS_Prüfungsabgabe").collection("Rezepte");
         console.log("Database Connection:" + userCollection != undefined);
     }
     function handleListen() {
-        console.log("Listening"); //Konsolenausgabe
+        console.log("Listening");
     }
     async function handleRequest(_request, _response) {
-        console.log("I hear voices!"); //Konsolenausgabe
+        console.log("ready");
         _response.setHeader("content-type", "text/html; charset=utf-8"); //setzt/ersetzt werte des headers
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let url = Url.parse(_request.url, true);
+            //let registered: Promise<boolean>;
             if (url.pathname == "/loginUser") {
-                let registeredUsers = await getUsers();
-                let jsonString = JSON.stringify(registeredUsers);
-                console.log(jsonString);
-                _response.write("jsonString");
+                console.log("test");
+                /*registered = checkUser(url.query);
+                if (await registered == true || await registered == false) {
+                    _response.write(registered);
+                } else {
+                    _response.write("Error!");
+                }*/
+                //let registeredUsers: User[] = await getUsers();
+                //let jsonString: string = JSON.stringify(registeredUsers);
+                _response.write("testing");
             }
             else if (url.pathname == "/registerUser") {
+                checkUser(url.query);
                 let jsonString = JSON.stringify(url.query);
                 _response.write(jsonString);
                 console.log(url.query);
                 storeUser(url.query);
             }
         }
-        //_response.write(_request.url);  //gibt die URL aus
         console.log(_request.url);
-        _response.end(); //beendet die Antwort
+        _response.end();
+    }
+    async function checkUser(_nutzer) {
+        //let exists: boolean;
+        //let test: Benutzer = nutzerCollection.findOne(_nutzer);
+        let exist = await nutzerCollection.findOne({ nutzername: _nutzer.nutzername });
+        if (exist != undefined) {
+            return true;
+        }
+        else {
+            return false;
+        }
+        //return false;
     }
     function storeUser(_user) {
+        //nutzerCollection.find();
+        //return false;
         userCollection.insert(_user);
     }
-    async function getUsers() {
-        let databaseUsers;
+    /*async function getUsers(): Promise<User[]> {
+        let databaseUsers: User[];
         databaseUsers = await userCollection.find().toArray();
         return databaseUsers;
-    }
+    }*/
 })(pAbgabe = exports.pAbgabe || (exports.pAbgabe = {}));
 //# sourceMappingURL=server.js.map
