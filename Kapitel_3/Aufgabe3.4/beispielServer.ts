@@ -37,7 +37,7 @@ export namespace P_3_4Server {
         console.log("Listening");   //Konsolenausgabe
     }
 
-    async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void>{
+    async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
         console.log("I hear voices!");   //Konsolenausgabe
 
         _response.setHeader("content-type", "text/html; charset=utf-8");    //setzt/ersetzt werte des headers
