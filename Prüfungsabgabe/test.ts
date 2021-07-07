@@ -12,6 +12,7 @@ export namespace pAbgabe {
     }
     console.log("Starting server");
     let nutzerCollection: Mongo.Collection;
+    //let rezeptCollection: Mongo.Collection;
     let port: number = Number(process.env.PORT);    //Holt den Port
     if (!port)
         port = 8100;    //wenn kein Port vorhanden dann wird Port = 8100

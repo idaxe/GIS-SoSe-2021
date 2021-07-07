@@ -9,6 +9,7 @@ var pAbgabe;
 (function (pAbgabe) {
     console.log("Starting server");
     let nutzerCollection;
+    //let rezeptCollection: Mongo.Collection;
     let port = Number(process.env.PORT); //Holt den Port
     if (!port)
         port = 8100; //wenn kein Port vorhanden dann wird Port = 8100
