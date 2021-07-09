@@ -9,7 +9,7 @@ var pAbgabe;
 (function (pAbgabe) {
     console.log("Starting server");
     let nutzerCollection;
-    //let rezeptCollection: Mongo.Collection;
+    let rezeptCollection;
     let port = Number(process.env.PORT); //Holt den Port
     if (!port)
         port = 8100; //wenn kein Port vorhanden dann wird Port = 8100
@@ -29,6 +29,7 @@ var pAbgabe;
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
         nutzerCollection = mongoClient.db("GIS_Prüfungsabgabe").collection("Nutzer");
+        rezeptCollection = mongoClient.db("GIS_Prüfungsabgabe").collection("Rezepte");
         console.log("Database Connection:" + nutzerCollection != undefined);
     }
     function handleListen() {
@@ -66,6 +67,12 @@ var pAbgabe;
                     _response.write("Nutzer existiert bereits!");
                 }
             }
+            else if (url.pathname == "/saveRecipe") {
+                storeRecipe(url.query);
+            }
+            else {
+                _response.write("Fehler");
+            }
         }
         //_response.write(_request.url);  //gibt die URL aus
         console.log(_request.url);
@@ -73,6 +80,9 @@ var pAbgabe;
     }
     function storeUser(_nutzer) {
         nutzerCollection.insert(_nutzer);
+    }
+    function storeRecipe(_rezept) {
+        rezeptCollection.insert(_rezept);
     }
     /*async function getUsers(): Promise<Nutzer[]> {
         let databaseUsers: Nutzer[];

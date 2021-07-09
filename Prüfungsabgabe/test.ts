@@ -10,9 +10,12 @@ export namespace pAbgabe {
     interface Nutzer {
         [type: string]: string | string[];
     }
+    interface Rezept {
+        [type: string]: string | string[];
+    }
     console.log("Starting server");
     let nutzerCollection: Mongo.Collection;
-    //let rezeptCollection: Mongo.Collection;
+    let rezeptCollection: Mongo.Collection;
     let port: number = Number(process.env.PORT);    //Holt den Port
     if (!port)
         port = 8100;    //wenn kein Port vorhanden dann wird Port = 8100
@@ -34,6 +37,7 @@ export namespace pAbgabe {
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
         nutzerCollection = mongoClient.db("GIS_Prüfungsabgabe").collection("Nutzer");
+        rezeptCollection = mongoClient.db("GIS_Prüfungsabgabe").collection("Rezepte");
         console.log("Database Connection:" + nutzerCollection != undefined);
     }
 
@@ -74,6 +78,9 @@ export namespace pAbgabe {
                     _response.write("Nutzer existiert bereits!");
                 }
             }
+            else if (url.pathname == "/saveRecipe") {
+                storeRecipe(url.query);
+            } else { _response.write("Fehler"); }
         }
 
         //_response.write(_request.url);  //gibt die URL aus
@@ -83,6 +90,10 @@ export namespace pAbgabe {
 
     function storeUser(_nutzer: Nutzer): void {
         nutzerCollection.insert(_nutzer);
+    }
+
+    function storeRecipe(_rezept: Rezept): void {
+        rezeptCollection.insert(_rezept);
     }
 
     /*async function getUsers(): Promise<Nutzer[]> {
