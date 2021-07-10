@@ -20,6 +20,8 @@
     <main>
 
         <form>
+            <label for="recipeName">Name des Rezepts</label>
+            <input type="text" id="recipeName" name="recipeName"><br>
             <label for="zutat1">Zutat1</label><br>
             <input type="text" id="zutat1" name="zutat1"><br>
             <label for="zutat2">Zutat2</label><br>
@@ -41,7 +43,19 @@
             <br>
             
             <button type="button" id="save">Rezept Speichern</button>
+            <button type="button" id="update">Rezept Updaten</button>
+            <div id="response_alt"></div>
         </form>
+
+        <div id="deleteRecipe">
+            <h2>Löschen eines Rezepts</h2>
+            <p>Geben Sie bitte den Namen des zu löschenden Rezepts ein.</p>
+            <input type="text" id="deleteRezept" name="deleteRezept" value=""><br>
+            <button type="button" id="delete">Rezept Löschen</button>
+            <div id="response"></div>
+        </div>
+
+        <div id="userRezepte"></div>
 
     </main>
 
