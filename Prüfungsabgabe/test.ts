@@ -100,8 +100,10 @@ export namespace pAbgabe {
     }
 
     async function getUserRecipes(_nutzer: Nutzer): Promise<Rezept[]> {
+        console.log(_nutzer);
         let recipes: Rezept[];
         recipes = await rezeptCollection.find({creator: _nutzer.nutzername}).toArray();
+        console.log(recipes);
         return recipes;
     }
 

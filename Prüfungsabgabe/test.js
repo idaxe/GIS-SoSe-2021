@@ -87,8 +87,10 @@ var pAbgabe;
         rezeptCollection.insert(_rezept);
     }
     async function getUserRecipes(_nutzer) {
+        console.log(_nutzer);
         let recipes;
         recipes = await rezeptCollection.find({ creator: _nutzer.nutzername }).toArray();
+        console.log(recipes);
         return recipes;
     }
     /*async function getUsers(): Promise<Nutzer[]> {
