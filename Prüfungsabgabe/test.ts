@@ -123,6 +123,7 @@ export namespace pAbgabe {
     async function getRecipes(): Promise<Rezept[]> {
         let alleRezepte: Rezept[];
         alleRezepte = await rezeptCollection.find().toArray();
+        console.log(alleRezepte);
         return alleRezepte;
     }
 

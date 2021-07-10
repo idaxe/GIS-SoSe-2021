@@ -115,6 +115,7 @@ var pAbgabe;
     async function getRecipes() {
         let alleRezepte;
         alleRezepte = await rezeptCollection.find().toArray();
+        console.log(alleRezepte);
         return alleRezepte;
     }
     /*async function getUsers(): Promise<Nutzer[]> {
