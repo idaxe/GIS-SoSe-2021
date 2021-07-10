@@ -70,10 +70,7 @@ var pAbgabe;
             else if (url.pathname == "/saveRecipe") {
                 storeRecipe(url.query);
             }
-            else {
-                _response.write("Fehler");
-            }
-            if (url.pathname == "getUserRecipes") {
+            else if (url.pathname == "/getUserRecipes") {
                 let userRecipes = await getUserRecipes(url.query);
                 let jsonStringRezept = JSON.stringify(userRecipes);
                 _response.write(jsonStringRezept);

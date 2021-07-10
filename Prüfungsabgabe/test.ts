@@ -79,12 +79,11 @@ export namespace pAbgabe {
             }
             else if (url.pathname == "/saveRecipe") {
                 storeRecipe(url.query);
-            } else { _response.write("Fehler"); }
-            if (url.pathname == "getUserRecipes") {
+            } else if (url.pathname == "/getUserRecipes") {
                 let userRecipes: Rezept[] = await getUserRecipes(url.query);
                 let jsonStringRezept: string = JSON.stringify(userRecipes);
                 _response.write(jsonStringRezept);
-            }
+            } 
         }
 
         //_response.write(_request.url);  //gibt die URL aus
