@@ -126,10 +126,10 @@ var pAbgabe;
     function deleteRecipe(_nutzer) {
         rezeptCollection.findOneAndDelete({ recipeName: _nutzer.recipeName, creator: _nutzer.creator });
     }
-    function updateRecipe(_nutzer) {
+    async function updateRecipe(_nutzer) {
         let exist;
-        rezeptCollection.findOne({ recipeName: _nutzer.recipeName, creator: _nutzer.creator });
-        if (rezeptCollection.findOne({ recipeName: _nutzer.recipeName, creator: _nutzer.creator }) != undefined) {
+        console.log(rezeptCollection.findOne({ recipeName: _nutzer.recipeName, creator: _nutzer.creator }));
+        if (await rezeptCollection.findOne({ recipeName: _nutzer.recipeName, creator: _nutzer.creator }) == true) {
             rezeptCollection.replaceOne({ recipeName: _nutzer.recipeName, creator: _nutzer.creator }, _nutzer);
             exist = true;
         }
