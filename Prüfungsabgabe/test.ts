@@ -140,7 +140,8 @@ export namespace pAbgabe {
     async function updateRecipe(_nutzer: Nutzer): Promise<boolean> {
         let exist: boolean;
         console.log(rezeptCollection.findOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator}));
-        if (await rezeptCollection.findOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator}) == true) {
+        let test: Rezept = await rezeptCollection.findOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator});
+        if (test != undefined) {
             rezeptCollection.replaceOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator}, _nutzer);
             exist = true;
         } else {

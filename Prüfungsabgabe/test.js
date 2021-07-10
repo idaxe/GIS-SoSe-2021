@@ -129,7 +129,8 @@ var pAbgabe;
     async function updateRecipe(_nutzer) {
         let exist;
         console.log(rezeptCollection.findOne({ recipeName: _nutzer.recipeName, creator: _nutzer.creator }));
-        if (await rezeptCollection.findOne({ recipeName: _nutzer.recipeName, creator: _nutzer.creator }) == true) {
+        let test = await rezeptCollection.findOne({ recipeName: _nutzer.recipeName, creator: _nutzer.creator });
+        if (test != undefined) {
             rezeptCollection.replaceOne({ recipeName: _nutzer.recipeName, creator: _nutzer.creator }, _nutzer);
             exist = true;
         }
