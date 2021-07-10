@@ -87,6 +87,11 @@ var pAbgabe;
                     _response.write("Rezept existiert nicht!");
                 }
             }
+            else if (url.pathname == "/getRecipes") {
+                let recipes = await getRecipes();
+                let jsonStringRezept = JSON.stringify(recipes);
+                _response.write(jsonStringRezept);
+            }
         }
         //_response.write(_request.url);  //gibt die URL aus
         console.log(_request.url);
@@ -105,6 +110,11 @@ var pAbgabe;
         recipes = await rezeptCollection.find({ creator: _nutzer.creator }).toArray();
         console.log(recipes);
         return recipes;
+    }
+    async function getRecipes() {
+        let alleRezepte;
+        alleRezepte = await rezeptCollection.find().toArray();
+        return alleRezepte;
     }
     /*async function getUsers(): Promise<Nutzer[]> {
         let databaseUsers: Nutzer[];

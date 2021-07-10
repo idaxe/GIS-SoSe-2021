@@ -90,6 +90,10 @@ export namespace pAbgabe {
                 if (erfolg == true) {
                     _response.write("Erfolgreiches Updaten"); 
                 } else { _response.write("Rezept existiert nicht!"); }
+            } else if (url.pathname == "/getRecipes") {
+                let recipes: Rezept[] = await getRecipes();
+                let jsonStringRezept: string = JSON.stringify(recipes);
+                _response.write(jsonStringRezept);
             }
         }
 
@@ -113,6 +117,12 @@ export namespace pAbgabe {
         recipes = await rezeptCollection.find({creator: _nutzer.creator}).toArray();
         console.log(recipes);
         return recipes;
+    }
+
+    async function getRecipes(): Promise<Rezept[]> {
+        let alleRezepte: Rezept[];
+        alleRezepte = await rezeptCollection.find().toArray();
+        return alleRezepte;
     }
 
     /*async function getUsers(): Promise<Nutzer[]> {
