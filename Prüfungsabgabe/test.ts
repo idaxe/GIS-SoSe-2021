@@ -86,7 +86,7 @@ export namespace pAbgabe {
             } else if (url.pathname == "/deleteRecipe") {
                 deleteRecipe(url.query);
             } else if (url.pathname == "/updateRecipe") {
-                let erfolg: boolean = updateRecipe(url.query);
+                let erfolg: boolean = await updateRecipe(url.query);
                 if (erfolg == true) {
                     _response.write("Erfolgreiches Updaten"); 
                 } else { _response.write("Rezept existiert nicht!"); }
@@ -138,14 +138,14 @@ export namespace pAbgabe {
     }
 
     function updateRecipe(_nutzer: Nutzer): boolean {
-        let exist: boolean;
-        rezeptCollection.findOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator});
+        let exist: boolean = true;
+        /*rezeptCollection.findOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator});
         if (rezeptCollection.findOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator}) != undefined) {
             rezeptCollection.updateOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator}, _nutzer);
             exist = true;
         } else {
             exist = false;
-        }
+        }*/
         return exist;
     }
 }
