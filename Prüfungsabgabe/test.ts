@@ -85,6 +85,11 @@ export namespace pAbgabe {
                 _response.write(jsonStringRezept);
             } else if (url.pathname == "/deleteRecipe") {
                 deleteRecipe(url.query);
+            } else if (url.pathname == "/updateRecipe") {
+                let erfolg: boolean = updateRecipe(url.query);
+                if (erfolg == true) {
+                    _response.write("Erfolgreiches Updaten"); 
+                } else { _response.write("Rezept existiert nicht!"); }
             }
         }
 
@@ -130,5 +135,17 @@ export namespace pAbgabe {
 
     function deleteRecipe(_nutzer: Nutzer): void {
         rezeptCollection.findOneAndDelete({recipeName: _nutzer.recipeName, creator: _nutzer.creator});
+    }
+
+    function updateRecipe(_nutzer: Nutzer): boolean {
+        let exist: boolean;
+        rezeptCollection.findOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator});
+        if (rezeptCollection.findOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator}) != undefined) {
+            rezeptCollection.updateOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator}, _nutzer);
+            exist = true;
+        } else {
+            exist = false;
+        }
+        return exist;
     }
 }

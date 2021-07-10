@@ -78,6 +78,15 @@ var pAbgabe;
             else if (url.pathname == "/deleteRecipe") {
                 deleteRecipe(url.query);
             }
+            else if (url.pathname == "/updateRecipe") {
+                let erfolg = updateRecipe(url.query);
+                if (erfolg == true) {
+                    _response.write("Erfolgreiches Updaten");
+                }
+                else {
+                    _response.write("Rezept existiert nicht!");
+                }
+            }
         }
         //_response.write(_request.url);  //gibt die URL aus
         console.log(_request.url);
@@ -116,6 +125,18 @@ var pAbgabe;
     }
     function deleteRecipe(_nutzer) {
         rezeptCollection.findOneAndDelete({ recipeName: _nutzer.recipeName, creator: _nutzer.creator });
+    }
+    function updateRecipe(_nutzer) {
+        let exist;
+        rezeptCollection.findOne({ recipeName: _nutzer.recipeName, creator: _nutzer.creator });
+        if (rezeptCollection.findOne({ recipeName: _nutzer.recipeName, creator: _nutzer.creator }) != undefined) {
+            rezeptCollection.updateOne({ recipeName: _nutzer.recipeName, creator: _nutzer.creator }, _nutzer);
+            exist = true;
+        }
+        else {
+            exist = false;
+        }
+        return exist;
     }
 })(pAbgabe = exports.pAbgabe || (exports.pAbgabe = {}));
 //# sourceMappingURL=test.js.map
