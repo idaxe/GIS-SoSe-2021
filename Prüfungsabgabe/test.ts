@@ -62,8 +62,7 @@ export namespace pAbgabe {
                     _response.write(jsonString);
                 } else {
                     _response.write("Nutzer existiert nicht!");
-                }
-                
+                }        
             }
             else if (url.pathname == "/registerUser") { //user speichern
                 //let registeredUsers: Nutzer[] = await getUsers();
@@ -81,6 +80,11 @@ export namespace pAbgabe {
             else if (url.pathname == "/saveRecipe") {
                 storeRecipe(url.query);
             } else { _response.write("Fehler"); }
+            if (url.pathname == "getUserRecipes") {
+                let userRecipes: Rezept[] = await getUserRecipes(url.query);
+                let jsonStringRezept: string = JSON.stringify(userRecipes);
+                _response.write(jsonStringRezept);
+            }
         }
 
         //_response.write(_request.url);  //gibt die URL aus
@@ -94,6 +98,12 @@ export namespace pAbgabe {
 
     function storeRecipe(_rezept: Rezept): void {
         rezeptCollection.insert(_rezept);
+    }
+
+    async function getUserRecipes(_nutzer: Nutzer): Promise<Rezept[]> {
+        let recipes: Rezept[];
+        recipes = await rezeptCollection.find({creator: _nutzer.nutzername}).toArray();
+        return recipes;
     }
 
     /*async function getUsers(): Promise<Nutzer[]> {
