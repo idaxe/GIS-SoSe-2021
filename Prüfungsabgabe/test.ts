@@ -83,7 +83,9 @@ export namespace pAbgabe {
                 let userRecipes: Rezept[] = await getUserRecipes(url.query);
                 let jsonStringRezept: string = JSON.stringify(userRecipes);
                 _response.write(jsonStringRezept);
-            } 
+            } else if (url.pathname == "/deleteRecipe") {
+                deleteRecipe(url.query);
+            }
         }
 
         //_response.write(_request.url);  //gibt die URL aus
@@ -124,5 +126,9 @@ export namespace pAbgabe {
             return false;
         }
         //return false;
+    }
+
+    function deleteRecipe(_nutzer: Nutzer): void {
+        rezeptCollection.findOneAndDelete({recipeName: _nutzer.recipeName, creator: _nutzer.creator});
     }
 }
