@@ -88,6 +88,7 @@ var pAbgabe;
     }
     async function getUserRecipes(_nutzer) {
         console.log(_nutzer);
+        console.log(_nutzer.nutzername);
         let recipes;
         recipes = await rezeptCollection.find({ creator: _nutzer.nutzername }).toArray();
         console.log(recipes);
