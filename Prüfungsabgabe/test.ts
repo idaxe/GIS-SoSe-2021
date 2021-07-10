@@ -141,7 +141,7 @@ export namespace pAbgabe {
         let exist: boolean;
         rezeptCollection.findOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator});
         if (rezeptCollection.findOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator}) != undefined) {
-            rezeptCollection.updateOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator}, _nutzer);
+            rezeptCollection.replaceOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator}, _nutzer);
             exist = true;
         } else {
             exist = false;
