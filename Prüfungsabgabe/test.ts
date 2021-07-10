@@ -93,6 +93,7 @@ export namespace pAbgabe {
             } else if (url.pathname == "/getRecipes") {
                 let recipes: Rezept[] = await getRecipes();
                 let jsonStringRezept: string = JSON.stringify(recipes);
+                console.log(jsonStringRezept);
                 _response.write(jsonStringRezept);
             }
         }

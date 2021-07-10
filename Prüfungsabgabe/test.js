@@ -90,6 +90,7 @@ var pAbgabe;
             else if (url.pathname == "/getRecipes") {
                 let recipes = await getRecipes();
                 let jsonStringRezept = JSON.stringify(recipes);
+                console.log(jsonStringRezept);
                 _response.write(jsonStringRezept);
             }
         }
