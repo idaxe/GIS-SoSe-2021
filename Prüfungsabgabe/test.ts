@@ -138,14 +138,14 @@ export namespace pAbgabe {
     }
 
     function updateRecipe(_nutzer: Nutzer): boolean {
-        let exist: boolean = true;
-        /*rezeptCollection.findOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator});
+        let exist: boolean;
+        rezeptCollection.findOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator});
         if (rezeptCollection.findOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator}) != undefined) {
             rezeptCollection.updateOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator}, _nutzer);
             exist = true;
         } else {
             exist = false;
-        }*/
+        }
         return exist;
     }
 }

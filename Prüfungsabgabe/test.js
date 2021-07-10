@@ -127,14 +127,15 @@ var pAbgabe;
         rezeptCollection.findOneAndDelete({ recipeName: _nutzer.recipeName, creator: _nutzer.creator });
     }
     function updateRecipe(_nutzer) {
-        let exist = true;
-        /*rezeptCollection.findOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator});
-        if (rezeptCollection.findOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator}) != undefined) {
-            rezeptCollection.updateOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator}, _nutzer);
+        let exist;
+        rezeptCollection.findOne({ recipeName: _nutzer.recipeName, creator: _nutzer.creator });
+        if (rezeptCollection.findOne({ recipeName: _nutzer.recipeName, creator: _nutzer.creator }) != undefined) {
+            rezeptCollection.updateOne({ recipeName: _nutzer.recipeName, creator: _nutzer.creator }, _nutzer);
             exist = true;
-        } else {
+        }
+        else {
             exist = false;
-        }*/
+        }
         return exist;
     }
 })(pAbgabe = exports.pAbgabe || (exports.pAbgabe = {}));
