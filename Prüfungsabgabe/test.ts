@@ -113,16 +113,22 @@ export namespace pAbgabe {
     async function addFavorite(_nutzer: Nutzer): Promise<void> {
         let zwischen: Nutzer = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
         let zwischen2: string[] = new Array();
+        /*if (await nutzerCollection.findOne({favorites: [""]}) != undefined) {
+            console.log("favorites exist");
+            zwischen = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
+            zwischen2 = zwischen.favorites;
+        }*/
         console.log(_nutzer);
         console.log(_nutzer.favorites);
         let k: number = zwischen2.length;
-        for (let i: number = -1; i < k; i++) {
+        for (let i: number = -2; i < k; i++) {
             if (zwischen2[i + 1] == undefined) {
                 zwischen2[i + 1] = _nutzer.favorites.toString();  
             }
         }
         //let zw: string[] = [zwischen.favorites];
         console.log(zwischen2);
+        //let alt: string|string[] = zwischen.favorites;
         nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : zwischen2 }});
         zwischen = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
         console.log(zwischen);
