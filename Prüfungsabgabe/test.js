@@ -110,6 +110,7 @@ var pAbgabe;
     async function addFavorite(_nutzer) {
         let zwischen = await nutzerCollection.findOne({ nutzername: _nutzer.nutzername });
         let zwischen2;
+        console.log(zwischen.favorites.toString());
         zwischen2.push(zwischen.favorites.toString());
         console.log(zwischen2);
         nutzerCollection.findOneAndUpdate({ nutzername: _nutzer.nutzername, password: _nutzer.password }, { $set: { favorites: zwischen2 } });
