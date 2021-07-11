@@ -180,7 +180,8 @@ var pAbgabe;
         for (let u = 0; u < anzehl.length; u++) {
             console.log(new Mongo.ObjectId(anzehl[u].toString()));
             console.log(await rezeptCollection.findOne({ _id: new Mongo.ObjectId(anzehl[u].toString()) }));
-            recipes[u] = await rezeptCollection.findOne({ _id: anzehl[u] });
+            console.log(await rezeptCollection.findOne({ _id: new Mongo.ObjectId(anzehl[u]) }));
+            recipes[u] = await rezeptCollection.findOne({ _id: new Mongo.ObjectID(anzehl[u]) });
             console.log(recipes[u]);
             console.log("test break");
         }
