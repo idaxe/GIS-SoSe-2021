@@ -166,6 +166,7 @@ var pAbgabe;
         return recipes;
     }
     async function getFavoriteRecipes(_nutzer) {
+        console.log(_nutzer);
         let zwischennutzer = await nutzerCollection.findOne({ nutzername: _nutzer.nutzername });
         console.log(zwischennutzer);
         let recipes;
