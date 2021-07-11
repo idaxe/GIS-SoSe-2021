@@ -114,7 +114,9 @@ var pAbgabe;
         console.log(_nutzer.favorites);
         let k = zwischen2.length;
         for (let i = -1; i < k; i++) {
-            zwischen2[i + 1] = _nutzer.favorites.toString();
+            if (zwischen2[i + 1] == undefined) {
+                zwischen2[i + 1] = _nutzer.favorites.toString();
+            }
         }
         //let zw: string[] = [zwischen.favorites];
         console.log(zwischen2);
@@ -123,6 +125,10 @@ var pAbgabe;
         console.log(zwischen);
         if (zwischen.favorites != undefined) {
             nutzerCollection.findOneAndUpdate({ nutzername: _nutzer.nutzername, password: _nutzer.password }, { $set: { "favorites": zwischen.favorites } });
+        }
+        else {
+            console.log("controlle");
+            //nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : zwischen.favorites }});
         }
         //zwischen2.push(zwischen.favorites.toString());
     }
