@@ -211,12 +211,16 @@ export namespace pAbgabe {
         console.log("check break");
 
         for (let u: number = 0; u < anzehl.length; u++) {
-            console.log(new Mongo.ObjectId(anzehl[u].toString()));
-            console.log(await rezeptCollection.findOne({_id: new Mongo.ObjectId(anzehl[u].toString())}));
-            console.log(await rezeptCollection.findOne({_id: new Mongo.ObjectId(anzehl[u])}));
-            recipes[u] = await rezeptCollection.findOne({_id: new Mongo.ObjectID(anzehl[u])});
-            console.log(recipes[u]);
-            console.log("test break");
+            if (anzehl[u] != "leer") {
+                console.log(new Mongo.ObjectId(anzehl[u].toString()));
+                console.log(await rezeptCollection.findOne({_id: new Mongo.ObjectId(anzehl[u].toString())}));
+                console.log(await rezeptCollection.findOne({_id: new Mongo.ObjectId(anzehl[u])}));
+                recipes[u] = await rezeptCollection.findOne({_id: new Mongo.ObjectID(anzehl[u])});
+                console.log(recipes[u]);
+                console.log("test break"); 
+            } else {
+                console.log("skip");
+            }
         }
         console.log(recipes);
         console.log("check break");
