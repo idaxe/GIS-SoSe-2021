@@ -120,6 +120,7 @@ export namespace pAbgabe {
             zwischen2[i + 1] = _nutzer.favorites.toString();
         }
         //let zw: string[] = [zwischen.favorites];
+        nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : zwischen2 }});
         if (zwischen.favorites != undefined) {
             nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : zwischen.favorites }});
 
