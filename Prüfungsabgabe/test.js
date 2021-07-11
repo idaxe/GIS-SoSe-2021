@@ -113,7 +113,7 @@ var pAbgabe;
         console.log(_nutzer);
         console.log(_nutzer.favorites);
         for (let i = -1; i < zwischen2.length; i++) {
-            zwischen2[i] = _nutzer.favorites.toString();
+            zwischen2[i + 1] = _nutzer.favorites.toString();
         }
         //zwischen2.push(zwischen.favorites.toString());
         console.log(zwischen2);
