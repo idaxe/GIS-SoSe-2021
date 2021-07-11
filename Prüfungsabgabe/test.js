@@ -171,16 +171,17 @@ var pAbgabe;
         console.log(zwischennutzer);
         let recipes;
         let anzehl = new Array();
-        console.log(zwischennutzer.favorites.length);
-        console.log(zwischennutzer.favorites[0]);
         for (let j = 0; j < zwischennutzer.favorites.length; j++) {
             anzehl[j] = zwischennutzer.favorites[j].toString();
         }
+        console.log("check break");
         console.log(anzehl);
+        console.log("check break");
         for (let u; u < anzehl.length; u++) {
             recipes[u] = await rezeptCollection.findOne({ _id: anzehl[u] });
         }
         console.log(recipes);
+        console.log("check break");
         recipes = await rezeptCollection.find().toArray();
         return recipes;
     }
