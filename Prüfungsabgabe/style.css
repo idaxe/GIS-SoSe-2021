@@ -28,6 +28,8 @@ main {
 }
 
 div {
+    padding-top: 5px;
+    padding-bottom: 5px;
     border-radius: 2px;
     border-color: coral;
     background-color: cornsilk;
@@ -41,11 +43,24 @@ p {
     text-align: center;
 }
 .leiste{
-    background-color: black;
-    position: fixed;
+    position: relative;
     color: beige;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0%;
+    left: 0%;
+    right: 0%;
     padding-bottom: 10px;
+}
+#navigation li {
+    font-size: 12pt;
+    display: inline;
+    margin-right: 30px;
+    background-color: brown;
+    padding-right: 3px;
+    padding-left: 3px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border: whitesmoke 3px outset;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: default;
 }

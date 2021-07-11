@@ -32,7 +32,7 @@ namespace pAbgabe {
             window.open("index.html", "_self");
 
         } else if (text != "Nutzer existiert nicht!") {
-            window.open("Alle Rezepte.html", "_self");
+            window.open("Alle_Rezepte.html", "_self");
         } else {console.log("Error");  }
     }
 
