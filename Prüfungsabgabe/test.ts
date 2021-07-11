@@ -118,15 +118,18 @@ export namespace pAbgabe {
         let k: number = zwischen2.length;
         for (let i: number = -1; i < k; i++) {
             zwischen2[i + 1] = _nutzer.favorites.toString();
+            
         }
         //let zw: string[] = [zwischen.favorites];
+        console.log(zwischen2);
         nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : zwischen2 }});
+        console.log(nutzerCollection.findOne({nutzername: _nutzer.nutzername, password: _nutzer.password}));
         if (zwischen.favorites != undefined) {
             nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : zwischen.favorites }});
 
         }
         //zwischen2.push(zwischen.favorites.toString());
-        console.log(zwischen2);
+        
     }
 
     async function getUserRecipes(_nutzer: Nutzer): Promise<Rezept[]> {
