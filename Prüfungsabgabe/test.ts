@@ -173,7 +173,7 @@ export namespace pAbgabe {
         console.log(_nutzer);
         let zwischennutzer: Nutzer = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
         console.log(zwischennutzer);
-        let recipes: Rezept[];
+        let recipes: Rezept[] = new Array();
         let anzehl: string[] = new Array();
         for (let j: number = 0; j < zwischennutzer.favorites.length; j++) {
             anzehl[j] = zwischennutzer.favorites[j].toString();
@@ -184,6 +184,9 @@ export namespace pAbgabe {
 
         for (let u: number; u < anzehl.length; u++) {
             recipes[u] = await rezeptCollection.findOne({_id: anzehl[u]});
+            console.log(recipes[u]);
+            console.log("test break");
+
         }
         console.log(recipes);
         console.log("check break");

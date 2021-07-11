@@ -169,7 +169,7 @@ var pAbgabe;
         console.log(_nutzer);
         let zwischennutzer = await nutzerCollection.findOne({ nutzername: _nutzer.nutzername });
         console.log(zwischennutzer);
-        let recipes;
+        let recipes = new Array();
         let anzehl = new Array();
         for (let j = 0; j < zwischennutzer.favorites.length; j++) {
             anzehl[j] = zwischennutzer.favorites[j].toString();
@@ -179,6 +179,8 @@ var pAbgabe;
         console.log("check break");
         for (let u; u < anzehl.length; u++) {
             recipes[u] = await rezeptCollection.findOne({ _id: anzehl[u] });
+            console.log(recipes[u]);
+            console.log("test break");
         }
         console.log(recipes);
         console.log("check break");
