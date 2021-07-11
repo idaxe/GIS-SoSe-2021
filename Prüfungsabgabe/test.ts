@@ -138,7 +138,8 @@ export namespace pAbgabe {
         }
         //let zw: string[] = [zwischen.favorites];
         console.log(zwischen2);
-        for (let z: number = 0; z < zwischen3.length + 1; z++) {
+        let c: number = zwischen3.length + 1;
+        for (let z: number = 0; z < c; z++) {
             if (zwischen3[z] == undefined || zwischen3[z] == "") {
                 zwischen3[z] = zwischen2[z];
             }
