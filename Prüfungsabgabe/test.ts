@@ -170,10 +170,10 @@ export namespace pAbgabe {
             favoriteRecipes[j] = zwischenNutzer.favorites[j].toString();
         }
         console.log(zwischenNutzer.favorites[0]);
-        console.log(favoriteRecipes[0]);
+        console.log(_nutzer.favorites);
 
         for (let v: number = 0; v < favoriteRecipes.length; v++) {
-            if (favoriteRecipes[v] == zwischenNutzer.favorites) {
+            if (favoriteRecipes[v] == _nutzer.favorites) {
                 console.log("weiter");
             } else {
                 newfavorites[v] = favoriteRecipes[v];
