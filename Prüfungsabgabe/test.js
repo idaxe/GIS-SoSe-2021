@@ -221,7 +221,7 @@ var pAbgabe;
     async function checkUser(_nutzer) {
         //let exists: boolean;
         //let test: Benutzer = nutzerCollection.findOne(_nutzer);
-        let exist = await nutzerCollection.findOne({ nutzername: _nutzer.nutzername });
+        let exist = await nutzerCollection.findOne({ nutzername: _nutzer.nutzername, password: _nutzer.password });
         if (exist != undefined) {
             return true;
         }

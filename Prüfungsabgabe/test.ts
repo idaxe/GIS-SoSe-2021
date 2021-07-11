@@ -224,7 +224,7 @@ export namespace pAbgabe {
     async function checkUser(_nutzer: Nutzer): Promise<boolean> {   //prüft ob ein Nutzer existiert
         //let exists: boolean;
         //let test: Benutzer = nutzerCollection.findOne(_nutzer);
-        let exist: Nutzer = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
+        let exist: Nutzer = await nutzerCollection.findOne({nutzername: _nutzer.nutzername, password: _nutzer.password});
         if (exist != undefined) {
             return true;
         } else { 
