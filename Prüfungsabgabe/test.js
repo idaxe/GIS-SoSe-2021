@@ -199,6 +199,9 @@ var pAbgabe;
             if (anzehl[j] != null) {
                 anzehl[j] = zwischennutzer.favorites[j].toString();
             }
+            else {
+                anzehl[j] = "leer";
+            }
         }
         console.log("check break");
         console.log(anzehl);

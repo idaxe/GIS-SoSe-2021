@@ -202,6 +202,8 @@ export namespace pAbgabe {
         for (let j: number = 0; j < zwischennutzer.favorites.length; j++) {
             if (anzehl[j] != null) {
                 anzehl[j] = zwischennutzer.favorites[j].toString();
+            } else {
+                anzehl[j] = "leer";
             }
         }
         console.log("check break");
