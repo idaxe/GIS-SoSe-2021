@@ -177,6 +177,7 @@ export namespace pAbgabe {
             }
         }
         console.log(favoriteRecipes);
+        console.log(newfavorites);
         nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : newfavorites }});
     }
 
