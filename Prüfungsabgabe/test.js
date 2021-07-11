@@ -119,7 +119,8 @@ var pAbgabe;
         //let zw: string[] = [zwischen.favorites];
         console.log(zwischen2);
         nutzerCollection.findOneAndUpdate({ nutzername: _nutzer.nutzername, password: _nutzer.password }, { $set: { "favorites": zwischen2 } });
-        console.log(nutzerCollection.findOne({ nutzername: _nutzer.nutzername, password: _nutzer.password }));
+        zwischen = await nutzerCollection.findOne({ nutzername: _nutzer.nutzername });
+        console.log(zwischen);
         if (zwischen.favorites != undefined) {
             nutzerCollection.findOneAndUpdate({ nutzername: _nutzer.nutzername, password: _nutzer.password }, { $set: { "favorites": zwischen.favorites } });
         }
