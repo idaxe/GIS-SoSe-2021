@@ -127,9 +127,10 @@ export namespace pAbgabe {
         zwischen = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
         console.log(zwischen);
         if (zwischen.favorites != undefined) {
-            nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : zwischen.favorites }});
+            //nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : zwischen.favorites }});
+            console.log("is not undefined");
         } else {
-            console.log("controlle");
+            console.log("undefined");
             //nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : zwischen.favorites }});
             }
         //zwischen2.push(zwischen.favorites.toString());
