@@ -94,6 +94,11 @@ export namespace pAbgabe {
                 _response.write(jsonStringRezept);
             } else if (url.pathname == "/favoriteRecipe") {
                 addFavorite(url.query);
+            } else if (url.pathname == "/getFavoriteRecipes") {
+                let recipes: Rezept[] = await getFavoriteRecipes(url.query);
+                let jsonStringRezept: string = JSON.stringify(recipes);
+                console.log(jsonStringRezept);
+                _response.write(jsonStringRezept);
             }
         }
 
@@ -102,15 +107,15 @@ export namespace pAbgabe {
         _response.end();    //beendet die Antwort
     }
 
-    function storeUser(_nutzer: Nutzer): void {
+    function storeUser(_nutzer: Nutzer): void { //speichert Nutzer ab
         nutzerCollection.insert(_nutzer);
     }
 
-    function storeRecipe(_rezept: Rezept): void {
+    function storeRecipe(_rezept: Rezept): void {   //speichert Rezept ab
         rezeptCollection.insert(_rezept);
     }
 
-    async function addFavorite(_nutzer: Nutzer): Promise<void> {
+    async function addFavorite(_nutzer: Nutzer): Promise<void> {    //fügt einem Nutzer ein favorisierte Rezept hinzu
         let zwischen: Nutzer = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
         let zwischen2: string[] = new Array();
         let zwischen3: string[] = new Array();
@@ -155,7 +160,7 @@ export namespace pAbgabe {
         //zwischen2.push(zwischen.favorites.toString());
     }
 
-    async function getUserRecipes(_nutzer: Nutzer): Promise<Rezept[]> {
+    async function getUserRecipes(_nutzer: Nutzer): Promise<Rezept[]> { //holt alle rezepte die ein bestimmter nutzer erstellt hat 
         console.log(_nutzer);
         console.log(_nutzer.creator);
         let recipes: Rezept[];
@@ -164,7 +169,13 @@ export namespace pAbgabe {
         return recipes;
     }
 
-    async function getRecipes(): Promise<Rezept[]> {
+    async function getFavoriteRecipes(_nutzer: Nutzer): Promise<Rezept[]> {
+        let recipes: Rezept[];
+        recipes = await rezeptCollection.find().toArray();
+        return recipes;
+    }
+
+    async function getRecipes(): Promise<Rezept[]> {    //holt alle Rezepte
         let alleRezepte: Rezept[];
         alleRezepte = await rezeptCollection.find().toArray();
         console.log(alleRezepte);
@@ -177,7 +188,7 @@ export namespace pAbgabe {
         return databaseUsers;
     }*/
 
-    async function checkUser(_nutzer: Nutzer): Promise<boolean> {
+    async function checkUser(_nutzer: Nutzer): Promise<boolean> {   //prüft ob ein Nutzer existiert
         //let exists: boolean;
         //let test: Benutzer = nutzerCollection.findOne(_nutzer);
         let exist: Nutzer = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
@@ -189,11 +200,11 @@ export namespace pAbgabe {
         //return false;
     }
 
-    function deleteRecipe(_nutzer: Nutzer): void {
+    function deleteRecipe(_nutzer: Nutzer): void {  //löscht ein bestimmtes Rezept eines Nutzers
         rezeptCollection.findOneAndDelete({recipeName: _nutzer.recipeName, creator: _nutzer.creator});
     }
 
-    async function updateRecipe(_nutzer: Nutzer): Promise<boolean> {
+    async function updateRecipe(_nutzer: Nutzer): Promise<boolean> {    //updated ein bestimmtes vom Nutzer ausgewähltes Rezept
         let exist: boolean;
         console.log(rezeptCollection.findOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator}));
         let test: Rezept = await rezeptCollection.findOne({recipeName: _nutzer.recipeName, creator: _nutzer.creator});

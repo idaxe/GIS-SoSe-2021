@@ -96,6 +96,12 @@ var pAbgabe;
             else if (url.pathname == "/favoriteRecipe") {
                 addFavorite(url.query);
             }
+            else if (url.pathname == "/getFavoriteRecipes") {
+                let recipes = await getFavoriteRecipes(url.query);
+                let jsonStringRezept = JSON.stringify(recipes);
+                console.log(jsonStringRezept);
+                _response.write(jsonStringRezept);
+            }
         }
         //_response.write(_request.url);  //gibt die URL aus
         console.log(_request.url);
@@ -157,6 +163,11 @@ var pAbgabe;
         let recipes;
         recipes = await rezeptCollection.find({ creator: _nutzer.creator }).toArray();
         console.log(recipes);
+        return recipes;
+    }
+    async function getFavoriteRecipes(_nutzer) {
+        let recipes;
+        recipes = await rezeptCollection.find().toArray();
         return recipes;
     }
     async function getRecipes() {
