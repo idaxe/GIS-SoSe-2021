@@ -98,9 +98,9 @@ var pAbgabe;
             }
             else if (url.pathname == "/getFavoriteRecipes") {
                 let favoriterecipes = await getFavoriteRecipes(url.query);
-                let jsonStringRezept = JSON.stringify(favoriterecipes);
-                console.log(jsonStringRezept);
-                _response.write(jsonStringRezept);
+                let jsonStringFavRezept = JSON.stringify(favoriterecipes);
+                console.log(jsonStringFavRezept);
+                _response.write(jsonStringFavRezept);
             }
         }
         //_response.write(_request.url);  //gibt die URL aus
