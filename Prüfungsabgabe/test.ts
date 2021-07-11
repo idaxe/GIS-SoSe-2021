@@ -200,10 +200,10 @@ export namespace pAbgabe {
         let recipes: Rezept[] = new Array();
         let anzehl: string[] = new Array();
         for (let j: number = 0; j < zwischennutzer.favorites.length; j++) {
-            if (anzehl[j] != null) {
-                anzehl[j] = zwischennutzer.favorites[j].toString();
-            } else {
+            if (zwischennutzer.favorites[j] == null) {
                 anzehl[j] = "leer";
+            } else {
+            anzehl[j] = zwischennutzer.favorites[j].toString();
             }
         }
         console.log("check break");

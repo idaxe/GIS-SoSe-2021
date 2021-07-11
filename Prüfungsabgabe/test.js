@@ -196,11 +196,11 @@ var pAbgabe;
         let recipes = new Array();
         let anzehl = new Array();
         for (let j = 0; j < zwischennutzer.favorites.length; j++) {
-            if (anzehl[j] != null) {
-                anzehl[j] = zwischennutzer.favorites[j].toString();
+            if (zwischennutzer.favorites[j] == null) {
+                anzehl[j] = "leer";
             }
             else {
-                anzehl[j] = "leer";
+                anzehl[j] = zwischennutzer.favorites[j].toString();
             }
         }
         console.log("check break");
