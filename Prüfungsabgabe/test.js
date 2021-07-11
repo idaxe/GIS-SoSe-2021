@@ -118,9 +118,11 @@ var pAbgabe;
         console.log(_nutzer);
         console.log(_nutzer.favorites);
         let k = zwischen2.length;
+        let f = 0;
         for (let i = -2; i < k; i++) {
-            if (zwischen2[i + 1] == undefined) {
-                zwischen2[i + 1] = _nutzer.favorites.toString();
+            if (zwischen2[f] == undefined) {
+                zwischen2[f] = _nutzer.favorites.toString();
+                f++;
             }
         }
         //let zw: string[] = [zwischen.favorites];

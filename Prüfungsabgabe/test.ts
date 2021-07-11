@@ -121,9 +121,11 @@ export namespace pAbgabe {
         console.log(_nutzer);
         console.log(_nutzer.favorites);
         let k: number = zwischen2.length;
+        let f: number = 0;
         for (let i: number = -2; i < k; i++) {
-            if (zwischen2[i + 1] == undefined) {
-                zwischen2[i + 1] = _nutzer.favorites.toString();  
+            if (zwischen2[f] == undefined) {
+                zwischen2[f] = _nutzer.favorites.toString();
+                f++;  
             }
         }
         //let zw: string[] = [zwischen.favorites];
