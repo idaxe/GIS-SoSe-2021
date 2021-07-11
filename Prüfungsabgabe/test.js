@@ -97,8 +97,8 @@ var pAbgabe;
                 addFavorite(url.query);
             }
             else if (url.pathname == "/getFavoriteRecipes") {
-                let recipes = await getFavoriteRecipes(url.query);
-                let jsonStringRezept = JSON.stringify(recipes);
+                let favoriterecipes = await getFavoriteRecipes(url.query);
+                let jsonStringRezept = JSON.stringify(favoriterecipes);
                 console.log(jsonStringRezept);
                 _response.write(jsonStringRezept);
             }

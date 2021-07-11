@@ -95,8 +95,8 @@ export namespace pAbgabe {
             } else if (url.pathname == "/favoriteRecipe") {
                 addFavorite(url.query);
             } else if (url.pathname == "/getFavoriteRecipes") {
-                let recipes: Rezept[] = await getFavoriteRecipes(url.query);
-                let jsonStringRezept: string = JSON.stringify(recipes);
+                let favoriterecipes: Rezept[] = await getFavoriteRecipes(url.query);
+                let jsonStringRezept: string = JSON.stringify(favoriterecipes);
                 console.log(jsonStringRezept);
                 _response.write(jsonStringRezept);
             }
