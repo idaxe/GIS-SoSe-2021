@@ -167,6 +167,14 @@ var pAbgabe;
     }
     async function getFavoriteRecipes(_nutzer) {
         let recipes;
+        let zwischennutzer = await nutzerCollection.findOne({ nutzername: _nutzer.nutzername });
+        let anzehl = new Array();
+        for (let j = 0; zwischennutzer.favorites.length; j++) {
+            anzehl[j] = zwischennutzer.favorites[j];
+        }
+        for (let u; u < anzehl.length; u++) {
+            recipes[u] = await rezeptCollection.findOne({ _id: anzehl[u] });
+        }
         recipes = await rezeptCollection.find().toArray();
         return recipes;
     }

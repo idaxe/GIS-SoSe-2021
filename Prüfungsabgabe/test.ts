@@ -169,8 +169,16 @@ export namespace pAbgabe {
         return recipes;
     }
 
-    async function getFavoriteRecipes(_nutzer: Nutzer): Promise<Rezept[]> {
+    async function getFavoriteRecipes(_nutzer: Nutzer): Promise<Rezept[]> { //holt favorisierte rezepte eines nutzers
         let recipes: Rezept[];
+        let zwischennutzer: Nutzer = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
+        let anzehl: string[] = new Array();
+        for (let j: number = 0; zwischennutzer.favorites.length; j++) {
+            anzehl[j] = zwischennutzer.favorites[j];
+        }
+        for (let u: number; u < anzehl.length; u++) {
+            recipes[u] = await rezeptCollection.findOne({_id: anzehl[u]});
+        }
         recipes = await rezeptCollection.find().toArray();
         return recipes;
     }
