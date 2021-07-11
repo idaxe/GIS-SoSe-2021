@@ -115,12 +115,6 @@ var pAbgabe;
             zwischen3[i] = zwischen.favorites[i];
         }
         console.log("test");
-        //zwischen3 = zwischen.favorites;
-        /*if (await nutzerCollection.findOne({favorites: [""]}) != undefined) {
-            console.log("favorites exist");
-            zwischen = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
-            zwischen2 = zwischen.favorites;
-        }*/
         console.log(zwischen3);
         console.log(_nutzer);
         console.log(_nutzer.favorites);
@@ -134,7 +128,7 @@ var pAbgabe;
         }
         let k = zwischen2.length;
         let f = 0;
-        for (let i = -2; i < k; i++) {
+        for (let i = -1; i < k; i++) {
             if (zwischen2[f] == undefined) {
                 zwischen2[f] = _nutzer.favorites.toString();
                 f++;
@@ -142,8 +136,16 @@ var pAbgabe;
         }
         //let zw: string[] = [zwischen.favorites];
         console.log(zwischen2);
+        for (let z = 0; z < zwischen3.length; z++) {
+            if (zwischen3[z] == undefined || zwischen3[z] == "") {
+                zwischen3[z] = zwischen2[z];
+            }
+        }
+        //zwischen3.push(zwischen2);
+        //zwischen2 = zwischen2 + zwischen3;
         //let alt: string|string[] = zwischen.favorites;
-        nutzerCollection.findOneAndUpdate({ nutzername: _nutzer.nutzername, password: _nutzer.password }, { $set: { "favorites": zwischen2 } });
+        console.log(zwischen3);
+        nutzerCollection.findOneAndUpdate({ nutzername: _nutzer.nutzername, password: _nutzer.password }, { $set: { "favorites": zwischen3 } });
         zwischen = await nutzerCollection.findOne({ nutzername: _nutzer.nutzername });
         console.log(zwischen);
         //zwischen2.push(zwischen.favorites.toString());
