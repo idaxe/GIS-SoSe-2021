@@ -167,7 +167,7 @@ var pAbgabe;
         for (let j = 0; j < zwischenNutzer.favorites.length; j++) {
             favoriteRecipes[j] = zwischenNutzer.favorites[j].toString();
         }
-        console.log(zwischenNutzer.favorites);
+        console.log(zwischenNutzer.favorites[0]);
         console.log(favoriteRecipes[0]);
         for (let v = 0; v < favoriteRecipes.length; v++) {
             if (favoriteRecipes[v] == zwischenNutzer.favorites) {

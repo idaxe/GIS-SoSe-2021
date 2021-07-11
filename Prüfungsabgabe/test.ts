@@ -169,7 +169,7 @@ export namespace pAbgabe {
         for (let j: number = 0; j < zwischenNutzer.favorites.length; j++) {
             favoriteRecipes[j] = zwischenNutzer.favorites[j].toString();
         }
-        console.log(zwischenNutzer.favorites);
+        console.log(zwischenNutzer.favorites[0]);
         console.log(favoriteRecipes[0]);
 
         for (let v: number = 0; v < favoriteRecipes.length; v++) {
