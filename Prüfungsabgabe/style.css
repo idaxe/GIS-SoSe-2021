@@ -40,3 +40,12 @@ div {
 p {
     text-align: center;
 }
+.leiste{
+    background-color: black;
+    position: fixed;
+    color: beige;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 10px;
+}
