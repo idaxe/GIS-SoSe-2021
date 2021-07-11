@@ -99,6 +99,8 @@ export namespace pAbgabe {
                 let jsonStringFavRezept: string = JSON.stringify(favoriterecipes);
                 console.log(jsonStringFavRezept);
                 _response.write(jsonStringFavRezept);
+            } else if (url.pathname == "/deleteFavRecipe") {
+                deleteFavoriteRecipe(url.query);
             }
         }
 
@@ -160,6 +162,15 @@ export namespace pAbgabe {
         //zwischen2.push(zwischen.favorites.toString());
     }
 
+    async function deleteFavoriteRecipe(_nutzer: Nutzer): Promise<void> {
+        let zwischenNutzer: Nutzer = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
+        let favoriteRecipes: string[] = new Array();
+        for (let j: number = 0; j < zwischenNutzer.favorites.length; j++) {
+            favoriteRecipes[j] = zwischenNutzer.favorites[j].toString();
+        }
+        console.log(favoriteRecipes);
+    }
+
     async function getUserRecipes(_nutzer: Nutzer): Promise<Rezept[]> { //holt alle rezepte die ein bestimmter nutzer erstellt hat 
         console.log(_nutzer);
         console.log(_nutzer.creator);
@@ -189,11 +200,9 @@ export namespace pAbgabe {
             recipes[u] = await rezeptCollection.findOne({_id: new Mongo.ObjectID(anzehl[u])});
             console.log(recipes[u]);
             console.log("test break");
-
         }
         console.log(recipes);
         console.log("check break");
-
         //recipes = await rezeptCollection.find().toArray();
         return recipes;
     }

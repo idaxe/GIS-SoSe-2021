@@ -102,6 +102,9 @@ var pAbgabe;
                 console.log(jsonStringFavRezept);
                 _response.write(jsonStringFavRezept);
             }
+            else if (url.pathname == "/deleteFavRecipe") {
+                deleteFavoriteRecipe(url.query);
+            }
         }
         //_response.write(_request.url);  //gibt die URL aus
         console.log(_request.url);
@@ -156,6 +159,14 @@ var pAbgabe;
         zwischen = await nutzerCollection.findOne({ nutzername: _nutzer.nutzername });
         console.log(zwischen);
         //zwischen2.push(zwischen.favorites.toString());
+    }
+    async function deleteFavoriteRecipe(_nutzer) {
+        let zwischenNutzer = await nutzerCollection.findOne({ nutzername: _nutzer.nutzername });
+        let favoriteRecipes = new Array();
+        for (let j = 0; j < zwischenNutzer.favorites.length; j++) {
+            favoriteRecipes[j] = zwischenNutzer.favorites[j].toString();
+        }
+        console.log(favoriteRecipes);
     }
     async function getUserRecipes(_nutzer) {
         console.log(_nutzer);
