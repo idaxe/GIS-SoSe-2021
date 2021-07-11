@@ -93,6 +93,9 @@ var pAbgabe;
                 console.log(jsonStringRezept);
                 _response.write(jsonStringRezept);
             }
+            else if (url.pathname == "/favoriteRecipe") {
+                addFavorite(url.query);
+            }
         }
         //_response.write(_request.url);  //gibt die URL aus
         console.log(_request.url);
@@ -103,6 +106,11 @@ var pAbgabe;
     }
     function storeRecipe(_rezept) {
         rezeptCollection.insert(_rezept);
+    }
+    async function addFavorite(_nutzer) {
+        let zwischen = await nutzerCollection.findOne({ nutzername: _nutzer.nutzername });
+        let zwischen2 = zwischen.favorites.toString();
+        nutzerCollection.findOneAndUpdate({ nutzername: _nutzer.nutzername, password: _nutzer.password }, { $set: { favorites: zwischen2 + _nutzer.favorites } });
     }
     async function getUserRecipes(_nutzer) {
         console.log(_nutzer);

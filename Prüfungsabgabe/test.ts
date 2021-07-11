@@ -95,6 +95,8 @@ export namespace pAbgabe {
                 let jsonStringRezept: string = JSON.stringify(recipes);
                 console.log(jsonStringRezept);
                 _response.write(jsonStringRezept);
+            } else if (url.pathname == "/favoriteRecipe") {
+                addFavorite(url.query);
             }
         }
 
@@ -109,6 +111,12 @@ export namespace pAbgabe {
 
     function storeRecipe(_rezept: Rezept): void {
         rezeptCollection.insert(_rezept);
+    }
+
+    async function addFavorite(_nutzer: Nutzer): Promise<void> {
+        let zwischen: Nutzer = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
+        let zwischen2: string = zwischen.favorites.toString();
+        nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {favorites: zwischen2 + _nutzer.favorites}});
     }
 
     async function getUserRecipes(_nutzer: Nutzer): Promise<Rezept[]> {
