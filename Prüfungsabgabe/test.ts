@@ -175,9 +175,9 @@ export namespace pAbgabe {
         console.log(zwischennutzer);
         let recipes: Rezept[];
         let anzehl: string[] = new Array();
-        console.log("test");
+        console.log(zwischennutzer.favorites.length);
         for (let j: number = 0; zwischennutzer.favorites.length; j++) {
-            anzehl[j] = zwischennutzer.favorites[j];
+            anzehl[j] = zwischennutzer.favorites[j].toString();
         }
         console.log(anzehl);
         for (let u: number; u < anzehl.length; u++) {

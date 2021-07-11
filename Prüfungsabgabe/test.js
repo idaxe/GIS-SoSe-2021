@@ -171,9 +171,9 @@ var pAbgabe;
         console.log(zwischennutzer);
         let recipes;
         let anzehl = new Array();
-        console.log("test");
+        console.log(zwischennutzer.favorites.length);
         for (let j = 0; zwischennutzer.favorites.length; j++) {
-            anzehl[j] = zwischennutzer.favorites[j];
+            anzehl[j] = zwischennutzer.favorites[j].toString();
         }
         console.log(anzehl);
         for (let u; u < anzehl.length; u++) {
