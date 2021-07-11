@@ -178,6 +178,7 @@ var pAbgabe;
         console.log(anzehl);
         console.log("check break");
         for (let u = 0; u < anzehl.length; u++) {
+            console.log(await rezeptCollection.findOne({ _id: anzehl[u] }));
             recipes[u] = await rezeptCollection.findOne({ _id: anzehl[u] });
             console.log(recipes[u]);
             console.log("test break");
