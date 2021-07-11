@@ -115,11 +115,11 @@ export namespace pAbgabe {
 
     async function addFavorite(_nutzer: Nutzer): Promise<void> {
         let zwischen: Nutzer = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
-        let zwischen2: string[];
+        let zwischen2: string[] = new Array();
         console.log(zwischen.favorites);
-        zwischen2.push(zwischen.favorites.toString());
+        //zwischen2.push(zwischen.favorites.toString());
         console.log(zwischen2);
-        nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {favorites: zwischen2}});
+        nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : [zwischen2] }});
     }
 
     async function getUserRecipes(_nutzer: Nutzer): Promise<Rezept[]> {

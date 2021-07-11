@@ -109,11 +109,11 @@ var pAbgabe;
     }
     async function addFavorite(_nutzer) {
         let zwischen = await nutzerCollection.findOne({ nutzername: _nutzer.nutzername });
-        let zwischen2;
+        let zwischen2 = new Array();
         console.log(zwischen.favorites);
-        zwischen2.push(zwischen.favorites.toString());
+        //zwischen2.push(zwischen.favorites.toString());
         console.log(zwischen2);
-        nutzerCollection.findOneAndUpdate({ nutzername: _nutzer.nutzername, password: _nutzer.password }, { $set: { favorites: zwischen2 } });
+        nutzerCollection.findOneAndUpdate({ nutzername: _nutzer.nutzername, password: _nutzer.password }, { $set: { "favorites": [zwischen2] } });
     }
     async function getUserRecipes(_nutzer) {
         console.log(_nutzer);
