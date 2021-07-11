@@ -110,13 +110,24 @@ var pAbgabe;
     async function addFavorite(_nutzer) {
         let zwischen = await nutzerCollection.findOne({ nutzername: _nutzer.nutzername });
         let zwischen2 = new Array();
+        let zwischen3 = new Array();
+        zwischen3 = zwischen.favorites;
         /*if (await nutzerCollection.findOne({favorites: [""]}) != undefined) {
             console.log("favorites exist");
             zwischen = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
             zwischen2 = zwischen.favorites;
         }*/
+        console.log(zwischen3);
         console.log(_nutzer);
         console.log(_nutzer.favorites);
+        if (zwischen.favorites != undefined) {
+            //nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : zwischen.favorites }});
+            console.log("is not undefined");
+        }
+        else {
+            console.log("undefined");
+            //nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : zwischen.favorites }});
+        }
         let k = zwischen2.length;
         let f = 0;
         for (let i = -2; i < k; i++) {
@@ -131,14 +142,6 @@ var pAbgabe;
         nutzerCollection.findOneAndUpdate({ nutzername: _nutzer.nutzername, password: _nutzer.password }, { $set: { "favorites": zwischen2 } });
         zwischen = await nutzerCollection.findOne({ nutzername: _nutzer.nutzername });
         console.log(zwischen);
-        if (zwischen.favorites != undefined) {
-            //nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : zwischen.favorites }});
-            console.log("is not undefined");
-        }
-        else {
-            console.log("undefined");
-            //nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : zwischen.favorites }});
-        }
         //zwischen2.push(zwischen.favorites.toString());
     }
     async function getUserRecipes(_nutzer) {
