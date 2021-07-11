@@ -7,13 +7,15 @@ namespace pAbgabe {
     }
     window.addEventListener("load", loadRecipes);
     async function loadRecipes(): Promise<void> {
-        let anzeige: HTMLDivElement = <HTMLDivElement>document.getElementById("rezeptAnzeige");
+        let anzeige: HTMLDivElement = <HTMLDivElement>document.getElementById("favoriten");
         let url: string = "https://dennytestapp.herokuapp.com";
-        let response: Response = await fetch(url + "/getRecipes?"); 
+        let zwischenNutzer: Nutzer = JSON.parse(sessionStorage.getItem("nutzer"));
+        let response: Response = await fetch(url + "/getFavoriteRecipes?" + "nutzername=" + zwischenNutzer.nutzername + "&password=" + zwischenNutzer.password); 
         let text: string = await response.text();
         console.log(text);
         let alleRezepte: Rezepte[] = JSON.parse(text);
         alleRezepte.forEach(element => {
+            if (element != null) {
             let rezeptcreator: HTMLDivElement = document.createElement("div");
             anzeige.appendChild(rezeptcreator);
             let titel: HTMLElement = document.createElement("h3");
@@ -49,18 +51,20 @@ namespace pAbgabe {
             let creator: HTMLElement = document.createElement("p");
             creator.appendChild(document.createTextNode("Ersteller: " + element.creator.toString() + "\n"));
             rezeptcreator.appendChild(creator);
-            let favbttn: HTMLButtonElement = document.createElement("button");
-            favbttn.appendChild(document.createTextNode("Favorisieren"));
-            favbttn.setAttribute("type", "button");
-            favbttn.addEventListener("click", addFavorites);
-            rezeptcreator.appendChild(favbttn);
+            let delbttn: HTMLButtonElement = document.createElement("button");
+            delbttn.appendChild(document.createTextNode("Favorit Löschen"));
+            delbttn.setAttribute("type", "button");
+            delbttn.addEventListener("click", deleteFavorites);
+            rezeptcreator.appendChild(delbttn);
             console.log(element);
-            async function addFavorites(): Promise<void> {
+            }
+            async function deleteFavorites(): Promise<void> {
                 console.log("lol" + element._id.toString());
                 let url: string = "https://dennytestapp.herokuapp.com"; //http://localhost:8100
                 let zwischenNutzer: Nutzer = JSON.parse(sessionStorage.getItem("nutzer"));
                 let fav: string[] = [element._id.toString()];
-                let response: Response = await fetch(url + "/favoriteRecipe?" + "nutzername=" + zwischenNutzer.nutzername + "&password=" + zwischenNutzer.password + "&favorites=" + fav);
+                console.log(zwischenNutzer);
+                let response: Response = await fetch(url + "/deleteFavRecipe?" + "nutzername=" + zwischenNutzer.nutzername + "&password=" + zwischenNutzer.password + "&favorites=" + fav);
                 console.log(response);
             }
         });  

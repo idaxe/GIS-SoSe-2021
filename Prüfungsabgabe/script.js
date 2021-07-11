@@ -42,7 +42,8 @@ var pAbgabe;
         let formData = new FormData(document.forms[0]);
         let url = "https://dennytestapp.herokuapp.com"; //http://localhost:8100
         let query = new URLSearchParams(formData);
-        let response = await fetch(url + "/registerUser?" + query.toString());
+        let fav = [""];
+        let response = await fetch(url + "/registerUser?" + query.toString() + "&favorites=" + fav);
         console.log(response);
         if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "Login.html") {
             window.open("index.html", "_self");
