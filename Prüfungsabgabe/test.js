@@ -184,7 +184,7 @@ var pAbgabe;
         }
         console.log(recipes);
         console.log("check break");
-        recipes = await rezeptCollection.find().toArray();
+        //recipes = await rezeptCollection.find().toArray();
         return recipes;
     }
     async function getRecipes() {
