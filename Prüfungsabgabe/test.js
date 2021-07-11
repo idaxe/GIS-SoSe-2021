@@ -163,10 +163,20 @@ var pAbgabe;
     async function deleteFavoriteRecipe(_nutzer) {
         let zwischenNutzer = await nutzerCollection.findOne({ nutzername: _nutzer.nutzername });
         let favoriteRecipes = new Array();
+        let newfavorites = new Array();
         for (let j = 0; j < zwischenNutzer.favorites.length; j++) {
             favoriteRecipes[j] = zwischenNutzer.favorites[j].toString();
         }
+        for (let v = 0; v < favoriteRecipes.length; v++) {
+            if (favoriteRecipes[v] == zwischenNutzer.favorites) {
+                console.log("weiter");
+            }
+            else {
+                newfavorites[v] = favoriteRecipes[v];
+            }
+        }
         console.log(favoriteRecipes);
+        nutzerCollection.findOneAndUpdate({ nutzername: _nutzer.nutzername, password: _nutzer.password }, { $set: { "favorites": newfavorites } });
     }
     async function getUserRecipes(_nutzer) {
         console.log(_nutzer);

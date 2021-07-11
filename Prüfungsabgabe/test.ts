@@ -165,10 +165,19 @@ export namespace pAbgabe {
     async function deleteFavoriteRecipe(_nutzer: Nutzer): Promise<void> {
         let zwischenNutzer: Nutzer = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
         let favoriteRecipes: string[] = new Array();
+        let newfavorites: string[] = new Array();
         for (let j: number = 0; j < zwischenNutzer.favorites.length; j++) {
             favoriteRecipes[j] = zwischenNutzer.favorites[j].toString();
         }
+        for (let v: number = 0; v < favoriteRecipes.length; v++) {
+            if (favoriteRecipes[v] == zwischenNutzer.favorites) {
+                console.log("weiter");
+            } else {
+                newfavorites[v] = favoriteRecipes[v];
+            }
+        }
         console.log(favoriteRecipes);
+        nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : newfavorites }});
     }
 
     async function getUserRecipes(_nutzer: Nutzer): Promise<Rezept[]> { //holt alle rezepte die ein bestimmter nutzer erstellt hat 
