@@ -182,7 +182,7 @@ export namespace pAbgabe {
         console.log(anzehl);
         console.log("check break");
 
-        for (let u: number; u < anzehl.length; u++) {
+        for (let u: number = 0; u < anzehl.length; u++) {
             recipes[u] = await rezeptCollection.findOne({_id: anzehl[u]});
             console.log(recipes[u]);
             console.log("test break");
