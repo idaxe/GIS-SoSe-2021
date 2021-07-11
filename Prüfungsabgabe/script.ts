@@ -32,9 +32,8 @@ namespace pAbgabe {
             window.open("index.html", "_self");
 
         } else if (text != "Nutzer existiert nicht!") {
-            window.open("Meine Rezepte.html", "_self");
+            window.open("Alle Rezepte.html", "_self");
         } else {console.log("Error");  }
-        //window.open("index.html", "_self");
     }
 
     async function userRegister(): Promise<void> {
@@ -44,11 +43,7 @@ namespace pAbgabe {
         let fav: string[] = [""];
         let response: Response = await fetch(url + "/registerUser?" + query.toString() + "&favorites=" + fav);
         console.log(response);
-
-        if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "Login.html") {
-            window.open("index.html", "_self");
-
-        } else {console.log("Error"); }
-        //window.open("index.html", "_self");
+        let anzeige: HTMLDivElement = <HTMLDivElement>document.getElementById("errorMessage");
+        anzeige.innerHTML = "Bitte nun mit diesem Nutzer Anmelden!";
     }
 }

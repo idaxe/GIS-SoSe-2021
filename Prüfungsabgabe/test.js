@@ -4,7 +4,6 @@ exports.pAbgabe = void 0;
 const Http = require("http");
 const Url = require("url");
 const Mongo = require("mongodb");
-//import { type } from "os";
 var pAbgabe;
 (function (pAbgabe) {
     console.log("Starting server");
@@ -42,7 +41,6 @@ var pAbgabe;
         if (_request.url) {
             let url = Url.parse(_request.url, true);
             if (url.pathname == "/loginUser") { ////user checken
-                //let registeredUsers: Nutzer[] = await getUsers();
                 let exists = await checkUser(url.query);
                 console.log(await checkUser(url.query));
                 if (exists == true) {
@@ -55,7 +53,6 @@ var pAbgabe;
                 }
             }
             else if (url.pathname == "/registerUser") { //user speichern
-                //let registeredUsers: Nutzer[] = await getUsers();
                 let exists = await checkUser(url.query);
                 if (exists == false) {
                     let jsonString = JSON.stringify(url.query);
@@ -106,7 +103,6 @@ var pAbgabe;
                 deleteFavoriteRecipe(url.query);
             }
         }
-        //_response.write(_request.url);  //gibt die URL aus
         console.log(_request.url);
         _response.end(); //beendet die Antwort
     }
@@ -128,12 +124,10 @@ var pAbgabe;
         console.log(_nutzer);
         console.log(_nutzer.favorites);
         if (zwischen.favorites != undefined) {
-            //nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : zwischen.favorites }});
             console.log("is not undefined");
         }
         else {
             console.log("undefined");
-            //nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : zwischen.favorites }});
         }
         let k = zwischen2.length;
         let f = 0;
@@ -143,7 +137,6 @@ var pAbgabe;
                 f++;
             }
         }
-        //let zw: string[] = [zwischen.favorites];
         console.log(zwischen2);
         let c = zwischen3.length + 1;
         for (let z = 0; z < c; z++) {
@@ -151,14 +144,10 @@ var pAbgabe;
                 zwischen3[z] = zwischen2[0];
             }
         }
-        //zwischen3.push(zwischen2);
-        //zwischen2 = zwischen2 + zwischen3;
-        //let alt: string|string[] = zwischen.favorites;
         console.log(zwischen3);
         nutzerCollection.findOneAndUpdate({ nutzername: _nutzer.nutzername, password: _nutzer.password }, { $set: { "favorites": zwischen3 } });
         zwischen = await nutzerCollection.findOne({ nutzername: _nutzer.nutzername });
         console.log(zwischen);
-        //zwischen2.push(zwischen.favorites.toString());
     }
     async function deleteFavoriteRecipe(_nutzer) {
         let zwischenNutzer = await nutzerCollection.findOne({ nutzername: _nutzer.nutzername });
@@ -221,7 +210,6 @@ var pAbgabe;
         }
         console.log(recipes);
         console.log("check break");
-        //recipes = await rezeptCollection.find().toArray();
         return recipes;
     }
     async function getRecipes() {
@@ -230,11 +218,6 @@ var pAbgabe;
         console.log(alleRezepte);
         return alleRezepte;
     }
-    /*async function getUsers(): Promise<Nutzer[]> {
-        let databaseUsers: Nutzer[];
-        databaseUsers = await nutzerCollection.find().toArray();
-        return databaseUsers;
-    }*/
     async function checkUser(_nutzer) {
         //let exists: boolean;
         //let test: Benutzer = nutzerCollection.findOne(_nutzer);
@@ -245,7 +228,6 @@ var pAbgabe;
         else {
             return false;
         }
-        //return false;
     }
     function deleteRecipe(_nutzer) {
         rezeptCollection.findOneAndDelete({ recipeName: _nutzer.recipeName, creator: _nutzer.creator });

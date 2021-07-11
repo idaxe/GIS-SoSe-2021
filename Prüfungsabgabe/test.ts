@@ -1,7 +1,6 @@
 import * as Http from "http";
 import * as Url from "url";
 import * as Mongo from "mongodb";
-//import { type } from "os";
 
 export namespace pAbgabe {
     interface Nutzer {
@@ -50,7 +49,6 @@ export namespace pAbgabe {
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
             if (url.pathname == "/loginUser") { ////user checken
-                //let registeredUsers: Nutzer[] = await getUsers();
                 let exists: boolean = await checkUser(url.query);
                 console.log(await checkUser(url.query));
                 if (exists == true) {
@@ -62,7 +60,6 @@ export namespace pAbgabe {
                 }        
             }
             else if (url.pathname == "/registerUser") { //user speichern
-                //let registeredUsers: Nutzer[] = await getUsers();
                 let exists: boolean = await checkUser(url.query);
                 if (exists == false) {
                     let jsonString: string = JSON.stringify(url.query);
@@ -103,8 +100,6 @@ export namespace pAbgabe {
                 deleteFavoriteRecipe(url.query);
             }
         }
-
-        //_response.write(_request.url);  //gibt die URL aus
         console.log(_request.url);
         _response.end();    //beendet die Antwort
     }
@@ -129,11 +124,9 @@ export namespace pAbgabe {
         console.log(_nutzer);
         console.log(_nutzer.favorites);
         if (zwischen.favorites != undefined) {
-            //nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : zwischen.favorites }});
             console.log("is not undefined");
         } else {
             console.log("undefined");
-            //nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : zwischen.favorites }});
             }
         let k: number = zwischen2.length;
         let f: number = 0;
@@ -143,7 +136,6 @@ export namespace pAbgabe {
                 f++;  
             }
         }
-        //let zw: string[] = [zwischen.favorites];
         console.log(zwischen2);
         let c: number = zwischen3.length + 1;
         for (let z: number = 0; z < c; z++) {
@@ -151,16 +143,11 @@ export namespace pAbgabe {
                 zwischen3[z] = zwischen2[0];
             }
         }
-        //zwischen3.push(zwischen2);
-        //zwischen2 = zwischen2 + zwischen3;
-        //let alt: string|string[] = zwischen.favorites;
         console.log(zwischen3);
         nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : zwischen3 }});
         zwischen = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
         console.log(zwischen);
-        
-        //zwischen2.push(zwischen.favorites.toString());
-    }
+        }
 
     async function deleteFavoriteRecipe(_nutzer: Nutzer): Promise<void> {
         let zwischenNutzer: Nutzer = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
@@ -224,7 +211,6 @@ export namespace pAbgabe {
         }
         console.log(recipes);
         console.log("check break");
-        //recipes = await rezeptCollection.find().toArray();
         return recipes;
     }
 
@@ -235,12 +221,6 @@ export namespace pAbgabe {
         return alleRezepte;
     }
 
-    /*async function getUsers(): Promise<Nutzer[]> {
-        let databaseUsers: Nutzer[];
-        databaseUsers = await nutzerCollection.find().toArray();
-        return databaseUsers;
-    }*/
-
     async function checkUser(_nutzer: Nutzer): Promise<boolean> {   //prüft ob ein Nutzer existiert
         //let exists: boolean;
         //let test: Benutzer = nutzerCollection.findOne(_nutzer);
@@ -250,7 +230,6 @@ export namespace pAbgabe {
         } else { 
             return false;
         }
-        //return false;
     }
 
     function deleteRecipe(_nutzer: Nutzer): void {  //löscht ein bestimmtes Rezept eines Nutzers
