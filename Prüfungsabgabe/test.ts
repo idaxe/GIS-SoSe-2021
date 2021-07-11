@@ -116,7 +116,7 @@ export namespace pAbgabe {
     async function addFavorite(_nutzer: Nutzer): Promise<void> {
         let zwischen: Nutzer = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
         let zwischen2: string[];
-        console.log(zwischen.favorites.toString());
+        console.log(zwischen.favorites);
         zwischen2.push(zwischen.favorites.toString());
         console.log(zwischen2);
         nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {favorites: zwischen2}});
