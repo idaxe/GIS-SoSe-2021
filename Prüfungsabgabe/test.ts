@@ -170,8 +170,9 @@ export namespace pAbgabe {
     }
 
     async function getFavoriteRecipes(_nutzer: Nutzer): Promise<Rezept[]> { //holt favorisierte rezepte eines nutzers
-        let recipes: Rezept[];
         let zwischennutzer: Nutzer = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
+        console.log(zwischennutzer);
+        let recipes: Rezept[];
         let anzehl: string[] = new Array();
         for (let j: number = 0; zwischennutzer.favorites.length; j++) {
             anzehl[j] = zwischennutzer.favorites[j];
