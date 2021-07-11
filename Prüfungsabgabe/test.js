@@ -139,7 +139,7 @@ var pAbgabe;
         let c = zwischen3.length + 1;
         for (let z = 0; z < c; z++) {
             if (zwischen3[z] == undefined || zwischen3[z] == "") {
-                zwischen3[z] = zwischen2[z];
+                zwischen3[z] = zwischen2[0];
             }
         }
         //zwischen3.push(zwischen2);

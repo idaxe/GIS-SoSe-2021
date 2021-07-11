@@ -141,7 +141,7 @@ export namespace pAbgabe {
         let c: number = zwischen3.length + 1;
         for (let z: number = 0; z < c; z++) {
             if (zwischen3[z] == undefined || zwischen3[z] == "") {
-                zwischen3[z] = zwischen2[z];
+                zwischen3[z] = zwischen2[0];
             }
         }
         //zwischen3.push(zwischen2);
