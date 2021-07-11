@@ -114,7 +114,7 @@ export namespace pAbgabe {
         let zwischen: Nutzer = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
         let zwischen2: string[] = new Array();
         let zwischen3: string[] | string = new Array();
-        zwischen3 = zwischen.favorites;
+        zwischen3 = zwischen.favorites[1];
         /*if (await nutzerCollection.findOne({favorites: [""]}) != undefined) {
             console.log("favorites exist");
             zwischen = await nutzerCollection.findOne({nutzername: _nutzer.nutzername});
