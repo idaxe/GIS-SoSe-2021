@@ -4,9 +4,6 @@ import * as Mongo from "mongodb";
 //import { type } from "os";
 
 export namespace pAbgabe {
-    /*interface User {
-        [type: string]: string | string[];
-    }*/
     interface Nutzer {
         [type: string]: string | string[];
     }
@@ -118,6 +115,9 @@ export namespace pAbgabe {
         let zwischen2: string[] = new Array();
         console.log(_nutzer);
         console.log(_nutzer.favorites);
+        for (let i: number = -1; i < zwischen2.length; i++) {
+            zwischen2[i] = _nutzer.favorites.toString();
+        }
         //zwischen2.push(zwischen.favorites.toString());
         console.log(zwischen2);
         nutzerCollection.findOneAndUpdate({nutzername: _nutzer.nutzername, password: _nutzer.password}, {$set : {"favorites" : [zwischen2] }});

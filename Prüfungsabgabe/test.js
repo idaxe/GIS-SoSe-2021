@@ -112,6 +112,9 @@ var pAbgabe;
         let zwischen2 = new Array();
         console.log(_nutzer);
         console.log(_nutzer.favorites);
+        for (let i = -1; i < zwischen2.length; i++) {
+            zwischen2[i] = _nutzer.favorites.toString();
+        }
         //zwischen2.push(zwischen.favorites.toString());
         console.log(zwischen2);
         nutzerCollection.findOneAndUpdate({ nutzername: _nutzer.nutzername, password: _nutzer.password }, { $set: { "favorites": [zwischen2] } });
