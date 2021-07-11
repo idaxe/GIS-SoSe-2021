@@ -175,12 +175,15 @@ export namespace pAbgabe {
         console.log(zwischennutzer);
         let recipes: Rezept[];
         let anzehl: string[] = new Array();
+        console.log("test");
         for (let j: number = 0; zwischennutzer.favorites.length; j++) {
             anzehl[j] = zwischennutzer.favorites[j];
         }
+        console.log(anzehl);
         for (let u: number; u < anzehl.length; u++) {
             recipes[u] = await rezeptCollection.findOne({_id: anzehl[u]});
         }
+        console.log(recipes);
         recipes = await rezeptCollection.find().toArray();
         return recipes;
     }
